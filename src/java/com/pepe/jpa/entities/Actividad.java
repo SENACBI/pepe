@@ -47,10 +47,6 @@ public class Actividad implements Serializable {
     private Integer idActividad;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "id_fase")
-    private int idFase;
-    @Basic(optional = false)
-    @NotNull
     @Lob
     @Size(min = 1, max = 65535)
     @Column(name = "nombre_actividad")
@@ -76,9 +72,8 @@ public class Actividad implements Serializable {
         this.idActividad = idActividad;
     }
 
-    public Actividad(Integer idActividad, int idFase, String nombreActividad, int duracion) {
+    public Actividad(Integer idActividad, String nombreActividad, int duracion) {
         this.idActividad = idActividad;
-        this.idFase = idFase;
         this.nombreActividad = nombreActividad;
         this.duracion = duracion;
     }
@@ -91,13 +86,6 @@ public class Actividad implements Serializable {
         this.idActividad = idActividad;
     }
 
-    public int getIdFase() {
-        return idFase;
-    }
-
-    public void setIdFase(int idFase) {
-        this.idFase = idFase;
-    }
 
     public String getNombreActividad() {
         return nombreActividad;
