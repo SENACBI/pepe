@@ -6,6 +6,7 @@
 package com.pepe.jpa.entities;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,23 +18,26 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Luis Carlos
+ * @author ADSI-DESAROLLO
  */
 @Entity
 @Table(name = "variable")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Variable.findAll", query = "SELECT v FROM Variable v"),
-    @NamedQuery(name = "Variable.findByIdVariable", query = "SELECT v FROM Variable v WHERE v.idVariable = :idVariable"),
-    @NamedQuery(name = "Variable.findByCumple", query = "SELECT v FROM Variable v WHERE v.cumple = :cumple")})
+    @NamedQuery(name = "Variable.findByidTipoRevision", query = "SELECT v FROM Variable v WHERE v.idTipoRevision = :idTipoRevision"),
+    @NamedQuery(name = "Variable.findByIdVariable", query = "SELECT v FROM Variable v WHERE v.idVariable = :idVariable")})
 public class Variable implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,21 +48,13 @@ public class Variable implements Serializable {
     @NotNull
     @Lob
     @Size(min = 1, max = 65535)
-    @Column(name = "descripcion")
-    private String descripcion;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "cumple")
-    private short cumple;
-    @Basic(optional = false)
-    @NotNull
-    @Lob
-    @Size(min = 1, max = 65535)
-    @Column(name = "observacion")
-    private String observacion;
-    @JoinColumn(name = "id_revision", referencedColumnName = "id_revision")
+    @Column(name = "nombre_variable")
+    private String nombreVariable;
+    @OneToMany(mappedBy = "idVariable")
+    private List<Valoracion> valoracionList;
+    @JoinColumn(name = "id_tipo_revision", referencedColumnName = "id_tipo_revision")
     @ManyToOne(optional = false)
-    private Revision idRevision;
+    private TipoRevision idTipoRevision;
 
     public Variable() {
     }
@@ -67,11 +63,9 @@ public class Variable implements Serializable {
         this.idVariable = idVariable;
     }
 
-    public Variable(Integer idVariable, String descripcion, short cumple, String observacion) {
+    public Variable(Integer idVariable, String nombreVariable) {
         this.idVariable = idVariable;
-        this.descripcion = descripcion;
-        this.cumple = cumple;
-        this.observacion = observacion;
+        this.nombreVariable = nombreVariable;
     }
 
     public Integer getIdVariable() {
@@ -82,36 +76,29 @@ public class Variable implements Serializable {
         this.idVariable = idVariable;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public String getNombreVariable() {
+        return nombreVariable;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setNombreVariable(String nombreVariable) {
+        this.nombreVariable = nombreVariable;
     }
 
-    public short getCumple() {
-        return cumple;
+    @XmlTransient
+    public List<Valoracion> getValoracionList() {
+        return valoracionList;
     }
 
-    public void setCumple(short cumple) {
-        this.cumple = cumple;
+    public void setValoracionList(List<Valoracion> valoracionList) {
+        this.valoracionList = valoracionList;
     }
 
-    public String getObservacion() {
-        return observacion;
+    public TipoRevision getIdTipoRevision() {
+        return idTipoRevision;
     }
 
-    public void setObservacion(String observacion) {
-        this.observacion = observacion;
-    }
-
-    public Revision getIdRevision() {
-        return idRevision;
-    }
-
-    public void setIdRevision(Revision idRevision) {
-        this.idRevision = idRevision;
+    public void setIdTipoRevision(TipoRevision idTipoRevision) {
+        this.idTipoRevision = idTipoRevision;
     }
 
     @Override
@@ -138,5 +125,5 @@ public class Variable implements Serializable {
     public String toString() {
         return "com.pepe.jpa.entities.Variable[ idVariable=" + idVariable + " ]";
     }
-    
+
 }

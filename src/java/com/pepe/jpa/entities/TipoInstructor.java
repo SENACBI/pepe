@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package com.pepe.jpa.entities;
 
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Luis Carlos
+ * @author Junior Cabal
  */
 @Entity
 @Table(name = "tipo_instructor")
@@ -46,7 +46,7 @@ public class TipoInstructor implements Serializable {
     @Size(min = 1, max = 60)
     @Column(name = "nombre_tipo_instructor")
     private String nombreTipoInstructor;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idTipoInstructor")
+    @OneToMany(mappedBy = "idTipoInstructor")
     private List<UsuarioHasFicha> usuarioHasFichaList;
 
     public TipoInstructor() {

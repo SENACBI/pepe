@@ -30,7 +30,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author ADSI TARDE
+ * @author Junior Cabal
  */
 @Entity
 @Table(name = "resultado_aprendizaje")
@@ -38,6 +38,8 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "ResultadoAprendizaje.findAll", query = "SELECT r FROM ResultadoAprendizaje r"),
     @NamedQuery(name = "ResultadoAprendizaje.findByIdResultadoAprendizaje", query = "SELECT r FROM ResultadoAprendizaje r WHERE r.idResultadoAprendizaje = :idResultadoAprendizaje"),
+    @NamedQuery(name = "ResultadoAprendizaje.consultaRA", query = "SELECT r FROM ResultadoAprendizaje r WHERE r.idCompetencia.idCompetencia = :idCompetencia AND r.estado = 1"),
+    @NamedQuery(name = "ResultadoAprendizaje.findByIdTipoResultadoAprendizaje", query = "SELECT r FROM ResultadoAprendizaje r WHERE r.idTipoResultadoAprendizaje = :idTipoResultadoAprendizaje"),
     @NamedQuery(name = "ResultadoAprendizaje.findByEstado", query = "SELECT r FROM ResultadoAprendizaje r WHERE r.estado = :estado")})
 public class ResultadoAprendizaje implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -48,6 +50,10 @@ public class ResultadoAprendizaje implements Serializable {
     private Integer idResultadoAprendizaje;
     @Basic(optional = false)
     @NotNull
+    @Column(name = "id_tipo_resultado_aprendizaje")
+    private int idTipoResultadoAprendizaje;
+    @Basic(optional = false)
+    @NotNull
     @Lob
     @Size(min = 1, max = 2147483647)
     @Column(name = "nombre_resultado_aprendizaje")
@@ -55,19 +61,11 @@ public class ResultadoAprendizaje implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "estado")
-    private short estado;
+    private boolean estado;
     @ManyToMany(mappedBy = "resultadoAprendizajeList")
     private List<ActividadAprendizaje> actividadAprendizajeList;
-    @ManyToMany(mappedBy = "resultadoAprendizajeList")
-    private List<Evento> eventoList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "resultadoAprendizaje")
     private List<ActividadHasResultadoAprendizaje> actividadHasResultadoAprendizajeList;
-    @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
-    @ManyToOne(optional = false)
-    private Usuario idUsuario;
-    @JoinColumn(name = "id_tipo_resultado_aprendizaje", referencedColumnName = "id_tipo_resultado_aprendizaje")
-    @ManyToOne(optional = false)
-    private TipoResultadoAprendizaje idTipoResultadoAprendizaje;
     @JoinColumn(name = "id_competencia", referencedColumnName = "id_competencia")
     @ManyToOne(optional = false)
     private Competencia idCompetencia;
@@ -79,8 +77,9 @@ public class ResultadoAprendizaje implements Serializable {
         this.idResultadoAprendizaje = idResultadoAprendizaje;
     }
 
-    public ResultadoAprendizaje(Integer idResultadoAprendizaje, String nombreResultadoAprendizaje, short estado) {
+    public ResultadoAprendizaje(Integer idResultadoAprendizaje, int idTipoResultadoAprendizaje, String nombreResultadoAprendizaje, boolean estado) {
         this.idResultadoAprendizaje = idResultadoAprendizaje;
+        this.idTipoResultadoAprendizaje = idTipoResultadoAprendizaje;
         this.nombreResultadoAprendizaje = nombreResultadoAprendizaje;
         this.estado = estado;
     }
@@ -93,6 +92,14 @@ public class ResultadoAprendizaje implements Serializable {
         this.idResultadoAprendizaje = idResultadoAprendizaje;
     }
 
+    public int getIdTipoResultadoAprendizaje() {
+        return idTipoResultadoAprendizaje;
+    }
+
+    public void setIdTipoResultadoAprendizaje(int idTipoResultadoAprendizaje) {
+        this.idTipoResultadoAprendizaje = idTipoResultadoAprendizaje;
+    }
+
     public String getNombreResultadoAprendizaje() {
         return nombreResultadoAprendizaje;
     }
@@ -101,11 +108,11 @@ public class ResultadoAprendizaje implements Serializable {
         this.nombreResultadoAprendizaje = nombreResultadoAprendizaje;
     }
 
-    public short getEstado() {
+    public boolean getEstado() {
         return estado;
     }
 
-    public void setEstado(short estado) {
+    public void setEstado(boolean estado) {
         this.estado = estado;
     }
 
@@ -119,37 +126,12 @@ public class ResultadoAprendizaje implements Serializable {
     }
 
     @XmlTransient
-    public List<Evento> getEventoList() {
-        return eventoList;
-    }
-
-    public void setEventoList(List<Evento> eventoList) {
-        this.eventoList = eventoList;
-    }
-
-    @XmlTransient
     public List<ActividadHasResultadoAprendizaje> getActividadHasResultadoAprendizajeList() {
         return actividadHasResultadoAprendizajeList;
     }
 
     public void setActividadHasResultadoAprendizajeList(List<ActividadHasResultadoAprendizaje> actividadHasResultadoAprendizajeList) {
         this.actividadHasResultadoAprendizajeList = actividadHasResultadoAprendizajeList;
-    }
-
-    public Usuario getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(Usuario idUsuario) {
-        this.idUsuario = idUsuario;
-    }
-
-    public TipoResultadoAprendizaje getIdTipoResultadoAprendizaje() {
-        return idTipoResultadoAprendizaje;
-    }
-
-    public void setIdTipoResultadoAprendizaje(TipoResultadoAprendizaje idTipoResultadoAprendizaje) {
-        this.idTipoResultadoAprendizaje = idTipoResultadoAprendizaje;
     }
 
     public Competencia getIdCompetencia() {
@@ -182,8 +164,7 @@ public class ResultadoAprendizaje implements Serializable {
 
     @Override
     public String toString() {
-        return "com.pepe.jpa.entities.ResultadoAprendizaje[ idResultadoAprendizaje=" + idResultadoAprendizaje + " ]";
+        return getNombreResultadoAprendizaje();
     }
     
 }
-

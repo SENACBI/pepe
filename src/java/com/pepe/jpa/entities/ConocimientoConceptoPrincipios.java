@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author ADSI TARDE
+ * @author Junior Cabal
  */
 @Entity
 @Table(name = "conocimiento_concepto_principios")
@@ -51,7 +51,7 @@ public class ConocimientoConceptoPrincipios implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "estado")
-    private short estado;
+    private boolean estado;
     @JoinColumn(name = "id_competencia", referencedColumnName = "id_competencia")
     @ManyToOne(optional = false)
     private Competencia idCompetencia;
@@ -63,7 +63,7 @@ public class ConocimientoConceptoPrincipios implements Serializable {
         this.idConocimientoConceptoPrincipios = idConocimientoConceptoPrincipios;
     }
 
-    public ConocimientoConceptoPrincipios(Integer idConocimientoConceptoPrincipios, String nombreConocimientoConceptoPrincipiosl, short estado) {
+    public ConocimientoConceptoPrincipios(Integer idConocimientoConceptoPrincipios, String nombreConocimientoConceptoPrincipiosl, boolean estado) {
         this.idConocimientoConceptoPrincipios = idConocimientoConceptoPrincipios;
         this.nombreConocimientoConceptoPrincipiosl = nombreConocimientoConceptoPrincipiosl;
         this.estado = estado;
@@ -85,11 +85,11 @@ public class ConocimientoConceptoPrincipios implements Serializable {
         this.nombreConocimientoConceptoPrincipiosl = nombreConocimientoConceptoPrincipiosl;
     }
 
-    public short getEstado() {
+    public boolean getEstado() {
         return estado;
     }
 
-    public void setEstado(short estado) {
+    public void setEstado(boolean estado) {
         this.estado = estado;
     }
 

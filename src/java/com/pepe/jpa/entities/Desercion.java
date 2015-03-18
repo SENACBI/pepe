@@ -30,7 +30,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author ADSI TARDE
+ * @author Junior Cabal
  */
 @Entity
 @Table(name = "desercion")
@@ -53,14 +53,15 @@ public class Desercion implements Serializable {
     @Column(name = "fecha")
     @Temporal(TemporalType.DATE)
     private Date fecha;
-    @JoinColumn(name = "id_motivo", referencedColumnName = "id_motivo")
-    @ManyToOne(optional = false)
-    private Motivo idMotivo;
+    @Lob
+    @Size(max = 65535)
+    @Column(name = "motivo")
+    private String motivo;
+    @OneToMany(mappedBy = "idDesercion")
+    private List<Usuario> usuarioList;
     @JoinColumn(name = "id_estado", referencedColumnName = "id_estado")
     @ManyToOne(optional = false)
     private Estado idEstado;
-    @OneToMany(mappedBy = "idDesercion")
-    private List<Usuario> usuarioList;
 
     public Desercion() {
     }
@@ -93,20 +94,12 @@ public class Desercion implements Serializable {
         this.fecha = fecha;
     }
 
-    public Motivo getIdMotivo() {
-        return idMotivo;
+    public String getMotivo() {
+        return motivo;
     }
 
-    public void setIdMotivo(Motivo idMotivo) {
-        this.idMotivo = idMotivo;
-    }
-
-    public Estado getIdEstado() {
-        return idEstado;
-    }
-
-    public void setIdEstado(Estado idEstado) {
-        this.idEstado = idEstado;
+    public void setMotivo(String motivo) {
+        this.motivo = motivo;
     }
 
     @XmlTransient
@@ -116,6 +109,14 @@ public class Desercion implements Serializable {
 
     public void setUsuarioList(List<Usuario> usuarioList) {
         this.usuarioList = usuarioList;
+    }
+
+    public Estado getIdEstado() {
+        return idEstado;
+    }
+
+    public void setIdEstado(Estado idEstado) {
+        this.idEstado = idEstado;
     }
 
     @Override

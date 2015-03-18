@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author ADSI TARDE
+ * @author Junior Cabal
  */
 @Entity
 @Table(name = "modalidad_formacion")
@@ -109,7 +109,7 @@ public class ModalidadFormacion implements Serializable {
 
     @Override
     public String toString() {
-        return getModalidadFormacion();
+        return "com.pepe.jpa.entities.ModalidadFormacion[ idModalidadFormacion=" + idModalidadFormacion + " ]";
     }
     
 }

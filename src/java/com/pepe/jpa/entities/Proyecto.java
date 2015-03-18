@@ -15,6 +15,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
@@ -28,7 +30,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author ADSI TARDE
+ * @author Junior Cabal
  */
 @Entity
 @Table(name = "proyecto")
@@ -36,6 +38,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Proyecto.findAll", query = "SELECT p FROM Proyecto p"),
     @NamedQuery(name = "Proyecto.findByIdProyecto", query = "SELECT p FROM Proyecto p WHERE p.idProyecto = :idProyecto"),
+    @NamedQuery(name = "Proyecto.findByCodigoProyecto", query = "SELECT p FROM Proyecto p WHERE p.codigoProyecto = :codigoProyecto"),
     @NamedQuery(name = "Proyecto.findByCodigoProyecto", query = "SELECT p FROM Proyecto p WHERE p.codigoProyecto = :codigoProyecto"),
     @NamedQuery(name = "Proyecto.findByInnovacion261", query = "SELECT p FROM Proyecto p WHERE p.innovacion261 = :innovacion261"),
     @NamedQuery(name = "Proyecto.findByInnovacion262", query = "SELECT p FROM Proyecto p WHERE p.innovacion262 = :innovacion262"),
@@ -98,8 +101,8 @@ public class Proyecto implements Serializable {
     @NotNull
     @Lob
     @Size(min = 1, max = 65535)
-    @Column(name = "impacto_2_5_2")
-    private String impacto252;
+    @Column(name = "impacto_social_2_5_2_1")
+    private String impactoSocial2521;
     @Basic(optional = false)
     @NotNull
     @Lob
@@ -115,31 +118,31 @@ public class Proyecto implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "innovacion_2_6_1")
-    private short innovacion261;
+    private boolean innovacion261;
     @Basic(optional = false)
     @NotNull
     @Column(name = "innovacion_2_6_2")
-    private short innovacion262;
+    private boolean innovacion262;
     @Basic(optional = false)
     @NotNull
     @Column(name = "innovacion_2_6_3")
-    private short innovacion263;
+    private boolean innovacion263;
     @Basic(optional = false)
     @NotNull
     @Column(name = "innovacion_2_6_4")
-    private short innovacion264;
+    private boolean innovacion264;
     @Basic(optional = false)
     @NotNull
     @Column(name = "innovacion_2_6_5")
-    private short innovacion265;
+    private boolean innovacion265;
     @Basic(optional = false)
     @NotNull
     @Column(name = "valoracion_2_7_1")
-    private short valoracion271;
+    private boolean valoracion271;
     @Basic(optional = false)
     @NotNull
     @Column(name = "Valoracion_2_7_2")
-    private short valoracion272;
+    private boolean valoracion272;
     @Basic(optional = false)
     @NotNull
     @Column(name = "intructores_requeridos")
@@ -154,20 +157,45 @@ public class Proyecto implements Serializable {
     @Size(min = 1, max = 2147483647)
     @Column(name = "descripcion_ambiente")
     private String descripcionAmbiente;
+    @Basic(optional = false)
+    @NotNull
+    @Lob
+    @Size(min = 1, max = 65535)
+    @Column(name = "impacto_ambiental_2_5_2_3")
+    private String impactoAmbiental2523;
+    @Basic(optional = false)
+    @NotNull
+    @Lob
+    @Size(min = 1, max = 65535)
+    @Column(name = "impacto_economico_2_5_2_2")
+    private String impactoEconomico2522;
+    @Basic(optional = false)
+    @NotNull
+    @Lob
+    @Size(min = 1, max = 65535)
+    @Column(name = "impacto_tecnologico_2_5_2_4")
+    private String impactoTecnologico2524;
+    @Basic(optional = false)
+    @NotNull
+    @Lob
+    @Size(min = 1, max = 65535)
+    @Column(name = "beneficiario_2_5_1")
+    private String beneficiario251;
     @ManyToMany(mappedBy = "proyectoList")
-    private List<Empresa> empresaList;
-    @OneToMany(mappedBy = "idProyecto")
-    private List<Ficha> fichaList;
+    private List<EtapaPractica> etapaPracticaList;
+    @JoinTable(name = "recurso_has_proyecto", joinColumns = {
+        @JoinColumn(name = "id_proyecto", referencedColumnName = "id_proyecto")}, inverseJoinColumns = {
+        @JoinColumn(name = "id_recurso", referencedColumnName = "id_recurso")})
+    @ManyToMany
+    private List<Recurso> recursoList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idProyecto")
+    private List<VisitaTecnica> visitaTecnicaList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idProyecto")
     private List<Actividad> actividadList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idProyecto")
     private List<Revision> revisionList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idProyecto")
-    private List<VisitaTecnica> visitaTecnicaList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idProyecto")
-    private List<GuiaAprendizaje> guiaAprendizajeList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idProyecto")
-    private List<Verificacion> verificacionList;
+    @OneToMany(mappedBy = "idProyecto")
+    private List<Ficha> fichaList;
 
     public Proyecto() {
     }
@@ -176,7 +204,7 @@ public class Proyecto implements Serializable {
         this.idProyecto = idProyecto;
     }
 
-    public Proyecto(Integer idProyecto, String nombreProyecto, String codigoProyecto, String justificacion22, String objetivoGeneral23, String objetivoEspecifico24, String palabrasClave17, String planteamiento21, String impacto252, String restricciones253, String productosResultados254, short innovacion261, short innovacion262, short innovacion263, short innovacion264, short innovacion265, short valoracion271, short valoracion272, int intructoresRequeridos, int aprendicesSugeridos, String descripcionAmbiente) {
+    public Proyecto(Integer idProyecto, String nombreProyecto, String codigoProyecto, String justificacion22, String objetivoGeneral23, String objetivoEspecifico24, String palabrasClave17, String planteamiento21, String impactoSocial2521, String restricciones253, String productosResultados254, boolean innovacion261, boolean innovacion262, boolean innovacion263, boolean innovacion264, boolean innovacion265, boolean valoracion271, boolean valoracion272, int intructoresRequeridos, int aprendicesSugeridos, String descripcionAmbiente, String impactoAmbiental2523, String impactoEconomico2522, String impactoTecnologico2524, String beneficiario251) {
         this.idProyecto = idProyecto;
         this.nombreProyecto = nombreProyecto;
         this.codigoProyecto = codigoProyecto;
@@ -185,7 +213,7 @@ public class Proyecto implements Serializable {
         this.objetivoEspecifico24 = objetivoEspecifico24;
         this.palabrasClave17 = palabrasClave17;
         this.planteamiento21 = planteamiento21;
-        this.impacto252 = impacto252;
+        this.impactoSocial2521 = impactoSocial2521;
         this.restricciones253 = restricciones253;
         this.productosResultados254 = productosResultados254;
         this.innovacion261 = innovacion261;
@@ -198,6 +226,10 @@ public class Proyecto implements Serializable {
         this.intructoresRequeridos = intructoresRequeridos;
         this.aprendicesSugeridos = aprendicesSugeridos;
         this.descripcionAmbiente = descripcionAmbiente;
+        this.impactoAmbiental2523 = impactoAmbiental2523;
+        this.impactoEconomico2522 = impactoEconomico2522;
+        this.impactoTecnologico2524 = impactoTecnologico2524;
+        this.beneficiario251 = beneficiario251;
     }
 
     public Integer getIdProyecto() {
@@ -264,12 +296,12 @@ public class Proyecto implements Serializable {
         this.planteamiento21 = planteamiento21;
     }
 
-    public String getImpacto252() {
-        return impacto252;
+    public String getImpactoSocial2521() {
+        return impactoSocial2521;
     }
 
-    public void setImpacto252(String impacto252) {
-        this.impacto252 = impacto252;
+    public void setImpactoSocial2521(String impactoSocial2521) {
+        this.impactoSocial2521 = impactoSocial2521;
     }
 
     public String getRestricciones253() {
@@ -288,59 +320,59 @@ public class Proyecto implements Serializable {
         this.productosResultados254 = productosResultados254;
     }
 
-    public short getInnovacion261() {
+    public boolean getInnovacion261() {
         return innovacion261;
     }
 
-    public void setInnovacion261(short innovacion261) {
+    public void setInnovacion261(boolean innovacion261) {
         this.innovacion261 = innovacion261;
     }
 
-    public short getInnovacion262() {
+    public boolean getInnovacion262() {
         return innovacion262;
     }
 
-    public void setInnovacion262(short innovacion262) {
+    public void setInnovacion262(boolean innovacion262) {
         this.innovacion262 = innovacion262;
     }
 
-    public short getInnovacion263() {
+    public boolean getInnovacion263() {
         return innovacion263;
     }
 
-    public void setInnovacion263(short innovacion263) {
+    public void setInnovacion263(boolean innovacion263) {
         this.innovacion263 = innovacion263;
     }
 
-    public short getInnovacion264() {
+    public boolean getInnovacion264() {
         return innovacion264;
     }
 
-    public void setInnovacion264(short innovacion264) {
+    public void setInnovacion264(boolean innovacion264) {
         this.innovacion264 = innovacion264;
     }
 
-    public short getInnovacion265() {
+    public boolean getInnovacion265() {
         return innovacion265;
     }
 
-    public void setInnovacion265(short innovacion265) {
+    public void setInnovacion265(boolean innovacion265) {
         this.innovacion265 = innovacion265;
     }
 
-    public short getValoracion271() {
+    public boolean getValoracion271() {
         return valoracion271;
     }
 
-    public void setValoracion271(short valoracion271) {
+    public void setValoracion271(boolean valoracion271) {
         this.valoracion271 = valoracion271;
     }
 
-    public short getValoracion272() {
+    public boolean getValoracion272() {
         return valoracion272;
     }
 
-    public void setValoracion272(short valoracion272) {
+    public void setValoracion272(boolean valoracion272) {
         this.valoracion272 = valoracion272;
     }
 
@@ -368,22 +400,63 @@ public class Proyecto implements Serializable {
         this.descripcionAmbiente = descripcionAmbiente;
     }
 
+    public String getImpactoAmbiental2523() {
+        return impactoAmbiental2523;
+    }
+
+    public void setImpactoAmbiental2523(String impactoAmbiental2523) {
+        this.impactoAmbiental2523 = impactoAmbiental2523;
+    }
+
+    public String getImpactoEconomico2522() {
+        return impactoEconomico2522;
+    }
+
+    public void setImpactoEconomico2522(String impactoEconomico2522) {
+        this.impactoEconomico2522 = impactoEconomico2522;
+    }
+
+    public String getImpactoTecnologico2524() {
+        return impactoTecnologico2524;
+    }
+
+    public void setImpactoTecnologico2524(String impactoTecnologico2524) {
+        this.impactoTecnologico2524 = impactoTecnologico2524;
+    }
+
+    public String getBeneficiario251() {
+        return beneficiario251;
+    }
+
+    public void setBeneficiario251(String beneficiario251) {
+        this.beneficiario251 = beneficiario251;
+    }
+
     @XmlTransient
-    public List<Empresa> getEmpresaList() {
-        return empresaList;
+    public List<EtapaPractica> getEtapaPracticaList() {
+        return etapaPracticaList;
     }
 
-    public void setEmpresaList(List<Empresa> empresaList) {
-        this.empresaList = empresaList;
+    public void setEtapaPracticaList(List<EtapaPractica> etapaPracticaList) {
+        this.etapaPracticaList = etapaPracticaList;
     }
 
     @XmlTransient
-    public List<Ficha> getFichaList() {
-        return fichaList;
+    public List<Recurso> getRecursoList() {
+        return recursoList;
     }
 
-    public void setFichaList(List<Ficha> fichaList) {
-        this.fichaList = fichaList;
+    public void setRecursoList(List<Recurso> recursoList) {
+        this.recursoList = recursoList;
+    }
+
+    @XmlTransient
+    public List<VisitaTecnica> getVisitaTecnicaList() {
+        return visitaTecnicaList;
+    }
+
+    public void setVisitaTecnicaList(List<VisitaTecnica> visitaTecnicaList) {
+        this.visitaTecnicaList = visitaTecnicaList;
     }
 
     @XmlTransient
@@ -405,30 +478,12 @@ public class Proyecto implements Serializable {
     }
 
     @XmlTransient
-    public List<VisitaTecnica> getVisitaTecnicaList() {
-        return visitaTecnicaList;
+    public List<Ficha> getFichaList() {
+        return fichaList;
     }
 
-    public void setVisitaTecnicaList(List<VisitaTecnica> visitaTecnicaList) {
-        this.visitaTecnicaList = visitaTecnicaList;
-    }
-
-    @XmlTransient
-    public List<GuiaAprendizaje> getGuiaAprendizajeList() {
-        return guiaAprendizajeList;
-    }
-
-    public void setGuiaAprendizajeList(List<GuiaAprendizaje> guiaAprendizajeList) {
-        this.guiaAprendizajeList = guiaAprendizajeList;
-    }
-
-    @XmlTransient
-    public List<Verificacion> getVerificacionList() {
-        return verificacionList;
-    }
-
-    public void setVerificacionList(List<Verificacion> verificacionList) {
-        this.verificacionList = verificacionList;
+    public void setFichaList(List<Ficha> fichaList) {
+        this.fichaList = fichaList;
     }
 
     @Override
@@ -453,7 +508,7 @@ public class Proyecto implements Serializable {
 
     @Override
     public String toString() {
-        return nombreProyecto;
+        return "com.pepe.jpa.entities.Proyecto[ idProyecto=" + idProyecto + " ]";
     }
     
 }

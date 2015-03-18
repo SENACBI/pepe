@@ -7,6 +7,7 @@
 package com.pepe.jpa.entities;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -16,6 +17,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
@@ -24,6 +26,8 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -31,14 +35,16 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author ADSI TARDE
+ * @author Junior Cabal
  */
 @Entity
 @Table(name = "revision")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Revision.findAll", query = "SELECT r FROM Revision r"),
-    @NamedQuery(name = "Revision.findByIdRevision", query = "SELECT r FROM Revision r WHERE r.idRevision = :idRevision")})
+    @NamedQuery(name = "Revision.findByIdRevision", query = "SELECT r FROM Revision r WHERE r.idRevision = :idRevision"),
+    @NamedQuery(name = "Revision.findByFechaRevision", query = "SELECT r FROM Revision r WHERE r.fechaRevision = :fechaRevision"),
+    @NamedQuery(name = "Revision.findByAmbienteApto", query = "SELECT r FROM Revision r WHERE r.ambienteApto = :ambienteApto")})
 public class Revision implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -46,12 +52,17 @@ public class Revision implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_revision")
     private Integer idRevision;
-    @Basic(optional = false)
-    @NotNull
     @Lob
-    @Size(min = 1, max = 65535)
+    @Size(max = 65535)
     @Column(name = "concepto")
     private String concepto;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "fecha_revision")
+    @Temporal(TemporalType.DATE)
+    private Date fechaRevision;
+    @Column(name = "ambiente_apto")
+    private Boolean ambienteApto;
     @JoinTable(name = "revision_has_usuario", joinColumns = {
         @JoinColumn(name = "id_revision", referencedColumnName = "id_revision")}, inverseJoinColumns = {
         @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")})
@@ -60,8 +71,19 @@ public class Revision implements Serializable {
     @JoinColumn(name = "id_proyecto", referencedColumnName = "id_proyecto")
     @ManyToOne(optional = false)
     private Proyecto idProyecto;
+    @JoinColumn(name = "id_ambiente_formacion", referencedColumnName = "id_ambiente_formacion")
+    @ManyToOne
+    private AmbienteFormacion idAmbienteFormacion;
+    @JoinColumns({
+        @JoinColumn(name = "id_ciudad", referencedColumnName = "id_ciudad"),
+        @JoinColumn(name = "id_departamento", referencedColumnName = "id_departamento")})
+    @ManyToOne
+    private Ciudad ciudad;
+    @JoinColumn(name = "id_tipo_revision", referencedColumnName = "id_tipo_revision")
+    @ManyToOne(optional = false)
+    private TipoRevision idTipoRevision;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idRevision")
-    private List<Variable> variableList;
+    private List<Valoracion> valoracionList;
 
     public Revision() {
     }
@@ -70,9 +92,9 @@ public class Revision implements Serializable {
         this.idRevision = idRevision;
     }
 
-    public Revision(Integer idRevision, String concepto) {
+    public Revision(Integer idRevision, Date fechaRevision) {
         this.idRevision = idRevision;
-        this.concepto = concepto;
+        this.fechaRevision = fechaRevision;
     }
 
     public Integer getIdRevision() {
@@ -89,6 +111,22 @@ public class Revision implements Serializable {
 
     public void setConcepto(String concepto) {
         this.concepto = concepto;
+    }
+
+    public Date getFechaRevision() {
+        return fechaRevision;
+    }
+
+    public void setFechaRevision(Date fechaRevision) {
+        this.fechaRevision = fechaRevision;
+    }
+
+    public Boolean getAmbienteApto() {
+        return ambienteApto;
+    }
+
+    public void setAmbienteApto(Boolean ambienteApto) {
+        this.ambienteApto = ambienteApto;
     }
 
     @XmlTransient
@@ -108,13 +146,37 @@ public class Revision implements Serializable {
         this.idProyecto = idProyecto;
     }
 
-    @XmlTransient
-    public List<Variable> getVariableList() {
-        return variableList;
+    public AmbienteFormacion getIdAmbienteFormacion() {
+        return idAmbienteFormacion;
     }
 
-    public void setVariableList(List<Variable> variableList) {
-        this.variableList = variableList;
+    public void setIdAmbienteFormacion(AmbienteFormacion idAmbienteFormacion) {
+        this.idAmbienteFormacion = idAmbienteFormacion;
+    }
+
+    public Ciudad getCiudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(Ciudad ciudad) {
+        this.ciudad = ciudad;
+    }
+
+    public TipoRevision getIdTipoRevision() {
+        return idTipoRevision;
+    }
+
+    public void setIdTipoRevision(TipoRevision idTipoRevision) {
+        this.idTipoRevision = idTipoRevision;
+    }
+
+    @XmlTransient
+    public List<Valoracion> getValoracionList() {
+        return valoracionList;
+    }
+
+    public void setValoracionList(List<Valoracion> valoracionList) {
+        this.valoracionList = valoracionList;
     }
 
     @Override

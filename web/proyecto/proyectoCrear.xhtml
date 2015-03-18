@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <ui:composition template="../html_plantillas/plantilla_paginas.xhtml">
+        <ui:define name="body">
+            <h:form id="proyectoCrearForm">
+                
+                <p:commandButton rendered="#{fichaController.proyectoBoolean()}"
+                                 id="botonFormular"
+                                 value="Formular Proyecto"
+                                 onclick="proyectoCrearP1Ventana.show()"/>
+                <p:commandButton rendered="#{fichaController.proyectoActividadBoolean()}"
+                                 id="botonActividad"
+                                 value="Actividades de Proyecto"
+                                 onclick="actividadListVentana.show()"/>
+            </h:form>
+            <ui:include src="crear/proyectoCrearP1.xhtml"/>
+            <ui:include src="crear/proyectoCrearP2.xhtml"/>
+            <ui:include src="crear/proyectoCrearP3.xhtml"/>
+            <ui:include src="actividad/actividadList.xhtml"/>
+            <ui:include src="actividad/actividadCrear.xhtml"/>
+        </ui:define>
+    </ui:composition>
+</html>
+

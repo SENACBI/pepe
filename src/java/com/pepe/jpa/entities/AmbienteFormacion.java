@@ -16,8 +16,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author ADSI TARDE
+ * @author Junior Cabal
  */
 @Entity
 @Table(name = "ambiente_formacion")
@@ -50,15 +50,22 @@ public class AmbienteFormacion implements Serializable {
     @Size(min = 1, max = 60)
     @Column(name = "nombre_ambiente_formacion")
     private String nombreAmbienteFormacion;
-    @JoinTable(name = "recurso_has_ambiente_formacion", joinColumns = {
-        @JoinColumn(name = "id_ambiente_formacion", referencedColumnName = "id_ambiente_formacion")}, inverseJoinColumns = {
-        @JoinColumn(name = "id_recurso", referencedColumnName = "id_recurso")})
-    @ManyToMany
-    private List<Recurso> recursoList;
+    @Basic(optional = false)
+    @NotNull
+    @Lob
+    @Size(min = 1, max = 65535)
+    @Column(name = "denominacion_ambiente_formacion")
+    private String denominacionAmbienteFormacion;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idAmbienteFormacion")
     private List<Evento> eventoList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idAmbienteFormacion")
-    private List<Verificacion> verificacionList;
+    @OneToMany(mappedBy = "idAmbienteFormacion")
+    private List<Revision> revisionList;
+    @JoinColumn(name = "categoria_ambiente_id_categoria_ambiente", referencedColumnName = "id_categoria_ambiente")
+    @ManyToOne(optional = false)
+    private CategoriaAmbiente categoriaAmbienteIdCategoriaAmbiente;
+    @JoinColumn(name = "id_tipo_ambiente", referencedColumnName = "id_tipo_ambiente")
+    @ManyToOne(optional = false)
+    private TipoAmbiente idTipoAmbiente;
 
     public AmbienteFormacion() {
     }
@@ -67,9 +74,10 @@ public class AmbienteFormacion implements Serializable {
         this.idAmbienteFormacion = idAmbienteFormacion;
     }
 
-    public AmbienteFormacion(Integer idAmbienteFormacion, String nombreAmbienteFormacion) {
+    public AmbienteFormacion(Integer idAmbienteFormacion, String nombreAmbienteFormacion, String denominacionAmbienteFormacion) {
         this.idAmbienteFormacion = idAmbienteFormacion;
         this.nombreAmbienteFormacion = nombreAmbienteFormacion;
+        this.denominacionAmbienteFormacion = denominacionAmbienteFormacion;
     }
 
     public Integer getIdAmbienteFormacion() {
@@ -88,13 +96,12 @@ public class AmbienteFormacion implements Serializable {
         this.nombreAmbienteFormacion = nombreAmbienteFormacion;
     }
 
-    @XmlTransient
-    public List<Recurso> getRecursoList() {
-        return recursoList;
+    public String getDenominacionAmbienteFormacion() {
+        return denominacionAmbienteFormacion;
     }
 
-    public void setRecursoList(List<Recurso> recursoList) {
-        this.recursoList = recursoList;
+    public void setDenominacionAmbienteFormacion(String denominacionAmbienteFormacion) {
+        this.denominacionAmbienteFormacion = denominacionAmbienteFormacion;
     }
 
     @XmlTransient
@@ -107,12 +114,28 @@ public class AmbienteFormacion implements Serializable {
     }
 
     @XmlTransient
-    public List<Verificacion> getVerificacionList() {
-        return verificacionList;
+    public List<Revision> getRevisionList() {
+        return revisionList;
     }
 
-    public void setVerificacionList(List<Verificacion> verificacionList) {
-        this.verificacionList = verificacionList;
+    public void setRevisionList(List<Revision> revisionList) {
+        this.revisionList = revisionList;
+    }
+
+    public CategoriaAmbiente getCategoriaAmbienteIdCategoriaAmbiente() {
+        return categoriaAmbienteIdCategoriaAmbiente;
+    }
+
+    public void setCategoriaAmbienteIdCategoriaAmbiente(CategoriaAmbiente categoriaAmbienteIdCategoriaAmbiente) {
+        this.categoriaAmbienteIdCategoriaAmbiente = categoriaAmbienteIdCategoriaAmbiente;
+    }
+
+    public TipoAmbiente getIdTipoAmbiente() {
+        return idTipoAmbiente;
+    }
+
+    public void setIdTipoAmbiente(TipoAmbiente idTipoAmbiente) {
+        this.idTipoAmbiente = idTipoAmbiente;
     }
 
     @Override

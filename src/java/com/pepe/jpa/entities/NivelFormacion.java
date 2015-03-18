@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author ADSI TARDE
+ * @author Junior Cabal
  */
 @Entity
 @Table(name = "nivel_formacion")
@@ -109,7 +109,7 @@ public class NivelFormacion implements Serializable {
 
     @Override
     public String toString() {
-        return getNivelFormacion();
+        return "com.pepe.jpa.entities.NivelFormacion[ idNivelFormacion=" + idNivelFormacion + " ]";
     }
     
 }

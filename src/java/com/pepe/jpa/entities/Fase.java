@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author ADSI TARDE
+ * @author Junior Cabal
  */
 @Entity
 @Table(name = "fase")
@@ -47,12 +47,14 @@ public class Fase implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "fase")
     private String fase;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idFase")
+    private List<Actividad> actividadList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idFase")
+    private List<Criterio> criterioList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "fase")
     private List<EvaluacionSeguimiento> evaluacionSeguimientoList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idFase")
-    private List<ActividadHasResultadoAprendizaje> actividadHasResultadoAprendizajeList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idFase")
-    private List<Acompanamiento> acompanamientoList;
+    private List<Seguimiento> seguimientoList;
 
     public Fase() {
     }
@@ -83,6 +85,24 @@ public class Fase implements Serializable {
     }
 
     @XmlTransient
+    public List<Actividad> getActividadList() {
+        return actividadList;
+    }
+
+    public void setActividadList(List<Actividad> actividadList) {
+        this.actividadList = actividadList;
+    }
+
+    @XmlTransient
+    public List<Criterio> getCriterioList() {
+        return criterioList;
+    }
+
+    public void setCriterioList(List<Criterio> criterioList) {
+        this.criterioList = criterioList;
+    }
+
+    @XmlTransient
     public List<EvaluacionSeguimiento> getEvaluacionSeguimientoList() {
         return evaluacionSeguimientoList;
     }
@@ -92,21 +112,12 @@ public class Fase implements Serializable {
     }
 
     @XmlTransient
-    public List<ActividadHasResultadoAprendizaje> getActividadHasResultadoAprendizajeList() {
-        return actividadHasResultadoAprendizajeList;
+    public List<Seguimiento> getSeguimientoList() {
+        return seguimientoList;
     }
 
-    public void setActividadHasResultadoAprendizajeList(List<ActividadHasResultadoAprendizaje> actividadHasResultadoAprendizajeList) {
-        this.actividadHasResultadoAprendizajeList = actividadHasResultadoAprendizajeList;
-    }
-
-    @XmlTransient
-    public List<Acompanamiento> getAcompanamientoList() {
-        return acompanamientoList;
-    }
-
-    public void setAcompanamientoList(List<Acompanamiento> acompanamientoList) {
-        this.acompanamientoList = acompanamientoList;
+    public void setSeguimientoList(List<Seguimiento> seguimientoList) {
+        this.seguimientoList = seguimientoList;
     }
 
     @Override
@@ -131,7 +142,7 @@ public class Fase implements Serializable {
 
     @Override
     public String toString() {
-        return "com.pepe.jpa.entities.Fase[ idFase=" + idFase + " ]";
+        return getFase();
     }
     
 }

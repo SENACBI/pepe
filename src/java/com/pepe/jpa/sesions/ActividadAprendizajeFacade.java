@@ -6,10 +6,18 @@
 
 package com.pepe.jpa.sesions;
 
+import com.pepe.jpa.entities.Actividad;
 import com.pepe.jpa.entities.ActividadAprendizaje;
+import com.pepe.jpa.entities.Fase;
+import com.pepe.jpa.entities.Proyecto;
+import com.pepe.jpa.entities.UsuarioHasFicha;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
+import javax.persistence.NonUniqueResultException;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -28,5 +36,15 @@ public class ActividadAprendizajeFacade extends AbstractFacade<ActividadAprendiz
     public ActividadAprendizajeFacade() {
         super(ActividadAprendizaje.class);
     }
-    
+    public List<ActividadAprendizaje> consultaPlaneacion(Fase idFase, Proyecto idProyecto){
+        Query q= getEntityManager().createNamedQuery("ActividadAprendizaje.findByFase");
+        q.setParameter("idFase", idFase);
+        q.setParameter("idProyecto", idProyecto);
+        return q.getResultList();
+    }
+     public List<ActividadAprendizaje> consultaActividad(Actividad idActividad){
+        Query q= getEntityManager().createNamedQuery("ActividadAprendizaje.findByConsultaActividad");
+        q.setParameter("idActividad", idActividad);
+        return q.getResultList();
+    }
 }

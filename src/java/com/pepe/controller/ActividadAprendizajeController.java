@@ -8,19 +8,25 @@ package com.pepe.controller;
 
 import com.pepe.jpa.entities.Actividad;
 import com.pepe.jpa.entities.ActividadAprendizaje;
+import com.pepe.jpa.entities.Recurso;
+import com.pepe.jpa.entities.ResultadoAprendizaje;
 import com.pepe.jpa.entities.TecnicaDidactica;
 import com.pepe.jpa.entities.TipoActividadAprendizaje;
 import com.pepe.jpa.sesions.ActividadAprendizajeFacade;
 import com.pepe.jpa.sesions.ActividadFacade;
+import com.pepe.jpa.sesions.RecursoFacade;
+import com.pepe.jpa.sesions.ResultadoAprendizajeFacade;
 import com.pepe.jpa.sesions.TecnicaDidacticaFacade;
 import com.pepe.jpa.sesions.TipoActividadAprendizajeFacade;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 
 /**
  *
@@ -33,16 +39,25 @@ public class ActividadAprendizajeController implements Serializable {
     @EJB
     private ActividadAprendizajeFacade actividadAprendizajeFacade;
     private ActividadAprendizaje actividadAprendizajeActual;
-    private List<ActividadAprendizaje> listaActividadAprendizaje = null;
+    private int tipoActividadAprendizajeSelect;
     private int actividadSelect;
+    private List<ActividadAprendizaje> listaActividadAprendizaje = null;
+    private List<Recurso> listaRecurso = null;
+    private List<ResultadoAprendizaje> listaResultadoAprendizaje = null;
+    private Actividad actividadActual;
+    private ResultadoAprendizaje resultadoAprendizajeActual;
+    private Recurso recursoActual;
     @EJB
     private ActividadFacade actividadFacade;
-    private int tecnicaDidacticaSelect;
     @EJB
     private TecnicaDidacticaFacade TecnicaDidacticaFacade;
-    private int tipoActividadAprendizajeSelect;
+    @EJB
+    private ResultadoAprendizajeFacade resultadoAprendizajeFacade;
     @EJB
     private TipoActividadAprendizajeFacade tipoActividadAprendizajeFacade;
+    @EJB
+    private RecursoFacade recursoFacade;
+    
     /**
      * Creates a new instance of CiudadController
      */
@@ -53,35 +68,52 @@ public class ActividadAprendizajeController implements Serializable {
         return actividadAprendizajeFacade;
     }
     public ActividadAprendizaje getActividadAprendizajeActual() {
-        if (actividadAprendizajeActual == null) {
-            actividadAprendizajeActual = new ActividadAprendizaje();
-        }
+        
         return actividadAprendizajeActual;
     }
 
     public void setActividadAprendizajeActual(ActividadAprendizaje actividadAprendizajeActual) {
         this.actividadAprendizajeActual = actividadAprendizajeActual;
     }
-
+   
   
     public List<ActividadAprendizaje> getListaActividadAprendizaje() {
-        if (listaActividadAprendizaje == null) {
-            try {
-                listaActividadAprendizaje = getActividadAprendizajeFacade().findAll();
-            } catch (Exception e) {
-                addErrorMessage("Error closing resource " + e.getClass().getName(), "Message: " + e.getMessage());
-            }
-        }
-        return listaActividadAprendizaje;
-    }
+//        if (listaActividadAprendizaje == null) {
+//            try {
+//                addErrorMessage("Error closing resource " + e.getClass().getName(), "Message: " + e.getMessage());
+//            }
+//        }
+//        return listaActividadAprendizaje;
+          return listaActividadAprendizaje;//            } catch (Exception e) {
 
+    }
+    
+    
+    
     private void recargarLista() {
-        listaActividadAprendizaje = null;
+        listaActividadAprendizaje = getActividadAprendizajeFacade().consultaActividad(actividadActual);
     }
 
-    public String prepareCreate() {
-        actividadAprendizajeActual = new ActividadAprendizaje();
-        return "/planeacionpedagogica/FaseDeAnalisis/crear_actividadAprendizaje";
+    public void prepareCreate(ActionEvent event) {
+        actividadActual = new Actividad();
+        actividadActual = (Actividad) event.getComponent().getAttributes().get("actividad");
+        listaActividadAprendizaje=actividadActual.getActividadAprendizajeList();
+        recargarLista();
+    }
+    
+    public String createActividad(){
+        return "/planeacionpedagogica/lista_ActividadAprendizaje";
+    }
+    
+    public String prepareResultadoAprendizaje(){
+        listaResultadoAprendizaje = new ArrayList<>();
+        listaResultadoAprendizaje = actividadAprendizajeActual.getResultadoAprendizajeList();
+        return "lista_resultadoAprendizaje";
+    }
+     public String prepareRecursos(){
+        listaRecurso = new ArrayList<>();
+        listaRecurso = actividadAprendizajeActual.getRecursoList();
+       return "lista_recursos";
     }
 
     public String prepareEdit() {
@@ -99,12 +131,12 @@ public class ActividadAprendizajeController implements Serializable {
 
     public String addActividadAprendizaje() {
         try {
-            actividadAprendizajeActual.setIdActividad(getActividadFacade().find(actividadSelect));
-            actividadAprendizajeActual.setIdTecnicaDidactica(getTecnicaDidacticaFacade().find(tecnicaDidacticaSelect));
+            actividadAprendizajeActual.setResultadoAprendizajeList(listaResultadoAprendizaje);
+            actividadAprendizajeActual.setRecursoList(listaRecurso);
             actividadAprendizajeActual.setIdTipoActividadAprendizaje(getTipoActividadAprendizajeFacade().find(tipoActividadAprendizajeSelect));
             getActividadAprendizajeFacade().create(actividadAprendizajeActual);
             recargarLista();
-            return "Admin_ListaActividadAprendizaje";
+            return "planeacion_pedagogica";
         } catch (Exception e) {
             addErrorMessage("Error closing resource " + e.getClass().getName(), "Message: " + e.getMessage());
             return null;
@@ -169,16 +201,6 @@ public class ActividadAprendizajeController implements Serializable {
      
      // Select one menu Tecnica Didactica
 
-    public int getTecnicaDidacticaSelect() {
-        if(actividadAprendizajeActual!=null && actividadAprendizajeActual.getIdTecnicaDidactica()!= null){
-            tecnicaDidacticaSelect=actividadAprendizajeActual.getIdActividadAprendizaje();
-        }
-        return tecnicaDidacticaSelect;
-    }
-
-    public void setTecnicaDidacticaSelect(int tecnicaDidacticaSelect) {
-        this.tecnicaDidacticaSelect = tecnicaDidacticaSelect;
-    }
 
     public TecnicaDidacticaFacade getTecnicaDidacticaFacade() {
         return TecnicaDidacticaFacade;
@@ -191,7 +213,82 @@ public class ActividadAprendizajeController implements Serializable {
     public List<TecnicaDidactica> getListaTecnicaDidacticaSelectOne() {
         return getTecnicaDidacticaFacade().findAll();
     }
-     
+
+    //select one menu Recurso    
+    public List<Recurso> getListaRecurso() {
+        return listaRecurso;
+    }
+
+    public void setListaRecurso(List<Recurso> listaRecurso) {
+        this.listaRecurso = listaRecurso;
+    }
+
+    public Recurso getRecursoActual() {
+        return recursoActual;
+    }
+
+    public void setRecursoActual(Recurso recursoActual) {
+        this.recursoActual = recursoActual;
+    }
+
+    public RecursoFacade getRecursoFacade() {
+        return recursoFacade;
+    }
+
+    public void setRecursoFacade(RecursoFacade recursoFacade) {
+        this.recursoFacade = recursoFacade;
+    }
+    
+      public List<Recurso> getListaRecursoSelectOne() {
+        return getRecursoFacade().findAll();
+    }
+    public void addRecurso(){
+        listaRecurso.add(recursoActual);
+        recursoActual = new Recurso();
+    }
+ 
+    //select one menu resultado de aprendizaje
+    
+    public List<ResultadoAprendizaje> getListaResultadoAprendizaje() {
+        return listaResultadoAprendizaje;
+    }
+
+    public void setListaResultadoAprendizaje(List<ResultadoAprendizaje> listaResultadoAprendizaje) {
+        this.listaResultadoAprendizaje = listaResultadoAprendizaje;
+    }
+
+    public ResultadoAprendizaje getResultadoAprendizajeActual() {
+        return resultadoAprendizajeActual;
+    }
+
+    public void setResultadoAprendizajeActual(ResultadoAprendizaje resultadoAprendizajeActual) {
+        this.resultadoAprendizajeActual = resultadoAprendizajeActual;
+    }
+
+    public ResultadoAprendizajeFacade getResultadoAprendizajeFacade() {
+        return resultadoAprendizajeFacade;
+    }
+
+    public void setResultadoAprendizajeFacade(ResultadoAprendizajeFacade resultadoAprendizajeFacade) {
+        this.resultadoAprendizajeFacade = resultadoAprendizajeFacade;
+    }
+    public List<ResultadoAprendizaje> getListaResultadoAprendizajeSelectOne() {
+        return getResultadoAprendizajeFacade().findAll();
+    }
+    public void addResultadoAprendizaje(){
+        listaResultadoAprendizaje.add(resultadoAprendizajeActual);
+        resultadoAprendizajeActual = new ResultadoAprendizaje();
+    }
+    
+    public String crearActividadAprendizaje(){
+        listaResultadoAprendizaje = new ArrayList<>();
+        listaRecurso = new ArrayList<>();
+        resultadoAprendizajeActual = new ResultadoAprendizaje();
+        recursoActual = new Recurso();
+        actividadAprendizajeActual = new ActividadAprendizaje();
+        return "crear_actividadAprendizaje";
+    }
+    
     // Select one menu Tipo actividad aprendizaje
 
     public int getTipoActividadAprendizajeSelect() {
