@@ -1,0 +1,165 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+        <link rel="stylesheet" href="resources/css/bootstrap.min.css"/>
+    </h:head>
+    <h:body>
+
+
+
+
+        <h:form id="forma"    >  
+
+            <div class="form-group"  >
+                <label for="ficha">fichas:</label>
+                <h:selectOneMenu id="ficha" class="input-sm" value="#{horarioController.current.idFicha}" >
+                <f:selectItem  itemLabel="seleccione ficha" />
+   <f:selectItems value="#{horarioController.listFicha}"  var="item" itemValue="#{item.idFicha}"      itemLabel="#{item.codigoFicha}"/> 
+   <f:ajax event="change" execute="@this" render="forma"  listener="#{horarioController.changeFichaList(e)}" />
+  </h:selectOneMenu>  
+            </div>          
+
+            
+        <h:panelGroup rendered="#{horarioController.current.idFicha >0}">    
+    
+            <div class="form-group"  >
+                <label for="programa">programa:</label>
+                <h:inputText id="programa" class="input-sm" value=" #{horarioController.currentP.nombrePrograma}" disabled="true" /> 
+            </div>       
+
+
+            <div class="form-group"  >
+                <label for="ambiente">Ambiente:</label>
+                <h:selectOneMenu id="ambiente" class="input-sm" value="#{horarioController.currentA.idAmbienteFormacion}"  >
+                    <f:selectItems value="#{horarioController.listAmbientes}"  var="item"
+                                   itemValue="#{item.idAmbienteFormacion}"
+                                   itemLabel="#{item.nombreAmbienteFormacion}"  />
+                </h:selectOneMenu>  
+            </div>   
+
+      <div class="form-group"  >
+                <label for="user">instructor</label>
+                <h:selectOneMenu id="user" class="input-sm" value="#{horarioController.currentU.idUsuario}"  >
+                    <f:selectItems value="#{horarioController.listUsuario}"  var="item"
+                                   itemValue="#{item.idUsuario}"
+                                   itemLabel="#{item.nombre1}"  />
+                </h:selectOneMenu>  
+            </div>   
+
+
+
+            <div class="form-group"  >
+                <label for="resultado">resultado:</label>
+                <h:selectOneMenu id="resultado" class="input-sm" value="#{horarioController.currentR.idResultadoAprendizaje}"  >
+                    <f:selectItems value="#{horarioController.listResultado}"  var="item"
+                                   itemValue="#{item.idResultadoAprendizaje}"
+                                   itemLabel="#{item.nombreResultadoAprendizaje}"  />
+                </h:selectOneMenu>  
+            </div>      
+
+
+
+            <div class="form-group"  >
+                <label for="fechaIni"> fecha inicio:</label>
+                <p:calendar id="fechaIni" locale="es"  value="#{horarioController.dateIni}" showOn="button" />
+            </div>     
+
+            <div class="form-group"  >
+                <label for="fechaEnd"> fecha final:</label>
+                <p:calendar id="fechaEnd" locale="es"  value="#{horarioController.dateEnd}" showOn="button" />
+            </div>  
+
+
+            <div class="form-group"  >
+                <label for="horaIni">hora Inicio:</label>
+                <p:calendar id="horaIni" locale="es"   value="#{horarioController.hourIni}" pattern="HH:mm a" timeOnly="true"  />   
+            </div>    
+
+            <div class="form-group"  >
+                <label for="horaEnd">  hora fin:</label>
+                <p:calendar id="horaEnd" locale="es"   value="#{horarioController.hourEnd}" pattern="HH:mm a" timeOnly="true"  />        
+            </div>     
+
+
+
+            <div class="form-group"  >
+                <p:commandButton value="save" actionListener="#{horarioController.save()}"></p:commandButton>      
+            </div> 
+
+
+
+
+
+
+ </h:panelGroup>
+
+
+
+        </h:form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <script type="text/javascript">
+            PrimeFaces.locales['es'] = {
+                closeText: 'Cerrar',
+                prevText: 'Anterior',
+                nextText: 'Siguiente',
+                monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+                dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+                dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+                dayNamesMin: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
+                weekHeader: 'Semana',
+                firstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix: '',
+                timeOnlyTitle: 'seleccione Hora',
+                timeText: 'Tiempo',
+                hourText: 'Hora',
+                minuteText: 'Minuto',
+                secondText: 'Segundo',
+                currentText: 'Fecha actual',
+                ampm: false,
+                month: 'Mes',
+                week: 'Semana',
+                day: 'Día',
+                allDayText: 'Todo el día'
+            };
+        </script>  
+
+    </h:body>
+</html>
+

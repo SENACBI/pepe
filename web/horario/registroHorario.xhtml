@@ -1,0 +1,207 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+        <link rel="stylesheet" href="resources/css/bootstrap.min.css"/>
+    </h:head>
+    <h:body>
+        <style type="text/css">
+            /* Override some defaults */
+            html, body {
+                background-color: #eee;
+            }
+            body {
+                padding-top: 40px; 
+            }
+            .container {
+                width: 500px;
+
+            }
+
+            /* The white background content wrapper */
+            .container > .content {
+                background-color: #fff;
+                padding: 20px;
+                margin: 0 -20px; 
+                -webkit-border-radius: 10px 10px 10px 10px;
+                -moz-border-radius: 10px 10px 10px 10px;
+                border-radius: 10px 10px 10px 10px;
+                -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+                -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+                box-shadow: 0 1px 2px rgba(0,0,0,.15);
+            }
+
+            .login-form {
+                margin-left: 65px;
+            }
+
+            legend {
+                margin-right: -50px;
+                font-weight: bold;
+                color: #404040;
+            }
+
+        </style>
+
+        <div class="container">
+            <div class="content">
+                <div class="row">
+                    <div class="login-form">
+                        <h2>Registrar Horario</h2>
+
+                        <h:form id="forma"    >  
+                            <p:growl  id="messageForm" life="50000" />
+                            <div class="form-group"  >
+                                <label for="ficha">ficha:</label>
+                                <h:selectOneMenu id="ficha" required="true" class="input-sm" value="#{horarioController.current.idFicha}" >
+                                    <f:selectItem  itemLabel="seleccione ficha" />
+                                    <f:selectItems value="#{horarioController.listFicha}"  var="item" itemValue="#{item.idFicha}"  itemLabel="#{item.codigoFicha}"/> 
+                                    <f:ajax event="change" execute="@this" render="forma"  listener="#{horarioController.changeFichaList(e)}" />
+                                </h:selectOneMenu>  
+                            </div>          
+                            <h:panelGroup rendered="#{horarioController.current.idFicha >0}">    
+                                <div class="form-group"  >
+                                    <label for="programa">programa:</label>
+                                    <h:inputText  required="true" requiredMessage="requiere programa" id="programa" class="input-sm" value=" #{horarioController.currentP.nombrePrograma}" disabled="true" /> 
+                                </div>       
+
+
+                                <div class="form-group"  >
+                                    <label for="ambiente">Ambiente:</label>
+                                    <h:selectOneMenu  required="true" requiredMessage="requiere ambiente" id="ambiente" class="input-sm" value="#{horarioController.currentA.idAmbienteFormacion}"  >
+                                        <f:selectItems value="#{horarioController.listAmbientes}"  var="item"
+                                                       itemValue="#{item.idAmbienteFormacion}"
+                                                       itemLabel="#{item.nombreAmbienteFormacion}"  />
+                                    </h:selectOneMenu>  
+                                </div>   
+
+                                <div class="form-group"  >
+                                    <label for="user">instructor</label>
+                                    <h:selectOneMenu  required="true" requiredMessage="requiere instructor " id="user" class="input-sm" value="#{horarioController.currentU.idUsuario}"  >
+                                        <f:selectItems value="#{horarioController.listUsuario}"  var="item"
+                                                       itemValue="#{item.idUsuario}"
+                                                       itemLabel="#{item.nombre1}"  />
+                                    </h:selectOneMenu>  
+                                </div>   
+
+
+
+                                <div class="form-group"  >
+                                    <label for="resultado">resultado:</label>
+                                    <h:selectOneMenu  required="true" requiredMessage="requiere resultado" id="resultado" class="input-sm" value="#{horarioController.currentR.idResultadoAprendizaje}"  >
+                                        <f:selectItems value="#{horarioController.listResultado}"  var="item"
+                                                       itemValue="#{item.idResultadoAprendizaje}"
+                                                       itemLabel="#{item.nombreResultadoAprendizaje}"  />
+                                    </h:selectOneMenu>  
+                                </div>      
+
+
+
+                                <div class="form-group"  >
+                                    <label for="fechaIni"> fecha inicio:</label>
+                                    <p:calendar  required="true" requiredMessage="requiere fecha inicio" id="fechaIni" locale="es"  value="#{horarioController.dateIni}" showOn="button" />
+                                </div>     
+
+                                <div class="form-group"  >
+                                    <label   for="fechaEnd"> fecha final:</label>
+                                    <p:calendar  required="true" requiredMessage="requiere fecha final" id="fechaEnd" locale="es"  value="#{horarioController.dateEnd}" showOn="button" />
+                                </div>  
+
+
+                                <div class="form-group"  >
+                                    <label for="horaIni">hora Inicio:</label>
+                                    <p:calendar  required="true" requiredMessage="requiere hora inicio" id="horaIni" locale="es"   value="#{horarioController.hourIni}" pattern="HH:mm a" timeOnly="true"  />   
+                                </div>    
+
+                                <div class="form-group"  >
+                                    <label for="horaEnd">  hora fin:</label>
+                                    <p:calendar  required="true" requiredMessage="requiere hora final" id="horaEnd" locale="es"   value="#{horarioController.hourEnd}" pattern="HH:mm a" timeOnly="true"  />        
+                                </div>     
+
+
+
+
+
+
+
+
+                                <p:commandButton value="guardar " update="messageForm, dg"
+                                                 actionListener="#{horarioController.save()}"   />     
+
+                                <p:confirmDialog id="dg" visible="#{horarioController.saveDialog}"
+                                                 widgetVar="confirmationUpdateProfile"
+                                                 header="Guardar Horario"
+                                                 message="registrar horario?"
+                                                 appendToBody="true"
+                                                 closable="true"
+                                                 severity="alert" >
+
+                                    <p:commandButton widgetVar="sureButton" value="SI"
+                                                     onclick="sureButton.disable();
+                    notYetButton.disable()"
+                                                     oncomplete="confirmationUpdateProfile.hide()"
+                                                     action="#{horarioController.saveHorario()}" update="messageForm"
+                                                     />
+
+                                    <p:commandButton widgetVar="notYetButton" value="NO"
+                                                     onclick="confirmationUpdateProfile.hide()" type="button"
+                                                     action="#{horarioController.cancel()}"/>
+                                </p:confirmDialog>
+
+
+                            </h:panelGroup>
+
+
+
+                        </h:form>
+
+
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div> <!-- /container -->
+
+
+        <script type="text/javascript">
+            PrimeFaces.locales['es'] = {
+                closeText: 'Cerrar',
+                prevText: 'Anterior',
+                nextText: 'Siguiente',
+                monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+                dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+                dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+                dayNamesMin: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
+                weekHeader: 'Semana',
+                firstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix: '',
+                timeOnlyTitle: 'seleccione Hora',
+                timeText: 'Tiempo',
+                hourText: 'Hora',
+                minuteText: 'Minuto',
+                secondText: 'Segundo',
+                currentText: 'Fecha actual',
+                ampm: false,
+                month: 'Mes',
+                week: 'Semana',
+                day: 'Día',
+                allDayText: 'Todo el día'
+            };
+        </script>  
+
+
+
+
+    </h:body>
+</html>
