@@ -1,24 +1,26 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html  xmlns="http://www.w3.org/1999/xhtml"
-       xmlns:h="http://xmlns.jcp.org/jsf/html"
-       xmlns:f="http://xmlns.jcp.org/jsf/core"
-       xmlns:jsf="http://xmlns.jcp.org/jsf"
-       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-       xmlns:p="http://primefaces.org/ui">
-   <ui:composition template="/html_plantillas/plantilla_paginas.xhtml">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+    <ui:composition template="/html_plantillas/plantilla_paginas.xhtml">
         <ui:define name="title">Lista Guia Aprendizaje</ui:define>
         <ui:define name="body">
+
             <form jsf:id="ListaActividad">
-                <h1 class="Titulo-plantillas"><h:outputText value="Lista de Actividades de proyecto"/></h1>
+                <h1 class="Titulo"><h:outputText value="Lista de Actividades de proyecto"/></h1>
+                <h:panelGrid columns="1">
+
                     <p:commandButton  value="Crear Actividad" action="#{actividadController.createActividadProyecto}"/>
-                    <p:button  value="Inicio" outcome="/index"/>
+
                     <p:dataTable  value="#{actividadController.listaActividad}" var="Actividad"
-                                 paginator="true" rows="10" id="Actividadtable"
-                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" 
-                                 rowsPerPageTemplate="5,10,15">
-
-
+                                  paginator="true" rows="10" id="Actividadtable"
+                                  paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" 
+                                  rowsPerPageTemplate="5,10,15">
 
                         <p:column filterBy="#{Actividad.nombreActividadProyecto}" headerText="NombreActividad" filterMatchMode="contains">
                             <h:outputText value="#{Actividad.nombreActividadProyecto}"/>
@@ -57,16 +59,20 @@
 
                             <p:commandButton process="@this" value="Generar Guia" actionListener="#{actividadController.prepareCreateGenerarGuia}" action="#{actividadController.createGenerarGuia}">
                                 <f:attribute name="actividad" value="#{Actividad}"/>            
-                             </p:commandButton>
+                            </p:commandButton>
                         </p:column>
                     </p:dataTable>
-                <form jsf:id="ConfirmForm">
-                <p:confirmDialog global="true" showEffect="fade" hideEffect="explode">
-                    <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-                    <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-                </p:confirmDialog>
-                </form>    
+                    <form jsf:id="ConfirmForm">
+                        <p:confirmDialog global="true" showEffect="fade" hideEffect="explode">
+                            <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                            <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                        </p:confirmDialog>
+                    </form>
+
+                    <p:button  value="Inicio" outcome="/index.xhtml"/>
+
+                </h:panelGrid>
             </form> 
         </ui:define>
-   </ui:composition>
+    </ui:composition>
 </html>

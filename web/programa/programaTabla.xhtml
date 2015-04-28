@@ -6,17 +6,20 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:jsf="http://xmlns.jcp.org/jsf">
-    <ui:composition template="templatePrograma.xhtml">
-        <ui:define name="Contenido">
+
+    <ui:composition template="/html_plantillas/plantilla_paginas.xhtml">
+        <ui:define name="body">
             <h:form id="competenciaForm">
                 <section class="row">
                     <h1 class="columns-5">#{programaController.programaActual.nombrePrograma}</h1>
                     <h2 class="columns-5">#{programaController.programaActual.programaPK.codigo} + #{programaController.programaActual.programaPK.version}</h2>
+
                     <input type="submit"
                            class="button columns-4"
                            jsf:actionListener="#{programaController.anular()}"
                            jsf:action="programaInicio.xhtml"
                            jsf:value="cambiar programa"/>
+
                     <p:commandButton onclick="programaVerVentana.show()"
                                      styleClass="button columns-4"
                                      value="ver programa"
@@ -30,25 +33,29 @@
                                  selection="#{programaController.competenciaActual}"
                                  selectionMode="single"
                                  paginator="true"
+                                 paginatorTemplate="{FirstPageLink} 
+                                 {PreviousPageLink} {PageLinks} {NextPageLink} 
+                                 {LastPageLink} {RowsPerPageDropdown}"
+                                 rowsPerPageTemplate="5,10,15"
                                  rowKey="#{item.idCompetencia}"
                                  rows="10">
                         <p:ajax event="rowSelect" update="botonE botonRA botonCCP botonCP botonCE"/>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="Codigo"/>
+                                <h:outputText value="Código"/>
                             </f:facet>
                             <h:outputText value="#{item.codigo}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="NombreCompetencia"/>
+                                <h:outputText value="Descripción de la Competencia"/>
                             </f:facet>
                             <h:outputText value="#{item.nombreCompetencia}"/>
                         </p:column>
 
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="NombreCompetencia"/>
+                                <h:outputText value="Horas"/>
                             </f:facet>
                             <h:outputText value="#{item.duracionEstimadaHoras}"/>
                         </p:column>

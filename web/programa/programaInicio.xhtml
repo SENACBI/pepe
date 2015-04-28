@@ -6,10 +6,11 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:jsf="http://xmlns.jcp.org/jsf"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-    <ui:composition template="templatePrograma.xhtml">
-        <ui:define name="Contenido">
+
+    <ui:composition template="/html_plantillas/plantilla_paginas.xhtml">
+        <ui:define name="body">
             <h:form id="programaInicioForm">
-                <section id="sectionProgramaConsulta" class="row">
+                <section id="sectionProgramaConsulta">
                     <p:autoComplete id="programa" 
                                     forceSelection="true"
                                     required="true"
@@ -21,7 +22,7 @@
                                     itemLabel="#{pro}" 
                                     itemValue="#{pro}"
                                     converter="ProgramaConverter"
-                                    maxResults="10">
+                                    maxResults="5">
                         <f:ajax execute="programa" 
                                 render="msgprograma"
                                 event="change"/>
@@ -31,20 +32,21 @@
                                styleClass="error"/> 
                     <section class="row">
                         <p:commandButton
-                               styleClass="button"
-                               action="#{programaController.programaConsulta}"
-                               value="consulta"/>
+                            styleClass="button"
+                            action="#{programaController.programaConsulta}"
+                            value="Consulta"/>
+
                         <p:commandButton onclick="programaCrearVentana.show()"
-                                         value="crear programa"
+                                         value="Crear programa"
                                          styleClass="button"
                                          actionListener="#{programaController.anular()}"
                                          update=":programaCrearVentanaForm"/>
-                        <p:commandButton value="Inicio"
+
+                        <!--   <p:commandButton value="Inicio"
                                          styleClass="button"
-                                         action="#{request.contextPath}"/>
+                                         action="/index.xhtml"/>   -->
                     </section>
                 </section>
-
             </h:form>
             <ui:include src="programaCrear.xhtml"/>
         </ui:define>

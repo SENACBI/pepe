@@ -240,7 +240,7 @@ public class Programa implements Serializable {
 
     @Override
     public String toString() {
-        return "com.pepe.jpa.entities.Programa[ programaPK=" + programaPK + " ]";
+        return nombrePrograma;
     }
     
 }

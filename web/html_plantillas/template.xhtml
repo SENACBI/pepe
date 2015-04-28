@@ -5,34 +5,37 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
     <head jsf:id="head">
-        <title><ui:insert name="title">PEPE</ui:insert></title>
+        <title><ui:insert name="title">PEPA</ui:insert></title>
         <meta charset="UTF-8"/>
-        <link rel="stylesheet" jsf:library="css" jsf:name="estilo.css"/>
-        <link rel="stylesheet" jsf:library="css" jsf:name="normalize.css"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" type="text/css" href="resources/css/estilo.css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="resources/css/foundation.css" media="screen"/>
         <link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'/>
-        
+        <link rel="stylesheet" type="text/js" href="resources/foundation-5.5.1/js/vendor/modernizr.js" media="screen"/>
     </head>
 
     <body jsf:id="body" class="Body" >
         <header class="Header">
             <div class="Header-left">
-                <h1 class="Titulo-pepe">P.E.P.A</h1>
-                Programador Estrategico de Proyectos Academicos
+                <h1 class="Titulo-pepe">P.E.P.A.</h1>
+                Programador Estratégico de Proyectos Académicos
             </div>
             <hr size="20"/>
         </header>
-       
-           <section>
-            <ui:insert name="body">Default Body</ui:insert> 
-           </section> 
+
+        <section>
+            <ui:insert name="body" class="Pepe-templBody">Default Body</ui:insert> 
+        </section> 
 
 
 
         <hr width="100%" size="8" align="right"/>
         <footer class="Pepe-footer" >
             <figure class="Footer-imageContainer">
-                <img src="../../resources/images/logosena.png" heigth="50" width="50" alt="logo sena" class="Footer-image"/>
+                <img src="../resources/images/logosena.png" heigth="50" width="50" alt="logo sena" class="Footer-image"/>
+
             </figure>
+            
             <section class="Pepe-redes">
                 <article class="ico">
                     <a href="https://www.facebook.com/sena.general" target="_blank" class="icon-facebook" style="
@@ -53,17 +56,17 @@
             </section>
             <section>
                 <p class="Footer-description"> 
-                       Servicio Nacional de Aprendizaje SENA – Centro de Bioctecnologia Industrial- carrera 30 #40-25, Palmira-valle 
+                    Servicio Nacional de Aprendizaje SENA – Centro de Biotecnología Industrial - carrera 30 #40-25, Palmira-Valle 
                     <br></br>
-                       Línea gratuita de atención al ciudadano 275 0978 – Resto del país 018000 910270
+                    Línea gratuita de atención al ciudadano 275 0978 – Resto del país 018000 910270
                     <br></br>
-                       Horario de atención: lunes a viernes de 8:00 am a 5:30 pm
+                    Horario de atención: lunes a viernes de 8:00 a.m. a 5:30 p.m.
                     <br></br>
-                       Todos los derechos reservados ©
+                    Todos los derechos reservados ©
                     <br></br>
                     2015</p>
             </section>
         </footer>
-      
+
     </body>
 </html>

@@ -45,8 +45,9 @@ public class ProgramadorFacade extends AbstractFacade<Programador> {
         q.setParameter("idFicha", ficha);
            return q.getResultList();   
      }
+     
      public List<Programador> findByProyecto(Ficha ficha){
-        Query q= getEntityManager().createNamedQuery("Programador.findByProyecto");
+        Query q = getEntityManager().createNamedQuery("Programador.findByProyecto");
         q.setParameter("idProyecto", ficha.getIdProyecto().getIdProyecto());
            return q.getResultList();   
      }

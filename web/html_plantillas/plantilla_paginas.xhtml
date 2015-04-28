@@ -3,25 +3,27 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:jsf="http://xmlns.jcp.org/jsf"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
     <head jsf:id="head-plantilla">
-        <title><ui:insert name="title">PEPE</ui:insert></title>
+        <title><ui:insert name="title">PEPA</ui:insert></title>
         <meta charset="UTF-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />        
         <link rel="stylesheet" type="text/css" href="#{request.contextPath}/resources/css/estilo.css" media="screen"/>
         <link rel="stylesheet" type="text/css" href="#{request.contextPath}/resources/css/estilospepe.css" media="screen"/>
-        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/resources/css/foundation.css" media="screen"/>
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/resources/css/normalize.css" media="screen"/> <!-- Se cambió el foundation por normalize, para visualizacion correcta-->
         <link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'/>
         <link rel="stylesheet" type="text/js" href="../resources/js/foundation-5.5.1/js/vendor/modernizr.js" media="screen"/>
     </head>
-    <body class="Body-plantilla" jsf:id="body-plantilla">
+    <body class="Bodypepe" jsf:id="body">
         <header class="Header">
             <h:form class="Header-Form">
                 <section class="Header-pepeForm">
-                    <h:panelGrid columns="8">
-                        <label class="Label1" for="nombreProgramaText">Programa de formacion:</label>
+                    <h:panelGrid columns="6">
+                        <label class="Label1" for="nombreProgramaText">Programa de formación:</label>
                         <input class="Form-Input1" type="text" disabled="true"
                                jsf:value="#{fichaController.fichaSeleccionada.programa.nombrePrograma}" maxlength="45" >
                         </input>
@@ -33,80 +35,72 @@
                         <input class="Form-Input3" type="text" disabled="true"
                                jsf:value="#{fichaController.fichaSeleccionada.programa.programaPK.version}">
                         </input>
-                    </h:panelGrid>
-                    <h:panelGrid columns="6">
 
-                        <label class="Label6" for="codigoProyectoText">Codigo del proyecto:</label>
+                        <label class="Label6" for="codigoProyectoText">Código del proyecto:</label>
                         <input class="Form-Input6" type="text" disabled="true"
                                jsf:value="#{fichaController.fichaSeleccionada.idProyecto.codigoProyecto}">
                         </input>
-                        <label class="Label7" for="numeroFichaText">Numero de ficha:</label>
+                        <label class="Label7" for="numeroFichaText">Número de ficha:</label>
                         <input class="Form-Input7" type="text" disabled="true"
                                jsf:value="#{fichaController.fichaSeleccionada.codigoFicha}">
+                        </input>
+                        <label class="Label8" for="liderEjecutorText">Líder ejecutor:</label>
+                        <input class="Form-Input8" type="text" disabled="true"
+                               jsf:value="#{fichaController.usuarioFicha.usuario.nombre1} #{fichaController.usuarioFicha.usuario.apellido1}">
                         </input>
                     </h:panelGrid> 
                     <label class="Label5" for="nombreProyectoText">Nombre del proyecto:</label>
                     <input class="Form-Input5" type="text" disabled="true"
                            jsf:value="#{fichaController.fichaSeleccionada.idProyecto.nombreProyecto}">
                     </input>
-                    <h:panelGrid columns="3">
-                        <label class="Label8" for="liderEjecutorText">Lider ejecutor:</label>
-                        <input class="Form-Input8" type="text" disabled="true"
-                               jsf:value="#{fichaController.usuarioFicha.usuario.nombre1} #{fichaController.usuarioFicha.usuario.apellido1}">
-                        </input>
-                    </h:panelGrid>
                 </section>
             </h:form>
         </header>
 
         <hr SIZE='20'></hr>
+        <section class="pepe-color">
+            <ul class="Pepe-listColor">
+                <li class="Pepe-listColorItem"><a href='#' class="PepeMenu-link"></a></li>
+                <li class="Pepe-listColorItem"><a href='#' class="PepeMenu-link"></a></li>
+                <li class="Pepe-listColorItem"><a href='#' class="PepeMenu-link"></a></li>
+                <li class="Pepe-listColorItem"><a href='#' class="PepeMenu-link"></a></li>
+                <li class="Pepe-listColorItem"><a href='#' class="PepeMenu-link"></a></li>
+                <li class="Pepe-listColorItem"><a href='#' class="PepeMenu-link"></a></li>
+                <li class="Pepe-listColorItem"><a href='#' class="PepeMenu-link"></a></li>
+                <li class="Pepe-listColorItem"><a href='#' class="PepeMenu-link"></a></li>
+                <li class="Pepe-listColorItem"><a href='#' class="PepeMenu-link"></a></li>
+                <li class="Pepe-listColorItem"><a href='#' class="PepeMenu-link"></a></li>
+            </ul> 
+        </section>
         <section>
-            <section class="pepe-color">
-                <ul class="Pepe-listColor">
-                    <li class="Pepe-listColorItem"><a href='#' class="PepeMenu-link"></a></li>
-                    <li class="Pepe-listColorItem"><a href='#' class="PepeMenu-link"></a></li>
-                    <li class="Pepe-listColorItem"><a href='#' class="PepeMenu-link"></a></li>
-                    <li class="Pepe-listColorItem"><a href='#' class="PepeMenu-link"></a></li>
-                    <li class="Pepe-listColorItem"><a href='#' class="PepeMenu-link"></a></li>
-                    <li class="Pepe-listColorItem"><a href='#' class="PepeMenu-link"></a></li>
-                    <li class="Pepe-listColorItem"><a href='#' class="PepeMenu-link"></a></li>
-                    <li class="Pepe-listColorItem"><a href='#' class="PepeMenu-link"></a></li>
-                    <li class="Pepe-listColorItem"><a href='#' class="PepeMenu-link"></a></li>
-                </ul> 
-            </section>
-            <section>
-                <nav class="Pepe-list">
-                    <ul class="Pepe-listMenu">
-                        <li class="Pepe-listMenuItem"><a href='#' class="PepeMenu-link">Formulación de Proyectos</a></li>
-                        <li class="Pepe-listMenuItem"><a href='#' class="PepeMenu-link">Programación del Proyecto</a></li>
-                        <li class="Pepe-listMenuItem"><a href='#' class="PepeMenu-link">Planeación Pedagógica</a></li>
-                        <li class="Pepe-listMenuItem"><a href='#' class="PepeMenu-link">Aprendices</a></li>
-                        <li class="Pepe-listMenuItem"><a href='#' class="PepeMenu-link">Otros Formatos</a></li>
-                        <li class="Pepe-listMenuItem"><a href='#' class="PepeMenu-link">Valoración de Proyecto</a></li>
-                        <li class="Pepe-listMenuItem"><a href='#' class="PepeMenu-link">Acompañamiento al Proyecto</a></li>
-                        <li class="Pepe-listMenuItem"><a href='#' class="PepeMenu-link">Administración del Proyecto</a></li>
-                        <li class="Pepe-listMenuItem"><a href='#' class="PepeMenu-link">Imprimibles PDF </a></li>
-                    </ul>        
-                </nav>    
-            </section>
-
+            <nav class="Pepe-list">
+                <ul class="Pepe-listMenu">
+                    <li class="Pepe-listMenuItem"><a jsf:outcome="/landingpage.xhtml" class="PepeMenu-link">Inicio</a></li>
+                    <li class="Pepe-listMenuItem"><a jsf:outcome="/PlaneaciondeProyecto/programacion.xhtml" class="PepeMenu-link">Formulación de Proyectos</a></li>
+                    <li class="Pepe-listMenuItem"><a href='#' class="PepeMenu-link">Programación del Proyecto</a></li>
+                    <li class="Pepe-listMenuItem"><a jsf:outcome="/planeacionpedagogica/dlg_menuPlaneacionPedagogica.xhtml" class="PepeMenu-link">Planeación Pedagógica</a></li>
+                    <li class="Pepe-listMenuItem"><a href='#' class="PepeMenu-link">Aprendices</a></li>
+                    <li class="Pepe-listMenuItem"><a href='#' class="PepeMenu-link">Otros Formatos</a></li>
+                    <li class="Pepe-listMenuItem"><a href='#' class="PepeMenu-link">Valoración de Proyecto</a></li>
+                    <li class="Pepe-listMenuItem"><a jsf:outcome="/acompanamiento/crear_acompanamiento.xhtml" class="PepeMenu-link">Acompañamiento al Proyecto</a></li>
+                    <li class="Pepe-listMenuItem"><a href='#' class="PepeMenu-link">Administración del Proyecto</a></li>
+                    <li class="Pepe-listMenuItem"><a href='#' class="PepeMenu-link">Imprimibles PDF </a></li>
+                </ul>        
+            </nav>    
         </section>
 
-        <section class="article-listaActividad">
-            <ui:insert name="body">Default Body</ui:insert> 
+        <section class="Panel_prog">
+            <ui:insert name="body" >Default Body</ui:insert> 
         </section>
-
-
 
         <hr SIZE='20'></hr>
         <footer class="Pepe-footer">
             <figure class="Footer-imageContainer">
                 <img src="../resources/images/logosena.png" heigth="50" width="50" alt="logo sena" class="Footer-image"/>
-
             </figure>
             <section>
                 <p class="Footer-description"> 
-                    Servicio Nacional de Aprendizaje SENA – Centro de Bioctecnologia Industrial- carrera 30 #40-25, Palmira-valle 
+                    Servicio Nacional de Aprendizaje SENA – Centro de Biotecnología Industrial- carrera 30 #40-25, Palmira-Valle 
                     <br></br>
                     Línea gratuita de atención al ciudadano 275 0978 – Resto del país 018000 910270
                     <br></br>

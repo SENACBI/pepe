@@ -1,0 +1,178 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+    <ui:composition template="/html_plantillas/template.xhtml">
+        <ui:define name="body">
+            <ui:include src="/admin/dlg_menuCrearUsuario.xhtml"/>
+            <ui:include src="/planeacionpedagogica/dlg_menuPlaneacionPedagogica.xhtml"/>
+
+            <h:form rendered="#{loginController.authenticated}" class="Pepe-body" id="formInicio">
+                <div class="large-12 medium-12 columns">
+                    <div>
+                        <div class="large-12 medium-12 columns">
+                            <label for="comments" 
+                                   class="Pepe-articuloLabel">N° de ficha</label>
+                            <h:selectOneMenu id="fichaselectone"
+                                             value="#{fichaController.fichaSeleccionada}">
+                                <f:selectItem itemLabel="Seleccionar uno.." />
+                                <f:selectItems value="#{fichaController.listaFicha}" 
+                                               var="ficha" 
+                                               itemValue="#{ficha}"/>  
+                                <p:ajax process="fichaselectone" 
+                                        update="formInicio fichaselectoneMsg"/>
+                            </h:selectOneMenu>
+                            <h:message id="fichaselectoneMsg" 
+                                       for="fichaselectone"/>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="large-4 medium-4 columns">
+                            <label for="comments" 
+                                   class="Pepe-articuloLabel">Codigo</label>
+                            <input  type="text"  
+                                    disabled="true" 
+                                    class="Pepe-formInput2" 
+                                    jsf:value="#{fichaController.fichaSeleccionada.programa.programaPK.codigo}" 
+                                    jsf:id="codigo"/>
+                        </div>
+                        <div class="large-4 medium-4 columns">
+                            <label for="comments" 
+                                   class="Pepe-articuloLabel">Programa de Formación</label>
+                            <input  type="text" 
+                                    disabled="true" 
+                                    class="Pepe-formInput1" 
+                                    jsf:value="#{fichaController.fichaSeleccionada.programa.nombrePrograma}" 
+                                    jsf:id="programa"/>
+                        </div>
+                        <div class="large-4 medium-4 columns">
+                            <label for="comments" 
+                                   class="Pepe-articuloLabel">Versión</label>
+                            <input  type="text" 
+                                    disabled="true" 
+                                    class="Pepe-formInput2" 
+                                    jsf:value="#{fichaController.fichaSeleccionada.programa.programaPK.version}" 
+                                    jsf:id="version"/>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="large-4 medium-4 columns">
+                            <label for="comments" 
+                                   class="Pepe-articuloLabel">Nombre del proyecto</label>
+                            <input  type="text"  
+                                    disabled="true" 
+                                    class="Pepe-formInput3" 
+                                    jsf:value="#{fichaController.fichaSeleccionada.idProyecto.nombreProyecto}" 
+                                    jsf:id="proyecto"/>
+                        </div>
+                        <div class="large-4 medium-4 columns">
+                            <label for="comments" 
+                                   class="Pepe-articuloLabel">Código</label>
+                            <input  type="text"  
+                                    disabled="true" 
+                                    class="Pepe-formInput2" 
+                                    jsf:value="#{fichaController.fichaSeleccionada.idProyecto.codigoProyecto}" 
+                                    jsf:id="codigoProyecto"/>
+                        </div>
+                        <div class="large-4 medium-4 columns">
+                            <label for="comments"  
+                                   class="Pepe-articuloLabel">Nombre de líder ejecutor</label>
+                            <input  type="text" 
+                                    disabled="true" 
+                                    class="Pepe-formInput4" 
+                                    jsf:value="#{fichaController.usuarioFicha.usuario.nombre1} #{fichaController.usuarioFicha.usuario.apellido1}" 
+                                    jsf:id="nombreLider"/>      
+                        </div>
+                    </div>
+
+                    <h:commandButton action="/proyecto/proyectoCrear.xhtml"
+                                     id="botonF"
+                                     actionListener="#{proyectoController.asignarFicha}"
+                                     styleClass="small-3 button"
+                                     disabled="#{fichaController.fichaBoolean()}"
+                                     value="Consultar">
+                        <f:attribute name="ficha" value="#{fichaController.fichaSeleccionada}"/>
+                    </h:commandButton>
+
+                </div>
+            </h:form> 
+
+            <h:form > 
+
+                <p:commandButton process="@this"
+                                 value="Formulación de Proyecto" 
+                                 actionListener="#{eventoController.prepareCreate}" 
+                                 action="#{eventoController.cargarCreate}"> 
+                    <f:attribute name="ficha" value="#{fichaController.fichaSeleccionada}" /> 
+                </p:commandButton>
+
+                <p:commandButton process="@this"
+                                 value="Planeación Pedagógica" 
+                                 type="button" onclick="PF('botonPlaneacionPedagogicaDlg').show();" />
+
+                <p:commandButton value="Programa"
+                                 action="/programa/programaInicio.xhtml" />
+
+
+                <p:commandButton process="@this" 
+                                 value="Aspectos" 
+                                 actionListener="#{ejecucionController.prepareCreate}" 
+                                 action="#{ejecucionController.cargarCreate}">
+                    <f:attribute name="ficha" value="#{fichaController.fichaSeleccionada}"/>
+                </p:commandButton> 
+
+                <p:commandButton process="@this" 
+                                 value="Valoración de Proyecto" 
+                                 actionListener="#{variableController.prepareCreate}" 
+                                 action="#{variableController.cargarCreate}">
+                    <f:attribute name="ficha" value="#{fichaController.fichaSeleccionada}"/>
+                    <f:attribute name="variable" value="1"/>
+                </p:commandButton> 
+
+                <p:commandButton process="@this"
+                                 value="Acompañamiento"
+                                 actionListener="#{seguimientoController.prepareCreate}" 
+                                 action="#{seguimientoController.cargarCreate}">
+                    <f:attribute name="ficha" value="#{fichaController.fichaSeleccionada}"/>
+                </p:commandButton> 
+
+                <p:commandButton process="@this" 
+                                 value="Valoración de Ambiente" 
+                                 actionListener="#{variableController.prepareCreate}" 
+                                 action="#{variableController.cargarCreate}">
+                    <f:attribute name="ficha" value="#{fichaController.fichaSeleccionada}"/>
+                    <f:attribute name="variable" value="2"/>
+                </p:commandButton> 
+
+                <p:commandButton process="@this"
+                                 value="Crear Usuario" 
+                                 type="button" onclick="PF('botonCrearUsuarioDlg').show();"/>
+            </h:form> 
+
+            <h:form class="Form-opciones-header">
+                <div class="large-5 medium-5 columns">
+
+                    <p:commandButton value="Cerrar sesión" 
+                                     update="@all" 
+                                     action="#{loginController.logout}" 
+                                     styleClass="Pepe-botones"/>
+
+                </div>
+            </h:form>
+            <script src="resources/foundation-5.5.1/js/vendor/jquery.js"></script>
+            <script src="resources/foundation-5.5.1/js/foundation.min.js"></script>
+            <script src="resources/foundation-5.5.1/js/foundation/foundation.js"></script>
+            <script src="resources/foundation-5.5.1/js/foundation/foundation.equalizer.js"></script>
+            <script>
+
+                                     $(document).foundation();
+            </script>
+        </ui:define>
+    </ui:composition>
+</html>

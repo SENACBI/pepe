@@ -109,7 +109,7 @@ public class TipoCompetencia implements Serializable {
 
     @Override
     public String toString() {
-        return "com.pepe.jpa.entities.TipoCompetencia[ idTipoCompetencia=" + idTipoCompetencia + " ]";
+        return tipoCompetencia;
     }
     
 }

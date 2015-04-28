@@ -11,196 +11,205 @@
               draggable="false"
               styleClass="Dialogo">
         <h:form id="programaCrearVentanaForm">
-            <h1>Crear programa</h1>
+            <p:panel  header="Crear Programa">
+                <p:panelGrid columns="3" >
 
-            <!-- CODIGO -->
-            <input type="text"
-                   jsf:id="createIdCodigo"
-                   jsf:value="#{programaController.programaCrear.programaPK.codigo}"
-                   pattern="[0-9]{6}" 
-                   placeholder="codigo del programa"
-                   maxlength="6"
-                   jsf:validatorMessage="esta mal">
-                <f:validateRegex pattern="[0-9]{6}"/>
-                <f:ajax execute="createIdCodigo"
-                        render="msgCreateIdCodigo"/>
-                <f:ajax execute="createIdCodigo"
-                        render="msgCreateIdCodigo"
-                        event="blur"/>
-            </input>
-            <h:message id="msgCreateIdCodigo"
-                       for="createIdCodigo"
-                       styleClass="error"/>
+                    <!-- CODIGO -->
+                    <label>Código del Programa</label>
+                    <input type="text"
+                           jsf:id="createIdCodigo"
+                           jsf:value="#{programaController.programaCrear.programaPK.codigo}"
+                           pattern="[0-9]{6}" 
+                           placeholder="Inserte el código"
+                           maxlength="6"
+                           jsf:validatorMessage="Código Incorrecto!">
+                        <f:validateRegex pattern="[0-9]{6}"/>
+                        <f:ajax execute="createIdCodigo"
+                                render="msgCreateIdCodigo"/>
+                        <f:ajax execute="createIdCodigo"
+                                render="msgCreateIdCodigo"
+                                event="blur"/>
+                    </input>
+                    <h:message id="msgCreateIdCodigo"
+                               for="createIdCodigo"
+                               styleClass="error"/>
 
-            <!-- VERSION -->
-            <input type="text"
-                   jsf:id="createIdVersion"
-                   jsf:value="#{programaController.programaCrear.programaPK.version}"
-                   placeholder="numero de version"
-                   pattern="[0-9]{1,3}" 
-                   maxlength="3"
-                   jsf:validatorMessage="esta mal">
-                <f:validateRegex pattern="[0-9]{1,3}"/>
-                <f:ajax execute="createIdVersion"
-                        render="msgcreateIdVersion"
-                        event="blur"/>
-            </input>
-            <h:message id="msgcreateIdVersion"
-                       for="createIdVersion"
-                       styleClass="error"/>
+                    <!-- VERSION -->
+                    <label>Versión del Programa</label>
+                    <input type="text"
+                           jsf:id="createIdVersion"
+                           jsf:value="#{programaController.programaCrear.programaPK.version}"
+                           placeholder="Añada la version"
+                           pattern="[0-9]{1,3}" 
+                           maxlength="3"
+                           jsf:validatorMessage="Número Incorrecto!">
+                        <f:validateRegex pattern="[0-9]{1,3}"/>
+                        <f:ajax execute="createIdVersion"
+                                render="msgcreateIdVersion"
+                                event="blur"/>
+                    </input>
+                    <h:message id="msgcreateIdVersion"
+                               for="createIdVersion"
+                               styleClass="error"/>
 
-            <!-- NOMBRE -->
-            <input type="text"
-                   jsf:id="createNombre"
-                   jsf:value="#{programaController.programaCrear.nombrePrograma}"
-                   placeholder="nombre del programa"
-                   maxlength="45"
-                   jsf:validatorMessage="esta mal">
-                <f:ajax execute="createNombre"
-                        render="msgcreateNombre"
-                        event="blur"/>
-            </input>
-            <h:message id="msgcreateNombre"
-                       for="createNombre"
-                       styleClass="error"/>
+                    <!-- NOMBRE -->
+                    <label>Nombre del Programa</label>
+                    <input type="text"
+                           jsf:id="createNombre"
+                           jsf:value="#{programaController.programaCrear.nombrePrograma}"
+                           placeholder=" Dé nombre al programa"
+                           maxlength="45"
+                           jsf:validatorMessage="Nombre Incorrecto!">
+                        <f:ajax execute="createNombre"
+                                render="msgcreateNombre"
+                                event="blur"/>
+                    </input>
+                    <h:message id="msgcreateNombre"
+                               for="createNombre"
+                               styleClass="error"/>
 
-            <!-- JUSTIFICACION -->
-            <textarea jsf:id="createJustificacion"
-                      type="text"
-                      resizable="false"
-                      jsf:value="#{programaController.programaCrear.justificacion}"
-                      placeholder="duracion en trimestres"
-                      jsf:validatorMessage="esta mal">
-                <f:ajax execute="createJustificacion"
-                        render="msgcreateJustificacion"
-                        event="blur"/>
-            </textarea>
-            <h:message id="msgcreateJustificacion"
-                       for="createJustificacion"
-                       styleClass="error"/>
+                    <!-- JUSTIFICACION -->
+                    <label>Justificación</label>
+                    <textarea jsf:id="createJustificacion"
+                              type="text"
+                              resizable="false"
+                              jsf:value="#{programaController.programaCrear.justificacion}"
+                              placeholder="Tiempo en trimestres"
+                              jsf:validatorMessage="Texto Incorrecto!">
+                        <f:ajax execute="createJustificacion"
+                                render="msgcreateJustificacion"
+                                event="blur"/>
+                    </textarea>
+                    <h:message id="msgcreateJustificacion"
+                               for="createJustificacion"
+                               styleClass="error"/>
 
-            <!-- DURACION LECTIVA -->
-            <input type="number"
-                   jsf:id="createDuracion"
-                   jsf:value="#{programaController.programaCrear.duracionTrimestresLectiva}"
-                   placeholder="duracion en trimestres"
-                   max="8"
-                   min="4"
-                   jsf:validatorMessage="esta mal">
-                <f:ajax execute="createDuracion"
-                        render="msgcreateDuracion"
-                        event="blur"/>
-            </input>
-            <h:message id="msgcreateDuracion"
-                       for="createDuracion"
-                       styleClass="error"/>
+                    <!-- DURACION LECTIVA -->
+                    <label>Duración Lectiva</label>
+                    <input type="number"
+                           jsf:id="createDuracion"
+                           jsf:value="#{programaController.programaCrear.duracionTrimestresLectiva}"
+                           placeholder="Duración en Trimestres"
+                           max="8"
+                           min="4"
+                           jsf:validatorMessage="Mínimo 4, Máximo 8">
+                        <f:ajax execute="createDuracion"
+                                render="msgcreateDuracion"
+                                event="blur"/>
+                    </input>
+                    <h:message id="msgcreateDuracion"
+                               for="createDuracion"
+                               styleClass="error"/>
 
 
-            <!-- DURACION PRODUCTIVA -->
-            <input type="number"
-                   jsf:id="createDuracionl"
-                   jsf:value="#{programaController.programaCrear.duracionTrimestresProductiva}"
-                   placeholder="duracion en trimestres"
-                   max="8"
-                   min="4"
-                   jsf:validatorMessage="esta mal">
-                <f:ajax execute="createDuracionl"
-                        render="msgcreateDuracionl"
-                        event="blur"/>
-            </input>
-            <h:message id="msgcreateDuracionl"
-                       for="createDuracionl"
-                       styleClass="error"/>
+                    <!-- DURACION PRODUCTIVA -->
+                    <label>Duración Productiva</label>
+                    <input type="number"
+                           jsf:id="createDuracionl"
+                           jsf:value="#{programaController.programaCrear.duracionTrimestresProductiva}"
+                           placeholder="Duración en Trimestres"
+                           max="8"
+                           min="4"
+                           jsf:validatorMessage="esta mal">
+                        <f:ajax execute="createDuracionl"
+                                render="msgcreateDuracionl"
+                                event="blur"/>
+                    </input>
+                    <h:message id="msgcreateDuracionl"
+                               for="createDuracionl"
+                               styleClass="error"/>
 
-            <!-- TIPO -->
-            <h:selectOneMenu value="#{programaController.idTipo}"
-                             id="idTipo"
-                             validator="#{programaController.validarIdTipo}">
-                <f:selectItem itemLabel="Tipo .." />
-                <f:selectItems value="#{programaController.listaTipoFormacion}"
-                               var="itemt"
-                               itemValue="#{itemt.idTipoFormacion}"/>
-            <f:ajax execute="idTipo"
-                        render="msgidTipo"
-                        event="blur"/>
-            </h:selectOneMenu>
-            <h:message id="msgidTipo"
-                       for="idTipo"
-                       styleClass="error"/>
+                    <!-- TIPO -->
+                    <h:selectOneMenu value="#{programaController.idTipo}"
+                                     id="idTipo"
+                                     validator="#{programaController.validarIdTipo}">
+                        <f:selectItem itemLabel="Tipo .." />
+                        <f:selectItems value="#{programaController.listaTipoFormacion}"
+                                       var="itemt"
+                                       itemValue="#{itemt.idTipoFormacion}"/>
+                        <f:ajax execute="idTipo"
+                                render="msgidTipo"
+                                event="blur"/>
+                    </h:selectOneMenu>
+                    <h:message id="msgidTipo"
+                               for="idTipo"
+                               styleClass="error"/>
 
-            <!-- LINEA -->
-            <h:selectOneMenu value="#{programaController.idLinea}"
-                             id="idLinea">
-                <f:selectItem itemLabel="Linea Tecnológica ..." />
-                <f:selectItems value="#{programaController.listaLineaTecnologica}"
-                               var="iteml"
-                               itemValue="#{iteml.idLineaTecnologica}"/>
-            <f:ajax execute="idLinea"
-                        render="msgidLinea"
-                        event="blur"/>
-            <f:ajax execute="idLinea"
-                        render="msgidLinea"/>
-            </h:selectOneMenu>
-            <h:message id="msgidLinea"
-                       for="idLinea"
-                       styleClass="error"/>
+                    <!-- LINEA -->
+                    <h:selectOneMenu value="#{programaController.idLinea}"
+                                     id="idLinea">
+                        <f:selectItem itemLabel="Linea Tecnológica ..." />
+                        <f:selectItems value="#{programaController.listaLineaTecnologica}"
+                                       var="iteml"
+                                       itemValue="#{iteml.idLineaTecnologica}"/>
+                        <f:ajax execute="idLinea"
+                                render="msgidLinea"
+                                event="blur"/>
+                        <f:ajax execute="idLinea"
+                                render="msgidLinea"/>
+                    </h:selectOneMenu>
+                    <h:message id="msgidLinea"
+                               for="idLinea"
+                               styleClass="error"/>
 
-            <!-- PERFIL -->
-            <h:selectOneMenu value="#{programaController.idPerfil}"
-                             id="idPerfil">
-                <f:selectItem itemLabel="Perfil de Entrada ..." />
-                <f:selectItems value="#{programaController.listaPerfilEntrada}"
-                               var="itemp"
-                               itemValue="#{itemp.idPerfilEntrada}"/>
-            <f:ajax execute="idPerfil"
-                        render="msgidPerfil"
-                        event="blur"/>
-            <f:ajax execute="idPerfil"
-                        render="msgidPerfil"/>
-            </h:selectOneMenu>
-            <h:message id="msgidPerfil"
-                       for="idPerfil"
-                       styleClass="error"/>
+                    <!-- PERFIL -->
+                    <h:selectOneMenu value="#{programaController.idPerfil}"
+                                     id="idPerfil">
+                        <f:selectItem itemLabel="Perfil de Entrada ..." />
+                        <f:selectItems value="#{programaController.listaPerfilEntrada}"
+                                       var="itemp"
+                                       itemValue="#{itemp.idPerfilEntrada}"/>
+                        <f:ajax execute="idPerfil"
+                                render="msgidPerfil"
+                                event="blur"/>
+                        <f:ajax execute="idPerfil"
+                                render="msgidPerfil"/>
+                    </h:selectOneMenu>
+                    <h:message id="msgidPerfil"
+                               for="idPerfil"
+                               styleClass="error"/>
 
-            <!-- MODALIDAD -->
-            <h:selectOneMenu value="#{programaController.idModalidad}"
-                             id="idModalidad">
-                <f:selectItem itemLabel="Modalidad de Formación.." />
-                <f:selectItems value="#{programaController.listaModalidadFormacion}"
-                               var="itemm"
-                               itemValue="#{itemm.idModalidadFormacion}"/>
-            <f:ajax execute="idModalidad"
-                        render="msgidModalidad"
-                        event="blur"/>
-            <f:ajax execute="idModalidad"
-                        render="msgidModalidad"/>
-            </h:selectOneMenu>
-            <h:message id="msgidModalidad"
-                       for="idModalidad"
-                       styleClass="error"/>
+                    <!-- MODALIDAD -->
+                    <h:selectOneMenu value="#{programaController.idModalidad}"
+                                     id="idModalidad">
+                        <f:selectItem itemLabel="Modalidad de Formación.." />
+                        <f:selectItems value="#{programaController.listaModalidadFormacion}"
+                                       var="itemm"
+                                       itemValue="#{itemm.idModalidadFormacion}"/>
+                        <f:ajax execute="idModalidad"
+                                render="msgidModalidad"
+                                event="blur"/>
+                        <f:ajax execute="idModalidad"
+                                render="msgidModalidad"/>
+                    </h:selectOneMenu>
+                    <h:message id="msgidModalidad"
+                               for="idModalidad"
+                               styleClass="error"/>
 
-            <!-- NIVEL -->
-            <h:selectOneMenu value="#{programaController.idNivel}"
-                             id="idNivel">
-                <f:selectItem itemLabel="Nivel ..." />
-                <f:selectItems value="#{programaController.listaNivelFormacion}"
-                               var="itemn"
-                               itemValue="#{itemn.idNivelFormacion}"/>
-            <f:ajax execute="idNivel"
-                        render="msgidNivel"
-                        event="blur"/>
-            <f:ajax execute="idModalidad"
-                        render="msgidModalidad"/>
-            </h:selectOneMenu>
-            <h:message id="msgidNivel"
-                       for="idNivel"
-                       styleClass="error"/>
+                    <!-- NIVEL -->
+                    <h:selectOneMenu value="#{programaController.idNivel}"
+                                     id="idNivel">
+                        <f:selectItem itemLabel="Nivel ..." />
+                        <f:selectItems value="#{programaController.listaNivelFormacion}"
+                                       var="itemn"
+                                       itemValue="#{itemn.idNivelFormacion}"/>
+                        <f:ajax execute="idNivel"
+                                render="msgidNivel"
+                                event="blur"/>
+                        <f:ajax execute="idModalidad"
+                                render="msgidModalidad"/>
+                    </h:selectOneMenu>
+                    <h:message id="msgidNivel"
+                               for="idNivel"
+                               styleClass="error"/>
 
-            <p:commandButton value="crear"
-                             update="@(programaCrearVentanaForm) :programaCrearVentanaForm :programaInicioForm"
-                             action="#{programaController.crearPrograma()}"
-                             oncomplete="handleSubmit(args,'programaCrearVentana','');">
-            </p:commandButton>
+                    <p:commandButton value="crear"
+                                     update="@(programaCrearVentanaForm) :programaCrearVentanaForm :programaInicioForm"
+                                     action="#{programaController.crearPrograma()}"
+                                     oncomplete="handleSubmit(args,'programaCrearVentana','');">
+                    </p:commandButton>
+                </p:panelGrid>
+            </p:panel>
         </h:form>
     </p:dialog>
 </html>

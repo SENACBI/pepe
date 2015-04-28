@@ -55,7 +55,8 @@ body {
   font-size: 16px !important; }
 
 body {
-  background: #fff !important;
+  background-image: url("../../images/Pepebackground.png");
+  background-size: cover;
   color: #222 !important;
   padding: 0 !important;
   margin: 0 !important;
@@ -1354,6 +1355,7 @@ form .row textarea.columns {
 
 /* Label Styles */
 label {
+    text-shadow: #FCFCFC 1px 0px 3px;
   font-size: 0.875rem !important;
   color: #4d4d4d !important;
   cursor: pointer !important;

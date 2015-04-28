@@ -84,6 +84,7 @@
 .Pepe-body{
     margin: 4em;
     text-align: center;
+    height: 50%;
 }
 .Titulo-pepe{
     text-align: center;
@@ -126,7 +127,7 @@
     display: inline-block;
     margin-top: -20em;
     margin-left: 15em;
-    
+
 }
 
 .articulo1{
@@ -191,14 +192,20 @@
 
 
 .Pepe-inicioContenedor{
-    display: inline-block;
+    display: block;
+    top: 35px;
+    right: 0;
 }
-
-
 
 .Pepe-inicio{
     display: inline-block;
-    margin: 3em;
+    margin: 2,5em;
+}
+
+.Pepe-iniLogo{
+    margin-top: 5em;
+    position: absolute;
+    display: inline-block;
 }
 .Pepe-inicioDescripcion{
     display: block;
@@ -206,8 +213,11 @@
 
 }
 .Pepe-form11{
-    width: 320px;
+    position: relative;
+    display: inline-block;
     text-align: center;
+    top: 10em;
+    left: 55em;
 }
 .Pepe-inicioLabel1{
     display: block;
@@ -216,7 +226,7 @@
 }
 
 .Pepe-formInput9{
-    margin: 1em auto 1em auto;
+    margin: 3em auto 1em auto;
     display: block;
 }
 .Pepe-formLogo{
@@ -225,7 +235,6 @@
 .Pepe-figureContainer{
     float: none;
     display: inline-block;
-    padding-left: 12em;
     text-align: center;
 }
 
@@ -257,7 +266,7 @@
 
 
 
- ESTILOS DE FORMULACION 
+ESTILOS DE FORMULACION 
 
 .ui-widget-content{
     color: #000;
