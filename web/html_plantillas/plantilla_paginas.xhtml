@@ -31,7 +31,7 @@
                         <input class="Form-Input2" type="text" disabled="true"
                                jsf:value="#{fichaController.fichaSeleccionada.programa.programaPK.codigo}">
                         </input>
-                        <label class="Label3" for="versionProgramaText">Versión del programa:</label>
+                        <label class="Label3" for="versionProgramaText">Versión:</label>
                         <input class="Form-Input3" type="text" disabled="true"
                                jsf:value="#{fichaController.fichaSeleccionada.programa.programaPK.version}">
                         </input>
@@ -40,7 +40,7 @@
                         <input class="Form-Input6" type="text" disabled="true"
                                jsf:value="#{fichaController.fichaSeleccionada.idProyecto.codigoProyecto}">
                         </input>
-                        <label class="Label7" for="numeroFichaText">Número de ficha:</label>
+                        <label class="Label7" for="numeroFichaText">Ficha:</label>
                         <input class="Form-Input7" type="text" disabled="true"
                                jsf:value="#{fichaController.fichaSeleccionada.codigoFicha}">
                         </input>
@@ -50,9 +50,9 @@
                         </input>
                     </h:panelGrid> 
                     <label class="Label5" for="nombreProyectoText">Nombre del proyecto:</label>
-                    <input class="Form-Input5" type="text" disabled="true"
+                    <textarea rows="5" cols="20" class="Form-Input5" disabled="true" style="text-align: justify"
                            jsf:value="#{fichaController.fichaSeleccionada.idProyecto.nombreProyecto}">
-                    </input>
+                    </textarea>
                 </section>
             </h:form>
         </header>
@@ -60,7 +60,6 @@
         <hr SIZE='20'></hr>
         <section class="pepe-color">
             <ul class="Pepe-listColor">
-                <li class="Pepe-listColorItem"><a href='#' class="PepeMenu-link"></a></li>
                 <li class="Pepe-listColorItem"><a href='#' class="PepeMenu-link"></a></li>
                 <li class="Pepe-listColorItem"><a href='#' class="PepeMenu-link"></a></li>
                 <li class="Pepe-listColorItem"><a href='#' class="PepeMenu-link"></a></li>

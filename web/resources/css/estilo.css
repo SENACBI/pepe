@@ -80,6 +80,9 @@
     text-align: center;
     display: inline-block;
 }
+.ContainerPanel{
+    width: 600px;
+}
 
 .Pepe-body{
     margin: 4em;
@@ -142,7 +145,7 @@
 .Pepe-articuloLabel{
     display: block;
     text-align: left;
-    font-size: 1.5em;
+    font-size: 1.2em;
     color: #0B4C5F;
     font-weight: lighter;
 }
@@ -159,8 +162,8 @@
     margin-right: .5em;
 }
 .Pepe-formInput3{
-    width: 41em;
-    height: 1.5em;
+    width: 47em;
+    height: 2.3em;
     margin-right: .5em;
 }
 .Pepe-formInput4{

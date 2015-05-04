@@ -99,7 +99,6 @@
 
 }
 
-
 .Form-input8{
     width: 1094em;
 }
@@ -141,7 +140,8 @@
     color: black;
     margin: 2px;
     margin-left: 33px;
-    width:1025px;
+    width:973px;
+    height: 50px;
 }
 .Form-Input6{
     border-color: #01A9DB;
@@ -265,6 +265,11 @@
  .Pepe-listColor li:nth-child(9){
     background: #ff7310;
  }
+  .Pepe-listColor li:nth-child(10){
+    background: #ff7310;
+    height: 16px;
+ }
+
 
  .Pepe-templBody{
      height: 50%;     

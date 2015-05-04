@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+    <head jsf:id="head-plantilla">
+        <title><ui:insert name="title">PEPA</ui:insert></title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />        
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/resources/css/estilo.css" media="screen"/>
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/resources/css/estilospepe.css" media="screen"/>
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/resources/css/normalize.css" media="screen"/> <!-- Se cambió el foundation por normalize, para visualizacion correcta-->
+        <link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'/>
+        <link rel="stylesheet" type="text/js" href="../resources/js/foundation-5.5.1/js/vendor/modernizr.js" media="screen"/>
+    </head>
+    <body class="Bodypepe" jsf:id="body">
+        <header class="Header">
+            <div>
+                <h1>P.E.P.A.</h1>
+                Programador Estratégico de Proyectos de Aprendizaje
+            </div>
+        </header>
+
+        <hr SIZE='20'></hr>
+        <section class="pepe-color">
+            <ul class="Pepe-listColor">
+                <li class="Pepe-listColorItem"><a href='#' class="PepeMenu-link"></a></li>
+                <li class="Pepe-listColorItem"><a href='#' class="PepeMenu-link"></a></li>
+                <li class="Pepe-listColorItem"><a href='#' class="PepeMenu-link"></a></li>
+                <li class="Pepe-listColorItem"><a href='#' class="PepeMenu-link"></a></li>
+                <li class="Pepe-listColorItem"><a href='#' class="PepeMenu-link"></a></li>
+                <li class="Pepe-listColorItem"><a href='#' class="PepeMenu-link"></a></li>
+                <li class="Pepe-listColorItem"><a href='#' class="PepeMenu-link"></a></li>
+                <li class="Pepe-listColorItem"><a href='#' class="PepeMenu-link"></a></li>
+                <li class="Pepe-listColorItem"><a href='#' class="PepeMenu-link"></a></li>
+                <li class="Pepe-listColorItem"><a href='#' class="PepeMenu-link"></a></li>
+                <li class="Pepe-listColorItem1"><a href='#' class="PepeMenu-link"></a></li>
+            </ul> 
+        </section>
+        <section>
+            <nav class="Pepe-list">
+                <ul class="Pepe-listMenu">
+                    <li class="Pepe-listMenuItem"><a jsf:outcome="/landingpage.xhtml" class="PepeMenu-link">Inicio</a></li>
+                    <li class="Pepe-listMenuItem"><a jsf:outcome="/PlaneaciondeProyecto/programacion.xhtml" class="PepeMenu-link">Formulación de Proyectos</a></li>
+                    <li class="Pepe-listMenuItem"><a href='#' class="PepeMenu-link">Programación del Proyecto</a></li>
+                    <li class="Pepe-listMenuItem"><a class="PepeMenu-link" onclick="PF('botonPlaneacionPedagogicaDlg').show();" >Planeación Pedagógica</a></li>
+                    <li class="Pepe-listMenuItem"><a href='#' class="PepeMenu-link">Aprendices</a></li>
+                    <li class="Pepe-listMenuItem"><a href='#' class="PepeMenu-link">Otros Formatos</a></li>
+                    <li class="Pepe-listMenuItem"><a href='#' class="PepeMenu-link">Valoración de Proyecto</a></li>
+                    <li class="Pepe-listMenuItem"><a jsf:outcome="/acompanamiento/crear_acompanamiento.xhtml" class="PepeMenu-link">Acompañamiento al Proyecto</a></li>
+                    <li class="Pepe-listMenuItem"><a href='#' class="PepeMenu-link">Administración del Proyecto</a></li>
+                    <li class="Pepe-listMenuItem"><a href='#' class="PepeMenu-link">Imprimibles PDF </a></li>
+                    <li class="Pepe-listMenuItem"><a jsf:action="#{loginController.logout}" class="PepeMenu-link" onclick="PF('cerrarSesion').show();">Cerrar Sesión</a></li>
+                    <h:form>
+                        <p:confirmDialog global="true"
+                                         showEffect="fade" 
+                                         hideEffect="explode"
+                                         header="CERRAR SESIÓN"
+                                         message="¿Realmente desea cerrar la sesión? "
+                                         widgetVar="cerrarSesion">
+                            <p:commandButton value="Si"  action="#{loginController.logout}"
+                                             styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                            <p:commandButton value="No" styleClass="ui-confirmdialog-no"
+                                             icon="ui-icon-close" />
+                        </p:confirmDialog>
+                    </h:form>
+                </ul>        
+            </nav>    
+        </section>
+
+        <section class="Panel_prog">
+            <ui:insert name="body" >Default Body</ui:insert> 
+        </section>
+
+        <hr SIZE='20'></hr>
+        <footer class="Pepe-footer">
+            <figure class="Footer-imageContainer">
+                <img src="../resources/images/logosena.png" heigth="50" width="50" alt="logo sena" class="Footer-image"/>
+            </figure>
+            <section>
+                <p class="Footer-description"> 
+                    Servicio Nacional de Aprendizaje SENA – Centro de Biotecnología Industrial- carrera 30 #40-25, Palmira-Valle 
+                    <br></br>
+                    Línea gratuita de atención al ciudadano 275 0978 – Resto del país 018000 910270
+                    <br></br>
+                    Horario de atención: lunes a viernes de 8:00 am a 5:30 pm
+                    <br></br>
+                    Todos los derechos reservados ©
+                    <br></br>
+                    2015</p>
+            </section>
+        </footer>
+        <script src="#{request.contextPath}/resources/js/jsfcrud.js"/>
+    </body>
+</html>
+
