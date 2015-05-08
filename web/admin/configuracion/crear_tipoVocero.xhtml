@@ -9,38 +9,33 @@ and open the template in the editor.
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:jsf="http://xmlns.jcp.org/jsf">
-    <ui:composition template="/html_plantillas/template.xhtml">
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/admin/plantilla_paginas.xhtml">
         <ui:define name="title">Crear Tipo vocero</ui:define>        
         <ui:define name="body">
-                <h:form>
-                    <h1 class="Titulo"><h:outputText value="Formulario de registro de Tipo vocero"/></h1>
-                    <h:panelGrid columns="1">
-                        
-                        <h:outputLabel class="form-1" value="Id tipo de vocero:" for="nomIdTipoVocero" />
-                        <input class="form-1" jsf:id="nomIdTipoVoceroInputText" jsf:value="#{tipoVoceroController.tipoVoceroActual.idTipoVocero}" 
-                                     type="number" required="true"
-                                     jsf:requiredMessage="Por favor ingrese el id del tipo de vocero"
-                                     jsf:validatorMessage="Use solo numeros, ej: 1"> 
-                                     
-                                     <f:ajax execute="@this" render="nomIdTipoVoceroMessage"/>
-                        </input>
-                        <h:message id="nomIdTipoVoceroMessage" for="nomIdTipoVoceroInputText" styleClass="error"/>
-                        
-                        <h:outputLabel class="form-1" value="Tipo de vocero:" for="nomTipoVocero" />
-                        <input class="form-1" jsf:id="nomTipoVoceroInputText" jsf:value="#{tipoVoceroController.tipoVoceroActual.nombreTipoVocero}" 
-                                     type="text" required="true"
-                                     jsf:requiredMessage="Por favor ingrese el nombre del tipo de vocero"
-                                     jsf:validatorMessage="Use solo letras, ej: tecnico"> 
-                                     <f:validateRegex pattern="[a-zA-Z áéíóúÁÉÍÓÚÑñ]*"/>
-                                     <f:ajax execute="@this" render="nomTipoVoceroMessage"/>
-                        </input>
-                        <h:message id="nomTipoVoceroMessage" for="nomTipoVoceroInputText" styleClass="error"/>
-                    </h:panelGrid>
-                    <h:commandButton class="Guardar" value="Guardar" action="#{tipoVoceroController.addTipoVocero}"/>
-                    <br/>
-                    <h:button class="Volver" value="Volver atras" outcome="/index"/>
-                </h:form> 
+            <h:form>
+                <h2>Formulario de Registro de Tipo Vocero</h2>
+                <h:panelGrid columns="2">
+
+                    <h:outputLabel class="form-1" value="Tipo de Vocero:" for="nomTipoVocero" />
+                    <input class="form-1" jsf:id="nomTipoVoceroInputText" jsf:value="#{tipoVoceroController.tipoVoceroActual.nombreTipoVocero}" 
+                           type="text" required="true"
+                           jsf:requiredMessage="Por favor ingrese la Categoria del Vocero"
+                           jsf:validatorMessage="Use solo letras, ej: técnico"> 
+                        <f:validateRegex pattern="[a-zA-Z áéíóúÁÉÍÓÚÑñ]*"/>
+                        <f:ajax execute="@this" render="nomTipoVoceroMessage"/>
+                    </input>
+                    <h:message id="nomTipoVoceroMessage" for="nomTipoVoceroInputText" styleClass="error"/>
+                </h:panelGrid>
+                <p:commandButton process="@this" class="Guardar" value="Guardar" action="#{tipoVoceroController.addTipoVocero}"/>
+
+                <p:commandButton process="@this" class="Guardar"
+                                 value="Regresar al Menú" 
+                                 type="button" onclick="PF('botonCrearUsuarioDlg').show();"/>
+            </h:form> 
+            <ui:include src="/admin/dlg_menuCrearUsuario.xhtml"/>
         </ui:define>
     </ui:composition>
 </html>

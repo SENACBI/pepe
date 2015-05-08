@@ -7,16 +7,17 @@
       xmlns:jsf="http://xmlns.jcp.org/jsf"
       xmlns:p="http://primefaces.org/ui">
 
-    <ui:composition template="/html_plantillas/template.xhtml">
+    <ui:composition template="/html_plantillas/plantilla_paginas.xhtml">
         <ui:define name="title">Ver Actividad</ui:define>        
         <ui:define name="body">
+            
             <form jsf:id="ver_Actividad">
-                <h1 class="Titulo"><h:outputText value="Ver Actividad"/></h1>
+                <h2>Ver Actividad</h2>
                 <h:panelGrid columns="1">
 
 
                     <label class="form-1" value="nombre Actividad:" jsf:for="nomActividad" />
-                    <textarea class="form-1"  disabled="true" type="text" jsf:id="nomActividad" jsf:value="#{actividadController.actividadActual.nombreActividad}" title="nombre Actividad" required="true" jsf:requiredMessage="El nombre es necesario">
+                    <textarea class="form-1"  disabled="true" type="text" jsf:id="nomActividad" jsf:value="#{actividadController.actividadActual.nombreActividadProyecto}" title="nombre Actividad" required="true" jsf:requiredMessage="El nombre es necesario">
                     </textarea>
 
                     <label class="form-1" value="Duracion Actividad:" jsf:for="DuraciActividad" />

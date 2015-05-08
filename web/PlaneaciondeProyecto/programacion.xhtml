@@ -7,78 +7,78 @@
       xmlns:jsf="http://xmlns.jcp.org/jsf"
       xmlns:p="http://primefaces.org/ui"
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
-    
+
     <ui:composition template="/html_plantillas/plantilla_paginas.xhtml">
         <ui:define name="body">
 
-        <h2>Planeación del Proyecto</h2>
-
-
-        <section class="Panel_prog">
+            <h2>Planeación del Proyecto</h2>
 
             <form jsf:id="formInicio">
                 <h:messages/>
-                <p:dataTable id="programadorTable"
-                             var="programador" 
-                             value="#{eventoController.listaProgramador}"
-                             rowKey="#{programador.idProgramador}"
-                             editable="true" 
-                             editMode="cell">
-                    <p:column headerText="Fase">                        
-                        <h:outputText value="#{programador.actividadHasResultadoAprendizaje.actividad.idFase.fase}"/>
-                    </p:column>
-                    
-                    <p:column headerText="Competencia">
-                        <h:outputText value="#{programador.actividadHasResultadoAprendizaje.resultadoAprendizaje.idCompetencia.nombreCompetencia}"/>
-                    </p:column>
-                    
-                    <p:column headerText="Nombre Actividad">
-                        <h:outputText value="#{programador.actividadHasResultadoAprendizaje.actividad.nombreActividadProyecto}"/>
-                    </p:column>
-                    <p:column headerText="Resultado Aprendizaje">
+                <p:panel>
+                    <p:dataTable id="programadorTable"
+                                 class="Guardar"
+                                 var="programador" 
+                                 resizableColumns="true"
+                                 value="#{eventoController.listaProgramador}"
+                                 rowKey="#{programador.idProgramador}"
+                                 editable="true" 
+                                 editMode="cell">
                         
-                        <h:outputText value="#{programador.actividadHasResultadoAprendizaje.resultadoAprendizaje.nombreResultadoAprendizaje}"/>
-                    </p:column>
-                     <p:column headerText="Trimestre">
-                        <p:cellEditor>
-                            <f:facet name="output"><h:outputText value="#{programador.trimestre}" /></f:facet>
-                            <f:facet name="input"><p:inputText value="#{programador.trimestre}" style="width:96%" label="Trimestre"/></f:facet>
-                        </p:cellEditor>                  
-                    </p:column>
-                    <p:column headerText="Instructores">
-                        <p:cellEditor>
-                            <f:facet name="output"><h:outputText value="#{programador.idUsuario.nombre1}" /></f:facet>
-                            <f:facet name="input">
-                                <h:selectOneMenu value="#{programador.idUsuario}" style="width:100%">
-                                    <f:selectItem itemLabel="Seleccionar uno.." />
-                                    <f:selectItems value="#{eventoController.listaUsuarioSelectOne}" var="usuario" itemLabel="#{usuario}" itemValue="#{usuario}" />
-                                    <p:ajax event="change" update=":formInicio" />
-                                </h:selectOneMenu>
-                            </f:facet>
-                        </p:cellEditor>
-                    </p:column>
-                    
-                    <p:column headerText="hora">
-                        <p:cellEditor>
-                            <f:facet name="output"><h:outputText value="#{programador.cantidadHora}" /></f:facet>
-                            <f:facet name="input"><p:inputText value="#{programador.cantidadHora}" style="width:96%" label="hora">
-                            <p:ajax event="change" update=":formInicio" listener="#{eventoController.sumaHoras}"/>
-                                </p:inputText>
-                            
-                            </f:facet>
-                        </p:cellEditor>                  
-                    </p:column>
-                </p:dataTable>
-                <h:commandButton value="Guardar" action="#{eventoController.addProgramador}">                
-                </h:commandButton>  
-                
+                        <p:column headerText="Fase" class="Guardar">                        
+                            <h:outputText value="#{programador.actividadHasResultadoAprendizaje.actividad.idFase.fase}"/>
+                        </p:column>
+
+                        <p:column headerText="Competencia" class="Guardar">
+                            <h:outputText value="#{programador.actividadHasResultadoAprendizaje.resultadoAprendizaje.idCompetencia.nombreCompetencia}"/>
+                        </p:column>
+
+                        <p:column headerText="Nombre Actividad" class="Guardar">
+                            <h:outputText value="#{programador.actividadHasResultadoAprendizaje.actividad.nombreActividadProyecto}"/>
+                        </p:column>
+                        <p:column headerText="Resultado Aprendizaje" class="Guardar">
+
+                            <h:outputText value="#{programador.actividadHasResultadoAprendizaje.resultadoAprendizaje.nombreResultadoAprendizaje}"/>
+                        </p:column>
+
+                        <p:column headerText="Trimestre" class="Guardar">
+                            <p:cellEditor>
+                                <f:facet name="output"><h:outputText value="#{programador.trimestre}" /></f:facet>
+                                <f:facet name="input"><p:inputText value="#{programador.trimestre}" style="width:96%" label="Trimestre"/></f:facet>
+                            </p:cellEditor>                  
+                        </p:column>
+
+                        <p:column headerText="Instructores" class="Guardar">
+                            <p:cellEditor>
+                                <f:facet name="output"><h:outputText value="#{programador.idUsuario.nombre1}" /></f:facet>
+                                <f:facet name="input">
+                                    <h:selectOneMenu value="#{programador.idUsuario}" style="width:100%">
+                                        <f:selectItem itemLabel="Seleccionar uno.." />
+                                        <f:selectItems value="#{eventoController.listaUsuarioSelectOne}" var="usuario" itemLabel="#{usuario}" itemValue="#{usuario}" />
+                                        <p:ajax event="change" update=":formInicio" />
+                                    </h:selectOneMenu>
+                                </f:facet>
+                            </p:cellEditor>
+                        </p:column>
+
+                        <p:column headerText="hora" class="Guardar">
+                            <p:cellEditor>
+                                <f:facet name="output"><h:outputText value="#{programador.cantidadHora}" /></f:facet>
+                                <f:facet name="input"><p:inputText value="#{programador.cantidadHora}" style="width:96%" label="hora">
+                                        <p:ajax event="change" update=":formInicio" listener="#{eventoController.sumaHoras}"/>
+                                    </p:inputText>
+                                </f:facet>
+                            </p:cellEditor>                  
+                        </p:column>
+                    </p:dataTable>
+                </p:panel>
+
+                <br></br>
+
+                <p:commandButton class="Guardar" value="Guardar" action="#{eventoController.addProgramador}">                
+                </p:commandButton>  
+
             </form>
-        </section>
-        <article class="Pepe-button">
-            <button type="submit" class="Button">Cerrar sesión</button>
-            <button type="submit" class="Button1"> Guardar y continuar</button>
-        </article>
-            
         </ui:define>
     </ui:composition>
 </html>

@@ -7,9 +7,8 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <!-- A PARTIR DE AKI EMPIEZA LA LANDING PAGE -->
-
     <a href="index.xhtml"></a>
+
     <head jsf:id="head">
         <title>PEPA</title>
         <meta charset="UTF-8"/>
@@ -18,16 +17,16 @@
         <link rel="stylesheet" type="text/css" href="resources/css/foundation.css" media="screen"/>
         <link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'/>
         <link rel="stylesheet" type="text/js" href="resources/foundation-5.5.1/js/vendor/modernizr.js" media="screen"/>
-
     </head>
 
     <body jsf:id="body" class="Body">
+        
         <h:panelGroup rendered="#{!loginController.authenticated}">
 
             <section class='Pepe-inicio'>
                 <div class="Pepe-iniLogo">
                     <figure class='Pepe-inicioContenedor'>
-                        <img src="resources/images/Pepelogo2.png"/> 
+                        <img src="resources/images/PepAlogo.png"/> 
                     </figure>    
                     <p class='Pepe-inicioDescripcion'>
                         Programador Estratégico de
@@ -35,6 +34,7 @@
                         Proyectos de Aprendizaje
                     </p>
                 </div>
+                
                 <h:panelGroup>
 
                     <form jsf:id="LoginForm" class='Pepe-form11'>
@@ -49,6 +49,8 @@
                         <br/>
 
                         <input class="Guardar" type="submit" value="Iniciar Sesión" jsf:action="#{loginController.login}"/>
+                        <!-- <p:commandButton process="@this" class="Guardar" type="submit" 
+                        id="Inicio" value="Iniciar Sesión" actionListener=""/> -->
 
                         <!--      <a class="Pepe-inicioLabel1" href="#"><font  size="+1">¿Olvidaste tu contraseña?</font></a> -->
 
@@ -62,10 +64,10 @@
                     </form>
 
                 </h:panelGroup>
+                
             </section> 
+            
         </h:panelGroup>
-
-
 
         <script src="resources/foundation-5.5.1/js/vendor/jquery.js"></script>
         <script src="resources/foundation-5.5.1/js/foundation.min.js"></script>
@@ -73,11 +75,10 @@
         <script src="resources/foundation-5.5.1/js/foundation/foundation.equalizer.js"></script>
         <script>
 
-                                     $(document).foundation();
+            $(document).foundation();
         </script>
 
         <ui:include src="/admin/dlg_menuCrearUsuario.xhtml"/>
-        <ui:include src="/planeacionpedagogica/dlg_menuPlaneacionPedagogica.xhtml"/>
 
     </body>
 </html>

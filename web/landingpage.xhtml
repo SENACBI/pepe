@@ -1,5 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-
+    transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
@@ -10,11 +11,10 @@
 
     <ui:composition template="/html_plantillas/plantillaini.xhtml">
         <ui:define name="body">
-            <ui:include src="/admin/dlg_menuCrearUsuario.xhtml"/>
-            <ui:include src="/planeacionpedagogica/dlg_menuPlaneacionPedagogica.xhtml"/>
+
             <h:form rendered="#{loginController.authenticated}" class="Pepe-body" id="formInicio">
 
-                <p:panelGrid columns="3" >
+                <p:panelGrid columns="3" style="alignment-adjust: auto">
 
                     <label for="comments" 
                            class="Pepe-articuloLabel">N° de ficha</label>
@@ -30,7 +30,8 @@
                     <h:message id="fichaselectoneMsg" 
                                for="fichaselectone"/> 
                 </p:panelGrid>
-                <p:panelGrid  columns="2">
+                
+                <h:panelGrid  columns="2" style="alignment-adjust: auto">
 
                     <label for="comments" 
                            class="Pepe-articuloLabel">Código de Programa</label>
@@ -40,6 +41,7 @@
                             class="Pepe-formInput2" 
                             jsf:value="#{fichaController.fichaSeleccionada.programa.programaPK.codigo}" 
                             jsf:id="codigo"/>
+                    <br></br>
                     <label for="comments" 
                            class="Pepe-articuloLabel">Programa de Formación</label>
 
@@ -48,7 +50,7 @@
                             class="Pepe-formInput1" 
                             jsf:value="#{fichaController.fichaSeleccionada.programa.nombrePrograma}" 
                             jsf:id="programa"/>
-
+                    <br></br>
                     <label for="comments" 
                            class="Pepe-articuloLabel">Ficha</label>
                     <input  type="text" 
@@ -56,15 +58,15 @@
                             class="Pepe-formInput2" 
                             jsf:value="#{fichaController.fichaSeleccionada.codigoFicha}" 
                             jsf:id="version"/>
-
+                    <br></br>
                     <label for="comments" 
                            class="Pepe-articuloLabel">Nombre del proyecto</label>
-                    <textarea rows="5" cols="20" style="text-align: justify"
-                            disabled="true" 
-                            class="Pepe-formInput3" 
-                            jsf:value="#{fichaController.fichaSeleccionada.idProyecto.nombreProyecto}" 
-                            jsf:id="proyecto"/>
-
+                    <textarea rows="5" cols="20" style="text-align: justify; resize: none"
+                              disabled="true" 
+                              class="Pepe-formInput3" 
+                              jsf:value="#{fichaController.fichaSeleccionada.idProyecto.nombreProyecto}" 
+                              jsf:id="proyecto"/>
+                    <br></br>
                     <label for="comments" 
                            class="Pepe-articuloLabel">Código de Proyecto</label>
                     <input  type="text"  
@@ -72,15 +74,15 @@
                             class="Pepe-formInput2" 
                             jsf:value="#{fichaController.fichaSeleccionada.idProyecto.codigoProyecto}" 
                             jsf:id="codigoProyecto"/>
-
+                    <br></br>
                     <label for="comments"  
-                           class="Pepe-articuloLabel">Nombre de líder ejecutor</label>
+                           class="Pepe-articuloLabel">Nombre del líder ejecutor</label>
                     <input  type="text" 
                             disabled="true" 
                             class="Pepe-formInput1" 
                             jsf:value="#{fichaController.usuarioFicha.usuario.nombre1} #{fichaController.usuarioFicha.usuario.apellido1}" 
                             jsf:id="nombreLider"/>
-                </p:panelGrid>
+                </h:panelGrid>
                 <br></br>                
                 <h:commandButton action="/proyecto/proyectoCrear.xhtml"
                                  id="botonF"
@@ -94,23 +96,13 @@
             </h:form>
 
             <h:form > 
-                <p:commandButton process="@this"
-                                 value="Formulación de Proyecto" 
-                                 actionListener="#{eventoController.prepareCreate}" 
-                                 action="#{eventoController.cargarCreate}"> 
-                    <f:attribute name="ficha" value="#{fichaController.fichaSeleccionada}" /> 
-                </p:commandButton>
-
-                <p:commandButton process="@this"
-                                 value="Planeación Pedagógica" 
-                                 type="button" onclick="PF('botonPlaneacionPedagogicaDlg').show();" />
 
                 <p:commandButton value="Programa"
                                  action="/programa/programaInicio.xhtml" />
 
 
                 <p:commandButton process="@this" 
-                                 value="Aspectos" 
+                                 value="Programación del Proyecto" 
                                  actionListener="#{ejecucionController.prepareCreate}" 
                                  action="#{ejecucionController.cargarCreate}">
                     <f:attribute name="ficha" value="#{fichaController.fichaSeleccionada}"/>
@@ -144,13 +136,15 @@
                                  type="button" onclick="PF('botonCrearUsuarioDlg').show();"/>
             </h:form> 
 
+            <ui:include src="/admin/dlg_menuCrearUsuario.xhtml"/>
+
             <script src="resources/foundation-5.5.1/js/vendor/jquery.js"></script>
             <script src="resources/foundation-5.5.1/js/foundation.min.js"></script>
             <script src="resources/foundation-5.5.1/js/foundation/foundation.js"></script>
             <script src="resources/foundation-5.5.1/js/foundation/foundation.equalizer.js"></script>
             <script>
 
-                                         $(document).foundation();
+                                     $(document).foundation();
             </script>
         </ui:define>
     </ui:composition>

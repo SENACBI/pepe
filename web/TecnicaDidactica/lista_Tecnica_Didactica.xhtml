@@ -6,20 +6,21 @@
        xmlns:jsf="http://xmlns.jcp.org/jsf"
        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
        xmlns:p="http://primefaces.org/ui">
-<ui:composition template="/html_plantillas/template.xhtml">
+
+    <ui:composition template="/html_plantillas/plantilla_paginas.xhtml">
         <ui:define name="title">Lista Guia Aprendizaje</ui:define>
         <ui:define name="body"> 
-   
 
-   
-       
+
+
+
             <form jsf:id="ListarTecnica">
 
 
-                <h1 class="Titulo"><h:outputText value="Listar Tecnica Didactica"/></h1>
+                <h1 class="Titulo"><h:outputText value="Listar Técnica Didáctica"/></h1>
                 <p>
-                    <h:button class="Guardar" value="Agregar Tecnica Didactica" outcome="/TecnicaDidactica/crear_Tecnica"></h:button>
-                    <h:button class="Guardar" value="Inicio" outcome="/index"/>
+                    <h:button class="Guardar" value="Agregar Técnica Didáctica" 
+                              outcome="/TecnicaDidactica/crear_Tecnica"></h:button>
                 </p>
 
                 <p:dataTable value="#{tecnicadidacticaController.listaTecnicaDidacticas}" var="TecnicaDidactica"
@@ -35,7 +36,7 @@
                         <h:outputText value="#{TecnicaDidactica.tecnicaDidactica}"/>
                     </p:column>
 
-                    
+
 
 
                     <p:column> 
@@ -58,21 +59,20 @@
                         </p:commandButton>
                     </p:column>
 
-
                 </p:dataTable>
-                
+
 
                 <form jsf:id="ConfirmForm">
-                <p:confirmDialog global="true" showEffect="fade" hideEffect="explode">
-                    <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-                    <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-                </p:confirmDialog>
+                    <p:confirmDialog global="true" showEffect="fade" hideEffect="explode">
+                        <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                    </p:confirmDialog>
                 </form>    
 
 
             </form>
 
-       </ui:define>
+        </ui:define>
     </ui:composition>  
 
 

@@ -6,53 +6,56 @@
       xmlns:jsf="http://xmlns.jcp.org/jsf"
       xmlns:p="http://primefaces.org/ui"
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
-    
-    <ui:composition template="/html_plantillas/template.xhtml">
+
+    <ui:composition template="/html_plantillas/plantilla_paginas.xhtml">
         <ui:define name="title">Crear Actividad</ui:define>        
         <ui:define name="body">
-                <form jsf:id="CreateActividad">
-                    <h1 class="Titulo"><h:outputText value="Crear Actividad"/></h1>
-                    <h:panelGrid columns="1">
-                        
-                        
-                        <h:outputLabel class="form-1" value="Nombre de la actividad:" for="nomActividad" />
-                        <textarea class="form-1" jsf:id="nomActividad" jsf:value="#{actividadController.actividadActual.nombreActividadProyecto}" 
-                                     type="text" required="true"
-                                     jsf:requiredMessage="Por favor ingrese el nombre del tipo de actividad"
-                                     jsf:validatorMessage="Use solo letras"> 
-                        </textarea>
-                        <h:message id="nomActividadMessage" for="nomActividad" styleClass="error"/>
-                        
-                         <h:outputLabel class="form-1" value="Duracion Actividad:" for="duraActividad" />
-                         <input class="form-1" jsf:id="duraActividad" jsf:value="#{actividadController.actividadActual.duracion}" 
-                                     type="text" required="true"
-                                     jsf:requiredMessage="Por favor ingrese la duracion de la actividad"
-                                     jsf:validatorMessage="Use solo numeros"> 
-                             <f:validateLongRange maximum="800" minimum="0"/>
-                                     <f:ajax execute="@this" render="duracionMessage"/>
-                        </input>
-                        <h:message id="duracionMessage" for="duraActividad" styleClass="error"/>
-                        
-                        
-                      <h:outputLabel class="form-1" value="proyecto:"  for="nomProyecto"/>
-                      <h:selectOneMenu class="form-1" id="nomProyecto" value="#{actividadController.actividadActual.idProyecto}">
-                            <f:selectItem itemLabel="Seleccionar uno.." />
-                            <f:selectItems value="#{actividadController.listaProyectoSelectOne}" var="proyecto" itemValue="#{proyecto}"/>  
-                        </h:selectOneMenu>
-                      
-                      
-                      <h:outputLabel class="form-1" value="fase:"  for="nomfase"/>
-                      <h:selectOneMenu class="form-1" id="nomfase" value="#{actividadController.actividadActual.idFase}">
-                            <f:selectItem itemLabel="Seleccionar uno.." />
-                            <f:selectItems value="#{actividadController.listaFaseSelectOne}" var="fase" itemValue="#{fase}"/>  
-                        </h:selectOneMenu>
-                        
+            
+            <form jsf:id="CreateActividad">
+                <h1 class="Titulo"><h:outputText value="Crear Actividad"/></h1>
+                
+                <h:panelGrid columns="1">
 
-                         <input class="Guardar" type="submit" jsf:action="#{actividadController.addActividad}" value="Guardar Actividad">
-                             <h:button class="Volver" value="Ir al lista Actividad" outcome="/Actividad/lista_Actividad"></h:button>
-                        </input>
-                    </h:panelGrid>
-                </form> 
+                    <h:outputLabel class="form-1" value="Nombre de la actividad:" for="nomActividad" />
+                    <textarea class="form-1" jsf:id="nomActividad" cols="25" rows="5"
+                              jsf:value="#{actividadController.actividadActual.nombreActividadProyecto}" 
+                              type="text" required="true"
+                              jsf:requiredMessage="Ingrese el nombre del tipo de actividad"
+                              jsf:validatorMessage="Use solo letras"> 
+                    </textarea>
+                    <h:message id="nomActividadMessage" for="nomActividad" styleClass="error"/>
+
+                    <h:outputLabel class="form-1" value="Duración de la Actividad:" for="duraActividad" />
+                    <input class="form-1" jsf:id="duraActividad" 
+                           jsf:value="#{actividadController.actividadActual.duracion}" 
+                           type="number" required="true"
+                           jsf:requiredMessage="Ingrese la duración de la actividad"
+                           jsf:validatorMessage="Utilice exclusivamente números"> 
+                        <f:validateLongRange maximum="800" minimum="0"/>
+                        <f:ajax execute="@this" render="duracionMessage"/>
+                    </input>
+                    <h:message id="duracionMessage" for="duraActividad" styleClass="error"/>
+
+
+                    <h:outputLabel class="form-1" value="proyecto:"  for="nomProyecto"/>
+                    <h:selectOneMenu class="form-1" id="nomProyecto" value="#{actividadController.actividadActual.idProyecto}">
+                        <f:selectItem itemLabel="Seleccionar uno.." />
+                        <f:selectItems value="#{actividadController.listaProyectoSelectOne}" var="proyecto" itemValue="#{proyecto}"/>  
+                    </h:selectOneMenu>
+
+
+                    <h:outputLabel class="form-1" value="fase:"  for="nomfase"/>
+                    <h:selectOneMenu class="form-1" id="nomfase" value="#{actividadController.actividadActual.idFase}">
+                        <f:selectItem itemLabel="Seleccionar uno.." />
+                        <f:selectItems value="#{actividadController.listaFaseSelectOne}" var="fase" itemValue="#{fase}"/>  
+                    </h:selectOneMenu>
+
+
+                    <input class="Guardar" type="submit" jsf:action="#{actividadController.addActividad}" value="Guardar Actividad">
+                        <h:button class="Volver" value="Ir al lista Actividad" outcome="/Actividad/lista_Actividad.xhtml"></h:button>
+                    </input>
+                </h:panelGrid>
+            </form> 
         </ui:define>
     </ui:composition>
 </html>

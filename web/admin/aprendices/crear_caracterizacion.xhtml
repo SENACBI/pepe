@@ -9,60 +9,66 @@ and open the template in the editor.
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:jsf="http://xmlns.jcp.org/jsf">
-    <ui:composition template="/html_plantillas/template.xhtml">
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/admin/plantilla_paginas.xhtml">
         <ui:define name="title">Crear Caracterizacion</ui:define>        
         <ui:define name="body">
-                <h:form>
-                    <h1 class="Titulo"><h:outputText value="Formulario de registro de Caracterizacion"/></h1>
-                    <h:panelGrid columns="1">
-                        <h:outputLabel class="form-1" value="Nombre del acudiente:" for="nomAcudiente" />
-                        <input class="form-1" jsf:id="nomAcudienteInputText" jsf:value="#{caracterizacionController.caracterizacionActual.acudiente}" 
-                                     type="text" required="true"
-                                     jsf:requiredMessage="Por favor ingrese el nombre del Acudiente"
-                                     jsf:validatorMessage="Use solo letras, ej: Juan"> 
-                                     <f:validateRegex pattern="[a-zA-Z áéíóúÁÉÍÓÚÑñ ]*"/>
-                                     <f:ajax execute="@this" render="nomAcudienteMessage"/>
-                        </input>
-                        <h:message id="nomAcudienteMessage" for="nomAcudienteInputText" styleClass="error"/>
-                        
-                        <h:outputLabel class="form-1" value="Telefono del Acudiente:" for="tel" />
-                        <input class="form-1" type="tel" jsf:id="telefonoInputText" 
-                                     jsf:requiredMessage="Por favor ingrese el numero telefonico"
-                                     jsf:validatorMessage="Ingrese un telefono valido solo debe contener numeros" 
-                                     jsf:value="#{caracterizacionController.caracterizacionActual.telefono}"  maxlength="16" >
-                            <f:validateRegex pattern="[0-9]*"/>
-                            <f:ajax execute="@this" render="telefonoMessage"/>
-                        </input>
-                        <h:message id="telefonoMessage" for="telefonoInputText" styleClass="error"/>
-                        
-                        <h:outputLabel class="form-1" value="Direccion del acudiente:" for="direccionAcudiente" />
-                        <input class="form-1" jsf:id="direccionAcudienteInputText" jsf:value="#{caracterizacionController.caracterizacionActual.direccion}" 
-                                     type="text" required="true"
-                                     jsf:requiredMessage="Por favor ingrese la direccion del acudiente">
-                                     <f:ajax execute="@this" render="direccionAcudienteMessage"/>
-                        </input>
-                        <h:message id="direccionAcudienteMessage" for="direccionAcudienteInputText" styleClass="error"/>
-                        
-                        
-                        <h:outputLabel class="form-1" value="Sistema de liderazgo:" for="sistemaLiderazgo" />
-                        <input class="form-1" jsf:id="sistemaLiderazgoInputText"  type="text" jsf:value="#{caracterizacionController.caracterizacionActual.sistemaLiderazgo}" 
-                                     required="true" jsf:requiredMessage="Por favor ingrese el sistema de liderazgo">
-                                     <f:ajax execute="@this" render="sistemaLiderazgoMessage"/>
-                        </input>
-                        <h:message id="sistemaLiderazgoMessage" for="sistemaLiderazgoInputText" styleClass="error"/>
-                        
-                        <h:outputLabel class="form-1" value="Apoyo bienestar:" for="apoyoBienestar" />
-                        <input class="form-1" jsf:id="apoyoBienestarInputText"  type="text" jsf:value="#{caracterizacionController.caracterizacionActual.apoyoBienestar}" 
-                                     required="true" jsf:requiredMessage="Por favor ingrese el apoyo bienestar">
-                                     <f:ajax execute="@this" render="apoyoBienestarMessage"/>
-                        </input>
-                        <h:message id="apoyoBienestarMessage" for="apoyoBienestarInputText" styleClass="error"/>
-                        </h:panelGrid>
-                    <h:commandButton class="Guardar" value="Guardar" action="#{caracterizacionController.addCaracterizacion()}"/>
-                    <br/>
-                    <h:button class="Volver" value="Volver atras" outcome="/index"/>
-                </h:form> 
+
+            <h:form>
+                <h2>Formulario de registro de Caracterizacion</h2>
+                <h:panelGrid columns="1">
+                    <h:outputLabel class="form-1" value="Nombre del acudiente:" for="nomAcudiente" />
+                    <input class="form-1" jsf:id="nomAcudienteInputText" jsf:value="#{caracterizacionController.caracterizacionActual.acudiente}" 
+                           type="text" required="true"
+                           jsf:requiredMessage="Por favor ingrese el nombre del Acudiente"
+                           jsf:validatorMessage="Use solo letras, ej: Juan"> 
+                        <f:validateRegex pattern="[a-zA-Z áéíóúÁÉÍÓÚÑñ ]*"/>
+                        <f:ajax execute="@this" render="nomAcudienteMessage"/>
+                    </input>
+                    <h:message id="nomAcudienteMessage" for="nomAcudienteInputText" styleClass="error"/>
+
+                    <h:outputLabel class="form-1" value="Telefono del Acudiente:" for="tel" />
+                    <input class="form-1" type="tel" jsf:id="telefonoInputText" 
+                           jsf:requiredMessage="Por favor ingrese el numero telefonico"
+                           jsf:validatorMessage="Ingrese un telefono valido solo debe contener numeros" 
+                           jsf:value="#{caracterizacionController.caracterizacionActual.telefono}"  maxlength="16" >
+                        <f:validateRegex pattern="[0-9]*"/>
+                        <f:ajax execute="@this" render="telefonoMessage"/>
+                    </input>
+                    <h:message id="telefonoMessage" for="telefonoInputText" styleClass="error"/>
+
+                    <h:outputLabel class="form-1" value="Direccion del acudiente:" for="direccionAcudiente" />
+                    <input class="form-1" jsf:id="direccionAcudienteInputText" jsf:value="#{caracterizacionController.caracterizacionActual.direccion}" 
+                           type="text" required="true"
+                           jsf:requiredMessage="Por favor ingrese la direccion del acudiente">
+                        <f:ajax execute="@this" render="direccionAcudienteMessage"/>
+                    </input>
+                    <h:message id="direccionAcudienteMessage" for="direccionAcudienteInputText" styleClass="error"/>
+
+
+                    <h:outputLabel class="form-1" value="Sistema de liderazgo:" for="sistemaLiderazgo" />
+                    <input class="form-1" jsf:id="sistemaLiderazgoInputText"  type="text" jsf:value="#{caracterizacionController.caracterizacionActual.sistemaLiderazgo}" 
+                           required="true" jsf:requiredMessage="Por favor ingrese el sistema de liderazgo">
+                        <f:ajax execute="@this" render="sistemaLiderazgoMessage"/>
+                    </input>
+                    <h:message id="sistemaLiderazgoMessage" for="sistemaLiderazgoInputText" styleClass="error"/>
+
+                    <h:outputLabel class="form-1" value="Apoyo bienestar:" for="apoyoBienestar" />
+                    <input class="form-1" jsf:id="apoyoBienestarInputText"  type="text" jsf:value="#{caracterizacionController.caracterizacionActual.apoyoBienestar}" 
+                           required="true" jsf:requiredMessage="Por favor ingrese el apoyo bienestar">
+                        <f:ajax execute="@this" render="apoyoBienestarMessage"/>
+                    </input>
+                    <h:message id="apoyoBienestarMessage" for="apoyoBienestarInputText" styleClass="error"/>
+                </h:panelGrid>
+                <p:commandButton process="@this" class="Guardar" value="Guardar" action="#{caracterizacionController.addCaracterizacion()}"/>
+
+                <p:commandButton process="@this" class="Guardar"
+                                 value="Regresar al Menú" 
+                                 type="button" onclick="PF('botonCrearUsuarioDlg').show();"/>
+            </h:form> 
+            <ui:include src="/admin/dlg_menuCrearUsuario.xhtml"/> 
         </ui:define>
     </ui:composition>
 </html>

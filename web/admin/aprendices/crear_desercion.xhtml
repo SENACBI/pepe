@@ -8,153 +8,48 @@
       xmlns:jsf="http://xmlns.jcp.org/jsf"
       xmlns:p="http://primefaces.org/ui"
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
-    <head jsf:id="head">
-        <title>PEPA</title>
-        <meta charset="UTF-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/resources/css/estilo.css" media="screen"/>
-        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/resources/css/estilospepe.css" media="screen"/>
-        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/resources/css/normalize.css" media="screen"/>
-        <link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'/>
 
-    </head>
-    <body class="Bodypepe" jsf:id="body">
+    <ui:composition template="/admin/plantilla_paginas.xhtml">
+        <ui:define name="title">Crear Deserción</ui:define>        
+        <ui:define name="body">
 
-        <header class="Header">
-            <h:form class="Header-Form">
-                <section class="Header-pepeForm">
-                    <h:panelGrid columns="8">
-                        <label class="Label1" for="nombreProgramaText">Programa de formacion:</label>
-                        <input class="Form-Input1" type="text" disabled="true"
-                               jsf:value="#{fichaController.fichaSeleccionada.programa.nombrePrograma}" maxlength="45" >
-                        </input>
-                        <label class="Label2" for="codigoProgramaText">Código del programa:</label>
-                        <input class="Form-Input2" type="text" disabled="true"
-                               jsf:value="#{fichaController.fichaSeleccionada.programa.programaPK.codigo}">
-                        </input>
-                        <label class="Label3" for="versionProgramaText">Versión del programa:</label>
-                        <input class="Form-Input3" type="text" disabled="true"
-                               jsf:value="#{fichaController.fichaSeleccionada.programa.programaPK.version}">
-                        </input>
-                    </h:panelGrid>
-                    <h:panelGrid columns="6">
-                        <label class="Label4" for="duracionProgramaText">Duración del programa:</label>
+                <h2> Deserción Aprendices</h2>
 
+                    <h:form>
 
-                        <label class="Label6" for="codigoProyectoText">Codigo del proyecto:</label>
-                        <input class="Form-Input6" type="text" disabled="true"
-                               jsf:value="#{fichaController.fichaSeleccionada.idProyecto.codigoProyecto}">
-                        </input>
-                        <label class="Label7" for="numeroFichaText">Numero de ficha:</label>
-                        <input class="Form-Input7" type="text" disabled="true"
-                               jsf:value="#{fichaController.fichaSeleccionada.codigoFicha}">
-                        </input>
-                    </h:panelGrid> 
-                    <label class="Label5" for="nombreProyectoText">Nombre del proyecto:</label>
-                    <input class="Form-Input5" type="text" disabled="true"
-                           jsf:value="#{fichaController.fichaSeleccionada.idProyecto.nombreProyecto}">
-                    </input>
-                    <h:panelGrid columns="3">
-                        <label class="Label8" for="liderEjecutorText">Lider ejecutor:</label>
-                        <input class="Form-Input8" type="text" disabled="true"
-                               jsf:value="#{fichaController.usuarioFicha.usuario}">
-                        </input>
-                    </h:panelGrid>
-                </section>
-            </h:form>
-        </header>
-        <hr WIDTH='100%' SIZE='8' ALIGN='RIGHT'></hr>
-        <h:form>
-            <section class="pepe-color">
-                <ul class="Pepe-listColor">
-                    <li class="Pepe-listColorItem"><a href='#' class="PepeMenu-link"></a></li>
-                    <li class="Pepe-listColorItem"><a href='#' class="PepeMenu-link"></a></li>
-                    <li class="Pepe-listColorItem"><a href='#' class="PepeMenu-link"></a></li>
-                    <li class="Pepe-listColorItem"><a href='#' class="PepeMenu-link"></a></li>
-                    <li class="Pepe-listColorItem"><a href='#' class="PepeMenu-link"></a></li>
-                    <li class="Pepe-listColorItem"><a href='#' class="PepeMenu-link"></a></li>
-                    <li class="Pepe-listColorItem"><a href='#' class="PepeMenu-link"></a></li>
-                    <li class="Pepe-listColorItem"><a href='#' class="PepeMenu-link"></a></li>
-                    <li class="Pepe-listColorItem"><a href='#' class="PepeMenu-link"></a></li>
-                </ul> 
-            </section>
-            <section>
-                <nav class="Pepe-list">
-                    <ul class="Pepe-listMenu">
-                        <li class="Pepe-listMenuItem"><a href='#' class="PepeMenu-link">Formulación de Proyectos</a></li>
-                        <li class="Pepe-listMenuItem"><a href='#' class="PepeMenu-link">Programación del Proyecto</a></li>
-                        <li class="Pepe-listMenuItem"><a href='#' class="PepeMenu-link">Planeación Pedagógica</a></li>
-                        <li class="Pepe-listMenuItem"><a href='#' class="PepeMenu-link">Aprendices</a></li>
-                        <li class="Pepe-listMenuItem"><a href='#' class="PepeMenu-link">Otros Formatos</a></li>
-                        <li class="Pepe-listMenuItem"><a href='#' class="PepeMenu-link">Valoración de Proyecto</a></li>
-                        <li class="Pepe-listMenuItem"><a href='#' class="PepeMenu-link">Acompañamiento al Proyecto</a></li>
-                        <li class="Pepe-listMenuItem"><a href='#' class="PepeMenu-link">Administración del Proyecto</a></li>
-                        <li class="Pepe-listMenuItem"><a href='#' class="PepeMenu-link">Imprimibles PDF </a></li>
-                    </ul>        
-                </nav>    
-            </section>
-        </h:form>
-        
-        <legend class="Titulo-pepe" >
-            <h2 style="margin-left:80px"> Deserción Aprendices</h2>
-        </legend>
+                        <h:panelGrid columns="1">
+                            <h:outputLabel class="form-1" value="Estado:"  />
+                            <h:selectOneMenu class="form-1" id="idEstadoselect" value="#{desercionController.desercionActual.idEstado}"  required="true" >
+                                <f:selectItem itemLabel="Seleccionar uno.." />
+                                <f:selectItems value="#{desercionController.listaEstadoSelectOne}" var="estado" itemValue="#{estado}"/>  
+                            </h:selectOneMenu>
 
+                            <h:outputLabel class="form-1" value="Motivo:" />
+                            <h:inputTextarea style="resize: none" class="form-1" 
+                                             value="#{desercionController.desercionActual.motivo}" required="true">
+                            </h:inputTextarea>
 
-        <section class="Panel_scroll">
-            <h:form id="formInicio" style="overflow: scroll">
+                            <h:outputLabel class="form-1" value="Observaciones:" />
+                            <h:inputTextarea style="resize: none" class="form-1" 
+                                             value="#{desercionController.desercionActual.observacion}" required="true">
+                            </h:inputTextarea>
+
+                            <h:outputLabel class="form-1" for="fechaDesercion" value="Fecha Deserción:" />
+                            <p:calendar style="margin-left: 77px;"  id="fechaDesercion" 
+                                        value="#{desercionController.desercionActual.fecha}" 
+                                        pattern="MM/dd/yyyy HH:mm:ss" /> 
+                        </h:panelGrid>
+
+                        <p:commandButton process="@this" class="Guardar" value="Guardar" action="#{desercionController.addDesercion}"/>
+ 
+                        <p:commandButton process="@this" class="Guardar"
+                                         value="Regresar al Menú" 
+                                         type="button" onclick="PF('botonCrearUsuarioDlg').show();"/>
+                    </h:form>
                 
-                
-                <h:panelGrid columns="1">
-               <h:outputLabel class="form-1" value="Estado:"  />
-                        <h:selectOneMenu class="form-1" id="idEstadoselect" value="#{desercionController.desercionActual.idEstado}"  required="true" >
-                            <f:selectItem itemLabel="Seleccionar uno.." />
-                            <f:selectItems value="#{desercionController.listaEstadoSelectOne}" var="estado" itemValue="#{estado}"/>  
-                        </h:selectOneMenu>
-                        
-                        <h:outputLabel class="form-1" value="Motivo:" />
-                        <h:inputTextarea style="resize: none" class="form-1" value="#{desercionController.desercionActual.motivo}" required="true">
-                        </h:inputTextarea>
-                        
-                         <h:outputLabel class="form-1" value="Observaciones:" />
-                         <h:inputTextarea style="resize: none" class="form-1" value="#{desercionController.desercionActual.observacion}" required="true">
-                        </h:inputTextarea>
-                       
-                        
-                         <h:outputLabel class="form-1" for="fechaDesercion" value="Fecha Deserción:" />
-                        <p:calendar style="margin-left: 77px;"  id="fechaDesercion" value="#{desercionController.desercionActual.fecha}" pattern="MM/dd/yyyy HH:mm:ss" /> 
-                        
-                        
-                        
-                 </h:panelGrid>
-                    <h:commandButton class="Guardar" value="Guardar" action="#{desercionController.addDesercion}"/>
-
-            </h:form>
-        </section>
-
-        <article class="Pepe-button">
-            <button type="submit" class="Button">Cerrar sesión</button>
-            <button type="submit" class="Button1"> Guardar y continuar</button>
-        </article>
-
-        <hr WIDTH='100%' SIZE='8' ALIGN='RIGHT'></hr>
-        <footer class="Pepe-footer" >
-            <figure class="Footer-imageContainer">
-                <img src="../resources/images/logosena.png" heigth="50" width="50" alt="logo sena" class="Footer-image"/>
-            </figure>
-            <section>
-                <p class="Footer-description"> 
-                    Servicio Nacional de Aprendizaje SENA – Centro de Bioctecnologia Industrial- carrera 30 #40-25, Palmira-valle 
-                    <br></br>
-                    Línea gratuita de atención al ciudadano 275 0978 – Resto del país 018000 910270
-                    <br></br>
-                    Horario de atención: lunes a viernes de 8:00 am a 5:30 pm
-                    <br></br>
-                    Todos los derechos reservados ©
-                    <br></br>
-                    2015</p>
-            </section>
-        </footer>    
-    </body>
+                <ui:include src="/admin/dlg_menuCrearUsuario.xhtml"/>
+        </ui:define>
+    </ui:composition>
 </html>
 
 

@@ -4,31 +4,57 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:jsf="http://xmlns.jcp.org/jsf">
-    
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
     <ui:composition>
-      
-        <p:dialog widgetVar="botonCrearUsuarioDlg" modal="true" height="580" width="300" >
-            <h2>Menu de crear usuario</h2>
+
+        <p:dialog widgetVar="botonCrearUsuarioDlg" modal="true" height="100%" width="300" >
+
             <h:form>
-               <h:panelGrid columns="1"> 
-                    <h:button value="Crear Genero" outcome="/admin/configuracion/genero"/>
-                    <h:button value="Crear Empresa" outcome="/admin/configuracion/crear_empresa"/>
-                    <h:button value="Crear Tipo de vocero" outcome="/admin/configuracion/crear_tipoVocero"/>
-                    <h:button value="Crear Caracterizacion" outcome="/admin/aprendices/crear_caracterizacion"/>
-                    <h:commandButton  value="Crear Patrocinio"  action="#{practicasController.prepareCreate()}"/>
-                    <h:button value="Crear Estilo de aprendizaje" outcome="/admin/configuracion/crear_estiloAprendizaje"/>
-                    <h:button value="Crear Eps" outcome="/admin/configuracion/crear_eps"/>
-                    <h:button value="Crear Libreta Militar" outcome="/admin/configuracion/crear_libretaMilitar"/>
-                    <h:button value="Crear Tipo de Sangre" outcome="/admin/configuracion/crear_tipoSangre"/>
-                    <h:button value="Crear Especialidad" outcome="/admin/configuracion/crear_especialidad"/>
-                    <h:button value="Crear Estado" outcome="/admin/configuracion/crear_estado"/>
-                    <h:button value="Crear Motivo" outcome="/admin/configuracion/crear_motivo"/>
-                    <h:button value="Crear desercion" outcome="/admin/aprendices/crear_desercion"/>
-                    <h:button value="Crear Tipo Documento" outcome="/admin/configuracion/crear_tipoDocumento"/>
-                    <h:button value="Crear Usuario" outcome="/admin/configuracion/crear_usuario"/>
-                   
-                </h:panelGrid>
+                <p:dataGrid var="crearUsuario" value="MenuCrearUsu" columns="3" 
+                            rows="12" paginator="false" id="datos" 
+                            style="alignment-adjust: auto">  
+
+                    <f:facet name="header">
+                        Menú Crear Usuario
+                    </f:facet>
+                    <p:outputPanel>
+                        <h:panelGrid columns="4">
+
+                            <h:button outcome="/admin/configuracion/genero" value="Crear Genero" class="Guardar1"  />
+                            <br></br>
+                            <h:button class="Guardar1" value="Crear Empresa" outcome="/admin/configuracion/crear_empresa"/>
+                            <br></br>
+                            <h:button class="Guardar1" value="Crear Tipo de Vocero" outcome="/admin/configuracion/crear_tipoVocero"/>
+                            <br></br>
+                            <h:button class="Guardar1" value="Crear Caracterización" outcome="/admin/aprendices/crear_caracterizacion"/>
+                            <br></br>
+                            <h:commandButton  class="Guardar1" value="Crear Etapa Práctica"  action="#{practicasController.prepareCreate()}"/>
+                            <br></br>
+                            <h:button class="Guardar1" value="Crear Estilo de Aprendizaje" outcome="/admin/configuracion/crear_estiloAprendizaje"/>
+                            <br></br>
+                            <h:button class="Guardar1" value="Crear Eps" outcome="/admin/configuracion/crear_eps"/>
+                            <br></br>
+                            <h:button class="Guardar1" value="Crear Libreta Militar" outcome="/admin/configuracion/crear_libretaMilitar"/>
+                            <br></br>
+                            <h:button class="Guardar1" value="Crear Tipo de Sangre" outcome="/admin/configuracion/crear_tipoSangre"/>
+                            <br></br>
+                            <h:button class="Guardar1" value="Crear Especialidad" outcome="/admin/configuracion/crear_especialidad"/>
+                            <br></br>
+                            <h:button class="Guardar1" value="Crear Estado" outcome="/admin/configuracion/crear_estado"/>
+                            <br></br>
+                            <h:button class="Guardar1" value="Crear Motivo" outcome="/admin/configuracion/crear_motivo"/>
+                            <br></br>
+                            <h:button class="Guardar1" value="Crear Deserción" outcome="/admin/aprendices/crear_desercion"/>
+                            <br></br>
+                            <h:button class="Guardar1" value="Crear Tipo Documento" outcome="/admin/configuracion/crear_tipoDocumento"/>
+                            <br></br>
+                            <h:button class="Guardar1" value="Crear Usuario" outcome="/admin/configuracion/crear_usuario"/>
+
+                        </h:panelGrid>
+                    </p:outputPanel>
+                </p:dataGrid>
             </h:form> 
         </p:dialog>
     </ui:composition>

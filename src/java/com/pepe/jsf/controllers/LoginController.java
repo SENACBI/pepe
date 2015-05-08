@@ -112,20 +112,30 @@ public class LoginController implements Serializable {
             if (!usuario.getEstado()) {
                 logout();
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Usuario Inactivo", null));
-                return "/index";
+                return "/index.xhtml";
             }
             //Redirigir a la página de portada
             return "/landingpage.xhtml";
         } catch (ServletException ex) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuario o Contraseña Invalida", null));
-            return "/index";
+            return "/index.xhtml";
         }
     }
 
     public String logout() {
         FacesContext context = FacesContext.getCurrentInstance();
         HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
-        return "/index";
+
+        try {
+            request.logout();
+            HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+            session.invalidate();
+            limpiar();
+            return "/index.xhtml";
+        } catch (ServletException e) {
+            log.log(Level.SEVERE, "Failed to logout user!", e);
+            return "/index.xhtml";
+        }
     }
 
     private void limpiar() {

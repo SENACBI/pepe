@@ -6,13 +6,15 @@
       xmlns:jsf="http://xmlns.jcp.org/jsf"
       xmlns:p="http://primefaces.org/ui"
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
-    <ui:composition template="/html_plantillas/template.xhtml">
-         <ui:define name="title">Crear Tecnica</ui:define>        
+    
+        <ui:composition template="/html_plantillas/plantilla_paginas.xhtml">
+         <ui:define name="title">Crear Técnica</ui:define>        
          <ui:define name="body">
+             
               <form jsf:id="CreateTecnica">
-                  <h1 class="Titulo"><h:outputText value="Crear Tecnica"/></h1>
+                  <h1 class="Titulo"><h:outputText value="Crear Técnica"/></h1>
                    <h:panelGrid columns="1">
-                        <h:outputLabel class="form-1" value="Nombre de la Tecnica:" for="nomTecnica" />
+                        <h:outputLabel class="form-1" value="Nombre de la Técnica:" for="nomTecnica" />
                         <input class="form-1" jsf:id="nomTecnica" jsf:value="#{tecnicadidacticaController.tecnicaActual.tecnicaDidactica}" 
                                      type="text" required="true"
                                      jsf:requiredMessage="Por favor ingrese el nombre de la tecnica"

@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+    <ui:composition template="/html_plantillas/plantilla_paginas.xhtml">
+        <h2>Menú de Planeación Pedagógica</h2>
+        <ui:define name="body">
+
+            <form jsf:id="PlaneacionPedagogica">
+                <h:panelGrid columns="1"> 
+
+                    <article class="articulo1">                        
+                        <label for="comments" class="Pepe-articuloLabel">Fase</label>
+                        <p:selectOneMenu id="faseSelectOne" value="#{faseController.faseSeleccionada}" class="Guardar">
+                            <f:selectItem itemLabel="Seleccionar uno.." />
+                            <f:selectItems value="#{faseController.listaFase}" var="fase" itemValue="#{fase}"/>  
+                            <f:ajax execute="@this" render="faseSelectOneMsg"/>
+                        </p:selectOneMenu>
+                        <p:message id="faseSelectOneMsg" for="faseSelectOne"/>
+                    </article>
+
+                    <p:commandButton process="@this" value="Ingresar planeación" 
+                                     class="Guardar"
+                                     actionListener="#{actividadController.prepareCreate}" 
+                                     action="#{actividadController.createActividad}">
+                        <f:attribute name="fase" value="#{faseController.faseSeleccionada}"/>
+                        <f:attribute name="ficha" value="#{fichaController.fichaSeleccionada}"/>             
+                    </p:commandButton>
+
+                    <p:commandButton process="@this" value="Ingresar Guía aprendizaje" 
+                                     class="Guardar"
+                                     actionListener="#{actividadController.prepareCreateGuiaAprendizaje}" action="#{actividadController.createGuiaAprendizaje}">
+                        <f:attribute name="fase" value="#{faseController.faseSeleccionada}"/>
+                        <f:attribute name="ficha" value="#{fichaController.fichaSeleccionada}"/>             
+                    </p:commandButton>
+
+                    <p:commandButton class="Guardar" value="Técnica Didáctica" action="/TecnicaDidactica/lista_Tecnica_Didactica"/>
+
+                    <p:commandButton class="Guardar" value="Actividad" action="/Actividad/lista_Actividad"/>
+
+                    <p:commandButton class="Guardar" value="Guía de Aprendizaje" action="/GuiaAprendizaje/lista_Guia_Aprendizaje"/>
+
+                </h:panelGrid>
+            </form> 
+        </ui:define>
+    </ui:composition>
+</html>

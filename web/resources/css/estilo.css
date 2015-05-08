@@ -80,6 +80,7 @@
     text-align: center;
     display: inline-block;
 }
+
 .ContainerPanel{
     width: 600px;
 }
@@ -143,6 +144,7 @@
 }
 
 .Pepe-articuloLabel{
+    
     display: block;
     text-align: left;
     font-size: 1.2em;
@@ -189,10 +191,6 @@
     padding: 0.5em;
     display: inline-block;
 }
-
-
-
-
 
 .Pepe-inicioContenedor{
     display: block;
@@ -324,7 +322,7 @@ ESTILOS DE FORMULACION
     transition: all ease 1s !important;
     pointer-events: none !important;
     .ui-dialog{
-        height: 80% !important;
+        height: auto !important;
         overflow: scroll !important;
     }
 }
@@ -341,7 +339,7 @@ ESTILOS DE FORMULACION
     border: none !important;
     border-radius: 0 !important;
     color: #000000 !important;
-    height: 80% !important;
+    height: auto !important;
 
     overflow: scroll !important;
 
@@ -359,10 +357,18 @@ ESTILOS DE FORMULACION
 
 .Guardar{
     background-color:#00a0b0;
+    color: #000;
+    padding: .3em;
+    margin-left: 3em;
+    margin-top: .3em;
+}
+
+.Guardar1{
+    background-color:#00a0b0;
     color: white;
-    padding: 1em;
-    margin-left: 5em;
-    margin-top: 1em;
+    padding: .3em;
+    margin-left: 3em;
+    margin-top: .3em;
 }
 .Volver{
     background-color:#00a0b0;

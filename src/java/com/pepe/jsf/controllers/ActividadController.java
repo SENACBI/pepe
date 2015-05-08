@@ -49,8 +49,8 @@ public class ActividadController implements Serializable {
 
     private Actividad actividadActual;
     private List<Actividad> listaActividad = null;
-    private List<ActividadAprendizaje> actividadAprendizajeList =null;
-    private List<TecnicaDidactica> tecnicaDidacticaList=null;
+    private List<ActividadAprendizaje> actividadAprendizajeList = null;
+    private List<TecnicaDidactica> tecnicaDidacticaList = null;
     @EJB
     private ProyectoFacade proyectoFacade;
     @EJB
@@ -73,7 +73,7 @@ public class ActividadController implements Serializable {
     }
 
     public Actividad getActividadSeleccionada() {
-         if(actividadSeleccionada == null){
+        if (actividadSeleccionada == null) {
             actividadSeleccionada = new Actividad();
         }
         return actividadSeleccionada;
@@ -91,10 +91,6 @@ public class ActividadController implements Serializable {
         return actividadAprendizajeFacade;
     }
 
-   
-    
-    
-
     public ActividadController() {
     }
 
@@ -105,10 +101,7 @@ public class ActividadController implements Serializable {
     public void setActividadAprendizajeList(List<ActividadAprendizaje> ActividadAprendizajeList) {
         this.actividadAprendizajeList = ActividadAprendizajeList;
     }
-    
-    
-    
-    
+
     public Fase getFaseActual() {
         return faseActual;
     }
@@ -163,6 +156,7 @@ public class ActividadController implements Serializable {
     public List<Proyecto> getListaProyectoSelectOne() {
         return getProyectoFacade().findAll();
     }
+
     public List<Fase> getListaFaseSelectOne() {
         return getFaseFacade().findAll();
     }
@@ -175,27 +169,26 @@ public class ActividadController implements Serializable {
         this.faseFacade = faseFacade;
     }
 
-
     private void recargarlista() {
         listaActividad = null;
     }
+
     public void prepareCreateGenerarGuia(ActionEvent event) {
         actividadActual = new Actividad();
         actividadActual = (Actividad) event.getComponent().getAttributes().get("actividad");
         actividadAprendizajeList = new ArrayList<>();
-         
-                    actividadAprendizajeList.addAll(getActividadAprendizajeFacade().consultaActividad(actividadActual));
-           
-                    
+
+        actividadAprendizajeList.addAll(getActividadAprendizajeFacade().consultaActividad(actividadActual));
+
         //listaActividadAprendizaje=actividadActual.getActividadAprendizajeList();
-        
     }
-    public void prepareCreateGuiaAprendizaje(ActionEvent event){
+
+    public void prepareCreateGuiaAprendizaje(ActionEvent event) {
         fichaActual = new Ficha();
         fichaActual = (Ficha) event.getComponent().getAttributes().get("ficha");
         faseActual = new Fase();
         faseActual = (Fase) event.getComponent().getAttributes().get("fase");
-        listaActividad=null;
+        listaActividad = null;
         listaActividad = getActividadFacade().consultaPlaneacionActividades(faseActual, fichaActual.getIdProyecto());
     }
 
@@ -204,36 +197,38 @@ public class ActividadController implements Serializable {
         fichaActual = (Ficha) event.getComponent().getAttributes().get("ficha");
         faseActual = new Fase();
         faseActual = (Fase) event.getComponent().getAttributes().get("fase");
-        listaActividad=null;
-        actividadAprendizajeList= new ArrayList<>();
+        listaActividad = null;
+        actividadAprendizajeList = new ArrayList<>();
         listaActividad = getActividadFacade().consultaPlaneacionActividades(faseActual, fichaActual.getIdProyecto());
-        
-            for(Actividad consultar: listaActividad){
-                    actividadAprendizajeList.addAll(getActividadAprendizajeFacade().consultaActividad(consultar));
-            }
+
+        for (Actividad consultar : listaActividad) {
+            actividadAprendizajeList.addAll(getActividadAprendizajeFacade().consultaActividad(consultar));
         }
-    public String createActividadProyecto(){
+    }
+
+    public String createActividadProyecto() {
         actividadActual = new Actividad();
         return "crear_actividad";
     }
 
     public String createActividad() {
-        return "/planeacionpedagogica/planeacion_pedagogica";
+        return "/planeacionpedagogica/planeacion_pedagogica.xhtml";
     }
-    
-    public String createGuiaAprendizaje(){
-        return "/planeacionpedagogica/guia_aprendizaje";
+
+    public String createGuiaAprendizaje() {
+        return "/planeacionpedagogica/guia_aprendizaje.xhtml";
     }
-    public String createGenerarGuia(){
+
+    public String createGenerarGuia() {
         return "generar_guiaAprendizaje";
     }
 
     public String prepareEdit() {
-        return "/Actividad/editar_Actividad";
+        return "/Actividad/editar_Actividad.xhtml";
     }
 
     public String prepareView() {
-        return "/Actividad/ver_Actividad";
+        return "/Actividad/ver_Actividad.xhtml";
     }
 
     public String prepareList() {
@@ -340,15 +335,11 @@ public class ActividadController implements Serializable {
 
     }
 
-    
-    
-    
-   
     private ActividadAprendizaje actividadAprendizajeActual;
     private int tipoActividadAprendizajeSelect;
     private int actividadSelect;
     private List<ActividadAprendizaje> listaActividadAprendizaje = null;
-    private List<Usuario> usuarioList= null;
+    private List<Usuario> usuarioList = null;
     private List<Recurso> listaRecurso = null;
     private List<ResultadoAprendizaje> listaResultadoAprendizaje = null;
     private ResultadoAprendizaje resultadoAprendizajeActual;
@@ -365,53 +356,49 @@ public class ActividadController implements Serializable {
     private TipoActividadAprendizajeFacade tipoActividadAprendizajeFacade;
     @EJB
     private RecursoFacade recursoFacade;
-   
-   
+
     public ActividadAprendizaje getActividadAprendizajeActual() {
-        
+
         return actividadAprendizajeActual;
     }
 
     public void setActividadAprendizajeActual(ActividadAprendizaje actividadAprendizajeActual) {
         this.actividadAprendizajeActual = actividadAprendizajeActual;
     }
-   
-  
+
     public List<ActividadAprendizaje> getListaActividadAprendizaje() {
-          return listaActividadAprendizaje;
+        return listaActividadAprendizaje;
 
     }
-    
-    
-    
+
     private void recargarListaActividadAprendizaje() {
-                actividadAprendizajeList.add(actividadAprendizajeActual);
+        actividadAprendizajeList.add(actividadAprendizajeActual);
     }
 
-
-    
-    public String prepareResultadoAprendizaje(){
+    public String prepareResultadoAprendizaje() {
         listaResultadoAprendizaje = new ArrayList<>();
         listaResultadoAprendizaje = actividadAprendizajeActual.getResultadoAprendizajeList();
         return "lista_resultadoAprendizaje";
     }
-     public String prepareRecursos(){
+
+    public String prepareRecursos() {
         listaRecurso = new ArrayList<>();
         listaRecurso = actividadAprendizajeActual.getRecursoList();
-       return "lista_recursos";
+        return "lista_recursos";
     }
-    public String crearActividadAprendizaje(){
+
+    public String crearActividadAprendizaje() {
         tecnicaDidacticaList = new ArrayList<>();
         listaResultadoAprendizaje = new ArrayList<>();
         listaRecurso = new ArrayList<>();
-        usuarioList= new ArrayList<>();
-        
-        tecnicaDidacticaActual= new TecnicaDidactica();
+        usuarioList = new ArrayList<>();
+
+        tecnicaDidacticaActual = new TecnicaDidactica();
         resultadoAprendizajeActual = new ResultadoAprendizaje();
         recursoActual = new Recurso();
         usuarioActual = new Usuario();
         actividadAprendizajeActual = new ActividadAprendizaje();
-        
+
         return "crear_actividadAprendizaje";
     }
 
@@ -430,8 +417,9 @@ public class ActividadController implements Serializable {
             return null;
         }
     }
-    public void editarDialogo(ActionEvent event){
-        actividadAprendizajeActual= (ActividadAprendizaje) event.getComponent().getAttributes().get("actividad");
+
+    public void editarDialogo(ActionEvent event) {
+        actividadAprendizajeActual = (ActividadAprendizaje) event.getComponent().getAttributes().get("actividad");
     }
 
     public void updateActividadAprendizaje() {
@@ -451,13 +439,11 @@ public class ActividadController implements Serializable {
         }
         return "List";
     }
-    
- 
 
-     // Select one menu Actividad
+    // Select one menu Actividad
     public int getActividadSelect() {
-        if(actividadAprendizajeActual!=null && actividadAprendizajeActual.getIdActividad()!= null){
-            actividadSelect=actividadAprendizajeActual.getIdActividadAprendizaje();
+        if (actividadAprendizajeActual != null && actividadAprendizajeActual.getIdActividad() != null) {
+            actividadSelect = actividadAprendizajeActual.getIdActividadAprendizaje();
         }
         return actividadSelect;
     }
@@ -466,14 +452,11 @@ public class ActividadController implements Serializable {
         this.actividadSelect = actividadSelect;
     }
 
-   
-     public List<Actividad> getListaActividadSelectOne() {
+    public List<Actividad> getListaActividadSelectOne() {
         return getActividadFacade().consultaPlaneacionActividades(faseActual, fichaActual.getIdProyecto());
     }
-     
+
      // Select one menu Tecnica Didactica
-
-
     public TecnicaDidacticaFacade getTecnicaDidacticaFacade() {
         return TecnicaDidacticaFacade;
     }
@@ -481,11 +464,11 @@ public class ActividadController implements Serializable {
     public void setTecnicaDidacticaFacade(TecnicaDidacticaFacade TecnicaDidacticaFacade) {
         this.TecnicaDidacticaFacade = TecnicaDidacticaFacade;
     }
-    
+
     public List<TecnicaDidactica> getListaTecnicaDidacticaSelectOne() {
         return getTecnicaDidacticaFacade().findAll();
     }
-    
+
     public TecnicaDidactica getTecnicaDidacticaActual() {
         return tecnicaDidacticaActual;
     }
@@ -501,13 +484,12 @@ public class ActividadController implements Serializable {
     public void setTecnicaDidacticaList(List<TecnicaDidactica> tecnicaDidacticaList) {
         this.tecnicaDidacticaList = tecnicaDidacticaList;
     }
-    
-    
-    public void addTecnicaDidactica(){
+
+    public void addTecnicaDidactica() {
         tecnicaDidacticaList.add(tecnicaDidacticaActual);
         tecnicaDidacticaActual = new TecnicaDidactica();
     }
-    
+
     //select one menu instructor
     public List<Usuario> getUsuarioList() {
         return usuarioList;
@@ -532,11 +514,12 @@ public class ActividadController implements Serializable {
     public void setUsuarioFacade(UsuarioFacade usuarioFacade) {
         this.usuarioFacade = usuarioFacade;
     }
-    
-    public List<Usuario> getListaUsuariosSelectOne(){
+
+    public List<Usuario> getListaUsuariosSelectOne() {
         return getUsuarioFacade().findAll();
     }
-    public void addInstructor(){
+
+    public void addInstructor() {
         usuarioList.add(usuarioActual);
         usuarioActual = new Usuario();
     }
@@ -565,17 +548,17 @@ public class ActividadController implements Serializable {
     public void setRecursoFacade(RecursoFacade recursoFacade) {
         this.recursoFacade = recursoFacade;
     }
-    
-      public List<Recurso> getListaRecursoSelectOne() {
+
+    public List<Recurso> getListaRecursoSelectOne() {
         return getRecursoFacade().findAll();
     }
-    public void addRecurso(){
+
+    public void addRecurso() {
         listaRecurso.add(recursoActual);
         recursoActual = new Recurso();
     }
- 
+
     //select one menu resultado de aprendizaje
-    
     public List<ResultadoAprendizaje> getListaResultadoAprendizaje() {
         return listaResultadoAprendizaje;
     }
@@ -599,18 +582,20 @@ public class ActividadController implements Serializable {
     public void setResultadoAprendizajeFacade(ResultadoAprendizajeFacade resultadoAprendizajeFacade) {
         this.resultadoAprendizajeFacade = resultadoAprendizajeFacade;
     }
+
     public List<ResultadoAprendizaje> getListaResultadoAprendizajeSelectOne() {
         return getResultadoAprendizajeFacade().findAll();
     }
-    public void addResultadoAprendizaje(){
+
+    public void addResultadoAprendizaje() {
         listaResultadoAprendizaje.add(resultadoAprendizajeActual);
         resultadoAprendizajeActual = new ResultadoAprendizaje();
     }
     // Select one menu Tipo actividad aprendizaje
 
     public int getTipoActividadAprendizajeSelect() {
-         if(actividadAprendizajeActual!=null && actividadAprendizajeActual.getIdTipoActividadAprendizaje()!= null){
-            tipoActividadAprendizajeSelect=actividadAprendizajeActual.getIdActividadAprendizaje();
+        if (actividadAprendizajeActual != null && actividadAprendizajeActual.getIdTipoActividadAprendizaje() != null) {
+            tipoActividadAprendizajeSelect = actividadAprendizajeActual.getIdActividadAprendizaje();
         }
         return tipoActividadAprendizajeSelect;
     }
@@ -626,11 +611,9 @@ public class ActividadController implements Serializable {
     public void setTipoActividadAprendizajeFacade(TipoActividadAprendizajeFacade tipoActividadAprendizajeFacade) {
         this.tipoActividadAprendizajeFacade = tipoActividadAprendizajeFacade;
     }
-    
+
     public List<TipoActividadAprendizaje> getListaTipoActividadAprendizajeSelectOne() {
         return getTipoActividadAprendizajeFacade().findAll();
     }
-    
-    
-    
+
 }

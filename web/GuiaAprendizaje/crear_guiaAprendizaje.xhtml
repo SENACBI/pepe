@@ -6,66 +6,67 @@
       xmlns:jsf="http://xmlns.jcp.org/jsf"
       xmlns:p="http://primefaces.org/ui"
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
-    
-    <ui:composition template="/html_plantillas/template.xhtml">
+
+    <ui:composition template="/html_plantillas/plantilla_paginas.xhtml">
         <ui:define name="title">Crear Guia Aprendizaje</ui:define>        
         <ui:define name="body">
-                <form jsf:id="CreateGuiaAprendizaje">
-                    <h1 class="Titulo"><h:outputText value="Crear Guia Aprendizaje"/></h1>
+
+            <form jsf:id="CreateGuiaAprendizaje">
+                <h2>Crear Guía Aprendizaje</h2>
+                <br></br>
+                <p:panel>
+
                     <h:panelGrid columns="2">
-                        
-                        
-                        <h:outputLabel class="form-1" value="proyecto:"  for="idProyectoSelect"/>
-                        <h:selectOneMenu class="form-1" id="idProyectoSelect" value="#{guiaAprendizajeController.guiaAprendizajeActual.idProyecto}">
+
+
+                        <h:outputLabel class="form-1" value="Proyecto:"  for="idProyectoSelect"/>
+                        <h:selectOneMenu class="form-1" id="idProyectoSelect" value="#{guiaAprendizajeController.guiaAprendizajeActual.idActividadProyecto}">
                             <f:selectItem itemLabel="Seleccionar uno.." />
                             <f:selectItems value="#{guiaAprendizajeController.listaProyectoSelectOne}" var="idProyectoSelec" itemValue="#{proyecto}"/>  
                         </h:selectOneMenu>
-                        
-                        
-                        <h:outputLabel class="form-1" value="Introduccion:" for="introduccion" />
+
+
+                        <h:outputLabel class="form-1" value="Introducción:" for="introduccion" />
                         <textarea  class="form-1" jsf:id="introduccion" jsf:value="#{guiaAprendizajeController.guiaAprendizajeActual.introduccion}" 
-                                     type="text" required="true"
-                                     jsf:requiredMessage="Por favor ingrese la introduccion"
-                                     jsf:validatorMessage="Use solo letras"> 
-                                     
+                                   type="text" required="true"
+                                   jsf:requiredMessage="Por favor ingrese la introduccion"
+                                   jsf:validatorMessage="Use solo letras"> 
+
                         </textarea >
-                       
-                        
-                         <h:outputLabel class="form-1" value="Glosario:" for="Glosario" />
-                         <textarea class="form-1" jsf:id="Glosario" jsf:value="#{guiaAprendizajeController.guiaAprendizajeActual.glosarioTerminos}" 
-                                     type="text" required="true"
-                                     jsf:requiredMessage="Por favor ingrese el Glosario"
-                                     jsf:validatorMessage="Use letras"> 
-                              
+
+
+                        <h:outputLabel class="form-1" value="Glosario:" for="Glosario" />
+                        <textarea class="form-1" jsf:id="Glosario" jsf:value="#{guiaAprendizajeController.guiaAprendizajeActual.glosarioTerminos}" 
+                                  type="text" required="true"
+                                  jsf:requiredMessage="Por favor ingrese el Glosario"
+                                  jsf:validatorMessage="Use letras"> 
+
                         </textarea >
-                        
-                        
-                        <h:outputLabel class="form-1" value="referentesBibliograficos:" for="Referentes" />
+
+
+                        <h:outputLabel class="form-1" value="Referentes Bibliograficos:" for="Referentes" />
                         <textarea class="form-1" jsf:id="Referentes" jsf:value="#{guiaAprendizajeController.guiaAprendizajeActual.referentesBibliograficos}" 
-                                     type="textArea" required="true"
-                                     jsf:requiredMessage="Por favor ingrese los referentes "
-                                     jsf:validatorMessage="Use letras"> 
-                             
+                                  type="textArea" required="true"
+                                  jsf:requiredMessage="Por favor ingrese los referentes "
+                                  jsf:validatorMessage="Use letras"> 
+
                         </textarea>
-                        
-                        
-                        <h:outputLabel class="form-1" value="Control Documentos:" for="control" />
+
+
+                        <h:outputLabel class="form-1" value="Control de Documentos:" for="control" />
                         <textarea class="form-1" jsf:id="control" jsf:value="#{guiaAprendizajeController.guiaAprendizajeActual.controlDocumento}" 
-                                     type="text" required="true"
-                                     jsf:requiredMessage="Por favor ingrese el control de documentos "
-                                     jsf:validatorMessage="Use letras"> 
-                             
+                                  type="text" required="true"
+                                  jsf:requiredMessage="Por favor ingrese el control de documentos "
+                                  jsf:validatorMessage="Use letras"> 
+
                         </textarea>
-                     
-                        
-                        
-                        
 
                         <input class="Guardar" type="submit" jsf:action="#{guiaAprendizajeController.addGuiaAprendizaje}" value="Guardar Guia Aprendizaje">
-                            <h:button class="Guardar" value="Ir al lista guia" outcome="/GuiaAprendizaje/lista_Guia_Aprendizaje"></h:button>
-                        </input>
+                            <h:button class="Guardar" value="Ir al lista guia" outcome="/GuiaAprendizaje/lista_Guia_Aprendizaje.xhtml"></h:button>
+                        </input> <!-- No Guarda aun -->
                     </h:panelGrid>
-                </form> 
+                </p:panel>
+            </form> 
         </ui:define>
     </ui:composition>
 </html>
