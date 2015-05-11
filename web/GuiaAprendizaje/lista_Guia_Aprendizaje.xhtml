@@ -9,15 +9,14 @@
     <ui:composition template="/html_plantillas/plantilla_paginas.xhtml">
         <ui:define name="title">Lista Guia Aprendizaje</ui:define>
         <ui:define name="body">
-            
+
             <form jsf:id="ListarGuia">
 
-                <h2>Listar Guia de Aprendizaje"</h2>
-                
+                <h2>Lista Guía de Aprendizaje</h2>
                 <p>
-                    <h:button class="Guardar" value="Agregar Guia Aprendizaje" outcome="/GuiaAprendizaje/crear_guiaAprendizaje"></h:button>
+                    <p:button class="Guardar" value="Agregar Guia Aprendizaje" outcome="/GuiaAprendizaje/crear_guiaAprendizaje"></p:button>
                 </p>
-                
+
                 <p:panel>
                     <p:dataTable value="#{guiaAprendizajeController.listaguiaAprendizaje}" var="GuiaAprendizaje"
                                  resizableColumns="true"
@@ -29,7 +28,7 @@
                             <h:outputText value="#{GuiaAprendizaje.idActividadProyecto}"/>
                         </p:column>
 
-                        <p:column filterBy="#{GuiaAprendizaje.introduccion}" headerText="Introduccion" filterMatchMode="contains">
+                        <p:column filterBy="#{GuiaAprendizaje.introduccion}" headerText="Introducción" filterMatchMode="contains">
                             <h:outputText value="#{GuiaAprendizaje.introduccion}"/>
                         </p:column>
 
@@ -47,7 +46,8 @@
 
 
 
-                        <p:column headerText="Acciones"> 
+                        <p:column headerText="Opciones"> 
+
                             <p:commandButton icon="ui-icon-search" action="#{guiaAprendizajeController.prepareView}">
                                 <f:setPropertyActionListener value="#{GuiaAprendizaje}" target="#{guiaAprendizajeController.guiaAprendizajeActual}"/>
                             </p:commandButton>
@@ -67,7 +67,7 @@
                             </p:commandButton>
                         </p:column>
                     </p:dataTable>
-                    
+
                 </p:panel>
                 <br></br>
                 <form jsf:id="ConfirmForm">

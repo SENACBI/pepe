@@ -10,10 +10,11 @@
         <ui:define name="title">Lista Guia Aprendizaje</ui:define>
         <ui:define name="body">
             <form jsf:id="ListaActividad">
-                <h2>Lista de Actividades de proyecto</h2>
-                <br></br>
-                <p:commandButton  value="Crear Actividad" action="#{actividadController.createActividadProyecto}"/>
-                <br></br>
+                <h2>Lista de Actividades de Proyecto</h2>
+
+                <p>
+                    <p:commandButton  value="Crear Actividad" action="#{actividadController.createActividadProyecto}"/>
+                </p>
 
                 <p:panel>
                     <p:dataTable  value="#{actividadController.listaActividad}" var="Actividad"
@@ -23,7 +24,8 @@
                                   {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" 
                                   rowsPerPageTemplate="5,10,15">
 
-                        <p:column filterBy="#{Actividad.nombreActividadProyecto}" headerText="NombreActividad" filterMatchMode="contains">
+                        <p:column filterBy="#{Actividad.nombreActividadProyecto}" headerText="Nombre de Actividad" 
+                                  filterMatchMode="contains">
                             <h:outputText value="#{Actividad.nombreActividadProyecto}"/>
                         </p:column>
 
@@ -39,7 +41,8 @@
                             <h:outputText value="#{Actividad.idFase.fase}"/>
                         </p:column>
 
-                        <p:column> 
+                        <p:column headerText="Opciones"> 
+
                             <p:commandButton icon="ui-icon-search" action="#{actividadController.prepareView}">
                                 <f:setPropertyActionListener value="#{Actividad}" target="#{actividadController.actividadActual}"/>
                             </p:commandButton>
@@ -58,7 +61,7 @@
 
                             </p:commandButton>
 
-                            <p:commandButton process="@this" value="AP asociadas" actionListener="#{actividadAprendizajeController.prepareCreate}" action="#{actividadAprendizajeController.createActividad}">
+                            <p:commandButton process="@this" value="AP Asociadas" actionListener="#{actividadAprendizajeController.prepareCreate}" action="#{actividadAprendizajeController.createActividad}">
                                 <f:attribute name="actividad" value="#{Actividad}"/>            
                             </p:commandButton>
                         </p:column>

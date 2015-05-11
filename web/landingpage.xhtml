@@ -30,7 +30,7 @@
                     <h:message id="fichaselectoneMsg" 
                                for="fichaselectone"/> 
                 </p:panelGrid>
-                
+
                 <h:panelGrid  columns="2" style="alignment-adjust: auto">
 
                     <label for="comments" 
@@ -95,35 +95,29 @@
 
             </h:form>
 
+
             <h:form > 
 
-                <p:commandButton value="Programa"
+                <p:commandButton class="Guardar" value="Programa"
                                  action="/programa/programaInicio.xhtml" />
 
 
-                <p:commandButton process="@this" 
+                <p:commandButton class="Guardar" process="@this" 
                                  value="Programación del Proyecto" 
                                  actionListener="#{ejecucionController.prepareCreate}" 
                                  action="#{ejecucionController.cargarCreate}">
                     <f:attribute name="ficha" value="#{fichaController.fichaSeleccionada}"/>
                 </p:commandButton> 
 
-                <p:commandButton process="@this" 
+                <p:commandButton class="Guardar" process="@this" 
                                  value="Valoración de Proyecto" 
                                  actionListener="#{variableController.prepareCreate}" 
                                  action="#{variableController.cargarCreate}">
                     <f:attribute name="ficha" value="#{fichaController.fichaSeleccionada}"/>
                     <f:attribute name="variable" value="1"/>
-                </p:commandButton> 
+                </p:commandButton>
 
-                <p:commandButton process="@this"
-                                 value="Acompañamiento"
-                                 actionListener="#{seguimientoController.prepareCreate}" 
-                                 action="#{seguimientoController.cargarCreate}">
-                    <f:attribute name="ficha" value="#{fichaController.fichaSeleccionada}"/>
-                </p:commandButton> 
-
-                <p:commandButton process="@this" 
+                <p:commandButton class="Guardar" process="@this" 
                                  value="Valoración de Ambiente" 
                                  actionListener="#{variableController.prepareCreate}" 
                                  action="#{variableController.cargarCreate}">
@@ -131,7 +125,7 @@
                     <f:attribute name="variable" value="2"/>
                 </p:commandButton> 
 
-                <p:commandButton process="@this"
+                <p:commandButton class="Guardar" process="@this"
                                  value="Crear Usuario" 
                                  type="button" onclick="PF('botonCrearUsuarioDlg').show();"/>
             </h:form> 

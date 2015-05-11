@@ -10,7 +10,9 @@
     <ui:composition template="/html_plantillas/plantilla_paginas.xhtml">
         <ui:define name="body">
             <h:form id="programaInicioForm">
+                
                 <section id="sectionProgramaConsulta">
+                    
                     <p:autoComplete id="programa" 
                                     forceSelection="true"
                                     required="true"
@@ -27,25 +29,25 @@
                                 render="msgprograma"
                                 event="change"/>
                     </p:autoComplete>
+                    
                     <h:message id="msgprograma" 
                                for="programa"
                                styleClass="error"/> 
-                    <section class="row">
-                        <p:commandButton
-                            styleClass="button"
-                            action="#{programaController.programaConsulta}"
-                            value="Consulta"/>
+                    
 
-                        <p:commandButton onclick="programaCrearVentana.show()"
-                                         value="Crear programa"
-                                         styleClass="button"
-                                         actionListener="#{programaController.anular()}"
-                                         update=":programaCrearVentanaForm"/>
+                        <p>
+                            <p:commandButton
+                                class="Guardar"
+                                action="#{programaController.programaConsulta}"
+                                value="Consulta"/>
 
-                        <!--   <p:commandButton value="Inicio"
-                                         styleClass="button"
-                                         action="/index.xhtml"/>   -->
-                    </section>
+                            <p:commandButton onclick="programaCrearVentana.show()"
+                                             class="Guardar"
+                                             value="Crear programa"
+                                             actionListener="#{programaController.anular()}"
+                                             update=":programaCrearVentanaForm"/>
+                        </p>
+                    
                 </section>
             </h:form>
             <ui:include src="programaCrear.xhtml"/>

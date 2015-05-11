@@ -9,75 +9,90 @@
     <ui:composition template="/html_plantillas/plantilla_paginas.xhtml">
         <ui:define name="title">Planeación Pedagógica</ui:define>
         <ui:define name="body">
-            
+
             <h:form id="ListaActividad">
-                <nav>
-                    <h2 >Lista de Actividades de Aprendizaje</h2>
-                    
-                    <br></br>
-                    
-                    <p:commandButton value="Crear Actividad de aprendizaje" action="#{actividadController.crearActividadAprendizaje}"/>                   
 
-                </nav>
+                <h2 >Lista de Actividades de Aprendizaje</h2>
+
+
+                <p>
+                    <p:commandButton class="Guardar" value="Crear Actividad de aprendizaje" action="#{actividadController.crearActividadAprendizaje}"/>                   
+                </p>
                 
-                <br></br>
+                <p:panel>
+                    <p:dataTable  value="#{actividadController.actividadAprendizajeList}" var="Actividad"
+                                  paginator="true" rows="5" id="Actividadtable"
+                                  paginatorTemplate="{CurrentPageReport} {FirstPageLink} 
+                                  {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" 
+                                  rowsPerPageTemplate="5,10,15">
 
-                <p:dataTable  value="#{actividadController.actividadAprendizajeList}" var="Actividad"
-                              paginator="true" rows="10" id="Actividadtable"
-                              paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" 
-                              rowsPerPageTemplate="5,10,15">
-                    <p:column filterBy="#{Actividad.idActividad.toString()}" headerText="Actividad de Proyecto" filterMatchMode="contains">
-                        <h:outputText value="#{Actividad.idActividad.toString()}"/>
-                    </p:column>
-                    <p:column filterBy="#{Actividad.idActividad.duracion}" headerText="Duración Actividad de Proyecto (Horas)" filterMatchMode="contains">
-                        <h:outputText value="#{Actividad.idActividad.duracion}"/>
-                    </p:column>
-                    <p:column>
-                        <f:facet name="header">Resultados de Aprendizaje</f:facet>
-                        <p:dataList value="#{Actividad.resultadoAprendizajeList}" var="resultado">
-                            #{resultado}
-                        </p:dataList>
-                    </p:column>
-                    <p:column filterBy="#{Actividad.nombreActividadAprendizaje}" headerText="Nombre Actividad de Aprendizaje" filterMatchMode="contains">
-                        <h:outputText value="#{Actividad.nombreActividadAprendizaje}"/>
-                    </p:column>
-                    <p:column headerText="Duración Actividad de Aprendizaje" >
-                        <h:outputText value="#{Actividad.duracionActividadAprendizaje}"/>
-                    </p:column>
-                    <p:column headerText="Observaciones" >
-                        <h:outputText value="#{Actividad.observaciones}"/>
-                    </p:column>
-                    <p:column headerText="Descripción" >
-                        <h:outputText value="#{Actividad.descripcion}"/>
-                    </p:column>   
-                    <p:column headerText="Tipo Actividad de Aprendizaje" >
-                        <h:outputText value="#{Actividad.idTipoActividadAprendizaje.toString()}"/>
-                    </p:column>
-                    <p:column>
-                        <f:facet name="header">Materiales de Formación</f:facet>
-                        <p:dataList value="#{Actividad.recursoList}" var="recurso">
-                            #{recurso}
-                        </p:dataList>
-                    </p:column>
-                    <p:column>
-                        <f:facet name="header">Técnica Didáctica</f:facet>
-                        <p:dataList value="#{Actividad.tecnicaDidacticaList}" var="tecnicaDidactica">
-                            #{tecnicaDidactica}
-                        </p:dataList>
-                    </p:column>
-                    <p:column>
-                        <f:facet name="header">Instructores</f:facet>
-                        <p:dataList value="#{Actividad.usuarioList}" var="instructores">
-                            #{instructores}
-                        </p:dataList>
-                    </p:column>
-                </p:dataTable>
-                <form jsf:id="ConfirmForm">
+                        <p:column filterBy="#{Actividad.idActividad.toString()}" headerText="Actividad de Proyecto" filterMatchMode="contains">
+                            <h:outputText value="#{Actividad.idActividad.toString()}"/>
+                        </p:column>
+
+                        <p:column filterBy="#{Actividad.idActividad.duracion}" headerText="Duración Actividad de Proyecto (Horas)" filterMatchMode="contains">
+                            <h:outputText value="#{Actividad.idActividad.duracion}"/>
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">Resultados de Aprendizaje</f:facet>
+                            <p:dataList value="#{Actividad.resultadoAprendizajeList}" var="resultado">
+                                #{resultado}
+                            </p:dataList>
+                        </p:column>
+
+                        <p:column filterBy="#{Actividad.nombreActividadAprendizaje}" headerText="Nombre Actividad de Aprendizaje" filterMatchMode="contains">
+                            <h:outputText value="#{Actividad.nombreActividadAprendizaje}"/>
+                        </p:column>
+
+                        <p:column headerText="Duración Actividad de Aprendizaje" >
+                            <h:outputText value="#{Actividad.duracionActividadAprendizaje}"/>
+                        </p:column>
+
+                        <p:column headerText="Observaciones" >
+                            <h:outputText value="#{Actividad.observaciones}"/>
+                        </p:column>
+
+                        <p:column headerText="Descripción" >
+                            <h:outputText value="#{Actividad.descripcion}"/>
+                        </p:column>  
+
+                        <p:column headerText="Tipo Actividad de Aprendizaje" >
+                            <h:outputText value="#{Actividad.idTipoActividadAprendizaje.toString()}"/>
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">Materiales de Formación</f:facet>
+                            <p:dataList value="#{Actividad.recursoList}" var="recurso">
+                                #{recurso}
+                            </p:dataList>
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">Técnica Didáctica</f:facet>
+                            <p:dataList value="#{Actividad.tecnicaDidacticaList}" var="tecnicaDidactica">
+                                #{tecnicaDidactica}
+                            </p:dataList>
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">Instructores</f:facet>
+                            <p:dataList value="#{Actividad.usuarioList}" var="instructores">
+                                #{instructores}
+                            </p:dataList>
+                        </p:column>
+
+                    </p:dataTable>
+                </p:panel>
+
+                <h:form>
+
                     <p:confirmDialog global="true" showEffect="fade" hideEffect="explode">
                         <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
                         <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
                     </p:confirmDialog>
-                </form>    
+
+                </h:form>    
             </h:form> 
         </ui:define>
     </ui:composition>

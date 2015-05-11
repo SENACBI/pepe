@@ -10,12 +10,13 @@
     <ui:composition template="/html_plantillas/plantilla_paginas.xhtml">
         <ui:define name="title">Editar Actividad</ui:define>        
         <ui:define name="body">
+
             <form jsf:id="EditActividad">
-                <h1 class="Titulo"><h:outputText value="Editar Actividad"/></h1>
-                <h:panelGrid columns="1">
+                <h2>Editar Actividad</h2>
 
+                <h:panelGrid columns="3">
 
-                    <h:outputLabel class="form-1" value="Nombre de la actividad:" for="nomActividad" />
+                    <h:outputLabel class="form-1" value="Nombre de la Actividad:" for="nomActividad" />
                     <input class="form-1" jsf:id="nomActividad" jsf:value="#{actividadController.actividadActual.nombreActividadProyecto}" 
                            type="text" required="true"
                            jsf:requiredMessage="Por favor ingrese el nombre del tipo de actividad"
@@ -25,7 +26,7 @@
                     </input>
                     <h:message id="nomActividadMessage" for="nomActividad" styleClass="error"/>
 
-                    <h:outputLabel class="form-1" value="Duracion Actividad:" for="duraActividad" />
+                    <h:outputLabel class="form-1" value="Duración de la Actividad:" for="duraActividad" />
                     <input class="form-1" jsf:id="duraActividad" jsf:value="#{actividadController.actividadActual.duracion}" 
                            type="number" required="true"
                            jsf:requiredMessage="Por favor ingrese la duracion de la actividad"
@@ -36,23 +37,25 @@
                     <h:message id="duracionMessage" for="duracion" styleClass="error"/>
 
 
-                    <h:outputLabel class="form-1" value="proyecto:"  for="nomProyecto"/>
+                    <h:outputLabel class="form-1" value="Proyecto:"  for="nomProyecto"/>
                     <h:selectOneMenu class="form-1" id="idProyectoSelect" value="#{actividadController.actividadActual.idProyecto}">
                         <f:selectItem itemLabel="Seleccionar uno.." />
                         <f:selectItems value="#{actividadController.listaProyectoSelectOne}" var="proyecto" itemValue="#{proyecto}"/>  
                     </h:selectOneMenu>
+                    <br></br>
 
-                    <h:outputLabel class="form-1" value="fase:"  for="nomfase"/>
+                    <h:outputLabel class="form-1" value="Fase:"  for="nomfase"/>
                     <h:selectOneMenu class="form-1" id="nomfase" value="#{actividadController.actividadActual.idFase}">
                         <f:selectItem itemLabel="Seleccionar uno.." />
                         <f:selectItems value="#{actividadController.listaFaseSelectOne}" var="fase" itemValue="#{fase}"/>  
                     </h:selectOneMenu>
+                    <p></p>
 
 
                     <input class="Guardar" type="submit" jsf:action="#{actividadController.updateActividad}" value="Actualizar Actividad">
                     </input>
                 </h:panelGrid>
-                <h:commandButton class="Volver" action="#{actividadController.prepareList}" value="Ir a la lista de Actividad" immediate="true"/>
+                <p:commandButton class="Guardar" action="#{actividadController.prepareList}" value="Ir a la lista de Actividad" immediate="true"/>
             </form> 
         </ui:define>
     </ui:composition>

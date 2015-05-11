@@ -8,25 +8,27 @@
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 
     <ui:composition template="/html_plantillas/plantilla_paginas.xhtml">
-        <ui:define name="title">Lista Guia Aprendizaje</ui:define>
+        <ui:define name="title">Lista Guía Aprendizaje</ui:define>
         <ui:define name="body">
 
             <form jsf:id="ListaActividad">
-                <h1 class="Titulo"><h:outputText value="Lista de Actividades de proyecto"/></h1>
-                <h:panelGrid columns="1">
+                <h2>Lista de Actividades de Poyecto</h2>
 
-                    <p:commandButton  value="Crear Actividad" action="#{actividadController.createActividadProyecto}"/>
+                <h:panelGrid columns="1">
+                    <p>
+                        <p:commandButton  value="Crear Actividad" action="#{actividadController.createActividadProyecto}"/>
+                    </p>
 
                     <p:dataTable  value="#{actividadController.listaActividad}" var="Actividad"
                                   paginator="true" rows="10" id="Actividadtable"
                                   paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" 
                                   rowsPerPageTemplate="5,10,15">
 
-                        <p:column filterBy="#{Actividad.nombreActividadProyecto}" headerText="NombreActividad" filterMatchMode="contains">
+                        <p:column filterBy="#{Actividad.nombreActividadProyecto}" headerText="Nombre de Actividad" filterMatchMode="contains">
                             <h:outputText value="#{Actividad.nombreActividadProyecto}"/>
                         </p:column>
 
-                        <p:column filterBy="#{Actividad.duracion}" headerText="Duracion" filterMatchMode="contains">
+                        <p:column filterBy="#{Actividad.duracion}" headerText="Duración" filterMatchMode="contains">
                             <h:outputText value="#{Actividad.duracion}"/>
                         </p:column>
 
@@ -34,7 +36,7 @@
                             <h:outputText value="#{Actividad.idProyecto.nombreProyecto}"/>
                         </p:column>
 
-                        <p:column filterBy="#{Actividad.idFase.fase}" headerText="fase" filterMatchMode="contains">
+                        <p:column filterBy="#{Actividad.idFase.fase}" headerText="Fase" filterMatchMode="contains">
                             <h:outputText value="#{Actividad.idFase.fase}"/>
                         </p:column>
 
@@ -57,7 +59,7 @@
 
                             </p:commandButton>
 
-                            <p:commandButton process="@this" value="Generar Guia" actionListener="#{actividadController.prepareCreateGenerarGuia}" action="#{actividadController.createGenerarGuia}">
+                            <p:commandButton class="Guardar" process="@this" value="Generar Guia" actionListener="#{actividadController.prepareCreateGenerarGuia}" action="#{actividadController.createGenerarGuia}">
                                 <f:attribute name="actividad" value="#{Actividad}"/>            
                             </p:commandButton>
                         </p:column>

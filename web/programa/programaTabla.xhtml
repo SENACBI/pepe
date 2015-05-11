@@ -11,18 +11,18 @@
         <ui:define name="body">
             <h:form id="competenciaForm">
                 <section class="row">
-                    <h1 class="columns-5">#{programaController.programaActual.nombrePrograma}</h1>
-                    <h2 class="columns-5">#{programaController.programaActual.programaPK.codigo} + #{programaController.programaActual.programaPK.version}</h2>
+                    <h2>#{programaController.programaActual.nombrePrograma}</h2>
+                    <h3>#{programaController.programaActual.programaPK.codigo} + #{programaController.programaActual.programaPK.version}</h3>
 
-                    <input type="submit"
-                           class="button columns-4"
-                           jsf:actionListener="#{programaController.anular()}"
-                           jsf:action="programaInicio.xhtml"
-                           jsf:value="cambiar programa"/>
+                    <p:commandButton update="@this"
+                           value="Cambiar Programa"
+                           class="Guardar"
+                           actionListener="#{programaController.anular()}"
+                           action="programaInicio.xhtml"/>
 
                     <p:commandButton onclick="programaVerVentana.show()"
-                                     styleClass="button columns-4"
-                                     value="ver programa"
+                                     class="Guardar"
+                                     value="Ver Programa"
                                      update=":programaVerVentanaForm"/>
                 </section>
 
@@ -63,13 +63,13 @@
                             <section class="row">
                                 <p:commandButton id="botonC"
                                                  styleClass="button"
-                                                 value="crear"
+                                                 value="Crear"
                                                  action="#{programaController.anularComp()}"
                                                  onclick="competenciaCrearVentana.show()"
                                                  update=":competenciaCrearVentanaForm"/>
                                 <p:commandButton id="botonE"
                                                  styleClass="button"
-                                                 value="editar"
+                                                 value="Editar"
                                                  process="@this"
                                                  onclick="competenciaEditarVentana.show()"
                                                  update=":competenciaEditarVentanaForm"
@@ -105,14 +105,17 @@
                     </p:dataTable>
 
                     <p:commandButton action="#{programaController.prepareCreate()}"
-                                     value="nueva version"
+                                     class="Guardar"
+                                     value="Nueva Versión"
                                      update=":programaVersionCrearVentanaForm"
                                      onclick="programaVersionCrearVentana.show()"/>
-                    <p:commandButton value="crear Ficha"
+                    <p:commandButton value="Crear Ficha"
+                                     class="Guardar"
                                      action="#{fichaController.prepareCreate()}"
                                      update=":fichaCrearVentanaForm"
                                      onclick="fichaCrearVentana.show()"/>
                     <p:commandButton value="Fichas"
+                                     class="Guardar"
                                      update=":fichaListaVentanaForm"
                                      onclick="fichaListaVentana.show()">
                     </p:commandButton>

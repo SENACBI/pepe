@@ -95,7 +95,7 @@ public class GuiaAprendizajeController implements Serializable {
     }
 
     public String prepareView() {
-        return "/GuiaAprendizaje/ver_guiaAprendizaje";
+        return "/GuiaAprendizaje/ver_guiaAprendizaje.xhtml";
     }
 
     public String prepareList() {

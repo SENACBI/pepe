@@ -17,25 +17,12 @@ and open the template in the editor.
         <ui:define name="body">
             <h:form>
                 <h2>Formulario de registro de Usuario</h2>
-                <h:panelGrid columns="1">
-
-                    <h:outputLabel class="form-1" value="Caracterización:"  for="nomCaracterizacion"/>
-                    <h:selectOneMenu  class="form-1" id="idCaracterizacionSelect" value="#{usuarioController.usuarioActual.idCaracterizacion}">
-                        <f:selectItem  itemLabel="Seleccionar uno.." />
-                        <f:selectItems value="#{usuarioController.listaCaracterizacionSelectOne}" var="caracterizacion" itemValue="#{caracterizacion}"/>  
-                    </h:selectOneMenu>
+                <h:panelGrid columns="2">
 
                     <h:outputLabel class="form-1" value="Estilo de Aprendizaje:"  for="nomEstiloApre"/>
                     <h:selectOneMenu class="form-1" id="idEstiloApreSelect" value="#{usuarioController.usuarioActual.idEstiloAprendizaje}"  >
                         <f:selectItem itemLabel="Seleccionar uno.." />
                         <f:selectItems value="#{usuarioController.listaEstiloAprendizajeSelectOne}" var="estilo_Aprendizaje" itemValue="#{estilo_Aprendizaje}"/>  
-                    </h:selectOneMenu>
-
-
-                    <h:outputLabel class="form-1" value="Deserción:"  for="nomDesercion"/>
-                    <h:selectOneMenu class="form-1"  id="idDesercionSelect" value="#{usuarioController.usuarioActual.idDesercion}">
-                        <f:selectItem itemLabel="Seleccionar uno.." />
-                        <f:selectItems value="#{usuarioController.listaDesercionSelectOne}" var="desercion" itemValue="#{desercion}"/>  
                     </h:selectOneMenu>
 
                     <h:outputLabel class="form-1" value="No. Documento:"  for="nomDocumento"/>
@@ -46,6 +33,7 @@ and open the template in the editor.
                         <f:ajax execute="@this" render="numeroDocumentoMessage"/>
                     </input>
                     <h:message id="numeroDocumentoMessage" for="numeroDocumento" styleClass="error"/>
+                    <br></br>
 
                     <h:outputLabel class="form-1" value="Primer Nombre:" for="nom1Usuario" />
                     <input class="form-1" jsf:id="nom1UsuarioInputText" jsf:value="#{usuarioController.usuarioActual.nombre1}" 
@@ -56,6 +44,7 @@ and open the template in the editor.
                         <f:ajax execute="@this" render="nom1UsuarioMessage"/>
                     </input>
                     <h:message id="nom1UsuarioMessage" for="nom1UsuarioInputText" styleClass="error"/>
+                    <br></br>
 
 
                     <h:outputLabel class="form-1" value="Segundo Nombre:" for="nom2Usuario" />
@@ -66,6 +55,7 @@ and open the template in the editor.
                         <f:ajax execute="@this" render="nom2UsuarioMessage"/>
                     </input>
                     <h:message id="nom2UsuarioMessage" for="nom2UsuarioInputText" styleClass="error"/>
+                    <br></br>
 
 
                     <h:outputLabel class="form-1" value="Primer Apellido:" for="ape1Usuario" />
@@ -76,7 +66,8 @@ and open the template in the editor.
                         <f:validateRegex pattern="[a-zA-Z áéíóúÁÉÍÓÚÑñ ]*"/>
                         <f:ajax execute="@this" render="ape1UsuarioMessage"/>
                     </input>
-                    <h:message id="ape1UsuarioMessage" for="ape1UsuarioInputText" styleClass="error"/> 
+                    <h:message id="ape1UsuarioMessage" for="ape1UsuarioInputText" styleClass="error"/>
+                    <br></br>
 
 
                     <h:outputLabel class="form-1" value="Segundo Apellido:" for="ape2Usuario" />
@@ -86,7 +77,8 @@ and open the template in the editor.
                         <f:validateRegex pattern="[a-zA-Z áéíóúÁÉÍÓÚÑñ ]*"/>
                         <f:ajax execute="@this" render="ape2UsuarioMessage"/>
                     </input>
-                    <h:message id="ape2UsuarioMessage" for="ape2UsuarioInputText" styleClass="error"/> 
+                    <h:message id="ape2UsuarioMessage" for="ape2UsuarioInputText" styleClass="error"/>
+                    <br></br>
 
                     <h:outputLabel class="form-1" value="Teléfono 1 del Usuario:" for="nomtel1" />
                     <input class="form-1" type="tel" jsf:id="telefono1InputText" required="true"
@@ -97,6 +89,7 @@ and open the template in the editor.
                         <f:ajax execute="@this" render="telefono1Message"/>
                     </input>
                     <h:message id="telefono1Message" for="telefono1InputText" styleClass="error"/>
+                    <br></br>
 
 
                     <h:outputLabel class="form-1" value="Correo 1 del Usuario:" for="correo" />
@@ -107,6 +100,7 @@ and open the template in the editor.
                         <f:ajax execute="@this" render="correo1Message"/>
                     </input>
                     <h:message id="correo1Message" for="correo1InputText" styleClass="error"/>
+                    <br></br>
 
 
                     <h:outputLabel class="form-1" value="Dirección:" for="nomDireccion" />
@@ -115,7 +109,8 @@ and open the template in the editor.
                            jsf:requiredMessage="Por favor ingrese la Dirección ">
                         <f:ajax execute="@this" render="DireccionMessage"/>
                     </input>
-                    <h:message id="DireccionMessage" for="DireccionInputText" styleClass="error"/> 
+                    <h:message id="DireccionMessage" for="DireccionInputText" styleClass="error"/>
+                    <br></br>
 
 
                     <h:outputLabel class="form-1" value="Vocero:"  for="nomVocero"/>
@@ -134,6 +129,7 @@ and open the template in the editor.
                         <f:ajax execute="@this" render="contraUsuarioMessage"/>
                     </input>
                     <h:message id="contraUsuarioMessage" for="contraUsuarioInputText" styleClass="error"/>
+                    <br></br>
 
 
                     <h:outputLabel class="form-1" value="Tipo Documento:"  for="nomTipoDocumento"/>
@@ -182,6 +178,7 @@ and open the template in the editor.
                     </input>
 
                     <h:message id="msgFecha" for="fecha"  styleClass="error"/>
+                    <br></br>
 
                     <h:outputLabel class="form-1" value="Especialidad:"  for="nomEspecialidad"/>
                     <h:selectOneMenu class="form-1" id="idEspecialidadSelect" value="#{usuarioController.usuarioActual.idEspecialidad}">
@@ -199,7 +196,7 @@ and open the template in the editor.
                 <p:commandButton process="@this" class="Guardar" value="Guardar" action="#{usuarioController.addUsuario}"/>
 
                 <p:commandButton process="@this" class="Guardar"
-                                 value="Volver a Menú Crear Usuario" 
+                                 value="Regresar al Menú de Edición" 
                                  type="button" onclick="PF('botonCrearUsuarioDlg').show();"/>
             </h:form> 
             <ui:include src="/admin/dlg_menuCrearUsuario.xhtml"/>

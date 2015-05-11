@@ -10,43 +10,47 @@
     <ui:composition template="/html_plantillas/plantilla_paginas.xhtml">
         <ui:define name="title">Ver Actividad</ui:define>        
         <ui:define name="body">
-            
+
             <form jsf:id="ver_Actividad">
                 <h2>Ver Actividad</h2>
-                <h:panelGrid columns="1">
+                <h:panelGrid columns="2">
 
 
-                    <label class="form-1" value="nombre Actividad:" jsf:for="nomActividad" />
+                    <label class="form-1" value="Nombre de la Actividad:" jsf:for="nomActividad" />
                     <textarea class="form-1"  disabled="true" type="text" jsf:id="nomActividad" jsf:value="#{actividadController.actividadActual.nombreActividadProyecto}" title="nombre Actividad" required="true" jsf:requiredMessage="El nombre es necesario">
                     </textarea>
 
-                    <label class="form-1" value="Duracion Actividad:" jsf:for="DuraciActividad" />
+                    <label class="form-1" value="Duración de la Actividad:" jsf:for="DuraciActividad" />
                     <input class="form-1" disabled="number" type="text" jsf:id="DuraciActividad" jsf:value="#{actividadController.actividadActual.duracion}" title="Duracion Actividad" jsf:requiredMessage="La Duracion Actividad field is required.">
                     </input>
-                        
-                        <label class="form-1" value="nombre Proyecto:" jsf:for="nomProyecto" />
-                        <textarea class="form-1" disabled="true" type="text" jsf:id="nomProyecto" jsf:value="#{actividadController.actividadActual.idProyecto.nombreProyecto}" title="nombre Proyecto" jsf:requiredMessage="El nombre del priyecto field is required.">
-                        </textarea>
-                         
-                        
-                        <label class="form-1" value="nombre fase:" jsf:for="nomfase" />
-                        <textarea class="form-1" disabled="true" type="text" jsf:id="nomfase" jsf:value="#{actividadController.actividadActual.idFase.fase}" title="nombre fase" jsf:requiredMessage="El nombre de la fase field is required.">
-                        </textarea>
 
-                        
-                    </h:panelGrid>
-                <h:button class="Guardar" value="Editar" outcome="/Actividad/editar_Actividad"/>
+                    <label class="form-1" value="Nombre del Proyecto:" jsf:for="nomProyecto" />
+                    <textarea rows="6" cols="60" style="resize: none" class="form-1" disabled="true" type="text" jsf:id="nomProyecto" jsf:value="#{actividadController.actividadActual.idProyecto.nombreProyecto}" title="nombre Proyecto" jsf:requiredMessage="El nombre del priyecto field is required.">
+                    </textarea>
+
+
+                    <label class="form-1" value="Nombre de la Fase:" jsf:for="nomfase" />
+                    <input class="form-1" disabled="true" type="text" jsf:id="nomfase" jsf:value="#{actividadController.actividadActual.idFase.fase}" title="nombre fase" jsf:requiredMessage="El nombre de la fase field is required.">
+                    </input>
+
+                </h:panelGrid>
+
+                <p:commandButton class="Guardar" value="Editar" action="#{actividadController.prepareEdit}"/>
+
+                <p:commandButton class="Guardar" value="Eliminar" action="#{actividadController.deleteActividad}"
+                                 onclick="return confirm('¿Está seguro que desea eliminar la Actividad?')"/>
+
+                <input class="Guardar" value="Crear Actividad" type="submit" jsf:action="#{actividadController.prepareCreate}">
+                    <f:attribute name="ficha" value="#{fichaController.fichaSeleccionada}"/>
+                    <f:attribute name="fase" value="#{faseController.faseSeleccionada}"/>
                     
-                <h:commandButton class="Guardar" value="eliminar" action="#{actividadController.deleteActividad}"
-                                 onclick="return confirm('¿ Esta seguro que desea eliminar la Actividad ?')"/>
-                                    
-                <input class="Guardar" type="submit" jsf:action="#{actividadController.prepareCreate}" value="Crear Actividad" ></input>
-                
-        <br/>
-        <h:commandButton class="Guardar" action="#{actividadController.prepareList}" value="Ir a la lista de Actividad" immediate="true"/>
-              
-                </form> 
-</ui:define>
+                </input>
+
+                <p:commandButton class="Guardar" action="#{actividadController.prepareList}"
+                                 value="Ir a la lista de Actividad" immediate="true"/>
+
+            </form> 
+        </ui:define>
     </ui:composition>
 </html>
 

@@ -353,6 +353,10 @@ ESTILOS DE FORMULACION
     overflow: visible !important;
 }
 
+.ui-state-default{
+    font-size: calc; 
+}
+
 
 
 .Guardar{

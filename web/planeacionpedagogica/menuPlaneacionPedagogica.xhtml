@@ -7,15 +7,15 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:jsf="http://xmlns.jcp.org/jsf">
 
-    <ui:composition template="/html_plantillas/plantilla_paginas.xhtml">
-        <h2>Menú de Planeación Pedagógica</h2>
+    <ui:composition template="/html_plantillas/plantilla_paginas.xhtml">        
         <ui:define name="body">
 
             <form jsf:id="PlaneacionPedagogica">
+                <h2>Menú de Planeación Pedagógica</h2>
                 <h:panelGrid columns="1"> 
-
-                    <article class="articulo1">                        
-                        <label for="comments" class="Pepe-articuloLabel">Fase</label>
+                    <label for="comments">Fase</label>
+                    
+                    <article class="articulo1">                                                
                         <p:selectOneMenu id="faseSelectOne" value="#{faseController.faseSeleccionada}" class="Guardar">
                             <f:selectItem itemLabel="Seleccionar uno.." />
                             <f:selectItems value="#{faseController.listaFase}" var="fase" itemValue="#{fase}"/>  
@@ -24,7 +24,7 @@
                         <p:message id="faseSelectOneMsg" for="faseSelectOne"/>
                     </article>
 
-                    <p:commandButton process="@this" value="Ingresar planeación" 
+                    <p:commandButton process="@this" value="Ingresar a Planeación" 
                                      class="Guardar"
                                      actionListener="#{actividadController.prepareCreate}" 
                                      action="#{actividadController.createActividad}">
@@ -34,7 +34,8 @@
 
                     <p:commandButton process="@this" value="Ingresar Guía aprendizaje" 
                                      class="Guardar"
-                                     actionListener="#{actividadController.prepareCreateGuiaAprendizaje}" action="#{actividadController.createGuiaAprendizaje}">
+                                     actionListener="#{actividadController.prepareCreateGuiaAprendizaje}" 
+                                     action="#{actividadController.createGuiaAprendizaje}">
                         <f:attribute name="fase" value="#{faseController.faseSeleccionada}"/>
                         <f:attribute name="ficha" value="#{fichaController.fichaSeleccionada}"/>             
                     </p:commandButton>
