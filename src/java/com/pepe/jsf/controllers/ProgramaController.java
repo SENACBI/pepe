@@ -33,20 +33,20 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.ejb.EJB;
-import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import javax.faces.validator.ValidatorException;
-import javax.inject.Named;
 
 /**
  *
  * @author EQUIPO 3
  */
-@Named(value = "programaController")
+@ManagedBean
 @SessionScoped
 public class ProgramaController implements Serializable {
 

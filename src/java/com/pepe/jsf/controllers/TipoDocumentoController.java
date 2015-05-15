@@ -8,6 +8,7 @@ package com.pepe.jsf.controllers;
 
 import com.pepe.jpa.entities.TipoDocumento;
 import com.pepe.jpa.sesions.TipoDocumentoFacade;
+import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
@@ -24,7 +25,7 @@ import javax.faces.convert.FacesConverter;
  */
 @ManagedBean
 @SessionScoped
-public class TipoDocumentoController {
+public class TipoDocumentoController implements Serializable{
 
     @EJB
     private TipoDocumentoFacade tipoDocumentoFacade;

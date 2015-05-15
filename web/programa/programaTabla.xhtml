@@ -9,6 +9,7 @@
 
     <ui:composition template="/html_plantillas/plantilla_paginas.xhtml">
         <ui:define name="body">
+            
             <h:form id="competenciaForm">
                 <section class="row">
                     <h2>#{programaController.programaActual.nombrePrograma}</h2>
@@ -18,7 +19,7 @@
                            value="Cambiar Programa"
                            class="Guardar"
                            actionListener="#{programaController.anular()}"
-                           action="programaInicio.xhtml"/>
+                           action="/programaInicio.xhtml"/>
 
                     <p:commandButton onclick="programaVerVentana.show()"
                                      class="Guardar"
@@ -59,6 +60,7 @@
                             </f:facet>
                             <h:outputText value="#{item.duracionEstimadaHoras}"/>
                         </p:column>
+                        
                         <f:facet name="footer">
                             <section class="row">
                                 <p:commandButton id="botonC"
@@ -67,6 +69,7 @@
                                                  action="#{programaController.anularComp()}"
                                                  onclick="competenciaCrearVentana.show()"
                                                  update=":competenciaCrearVentanaForm"/>
+                                
                                 <p:commandButton id="botonE"
                                                  styleClass="button"
                                                  value="Editar"
@@ -109,16 +112,19 @@
                                      value="Nueva Versión"
                                      update=":programaVersionCrearVentanaForm"
                                      onclick="programaVersionCrearVentana.show()"/>
+                    
                     <p:commandButton value="Crear Ficha"
                                      class="Guardar"
                                      action="#{fichaController.prepareCreate()}"
                                      update=":fichaCrearVentanaForm"
                                      onclick="fichaCrearVentana.show()"/>
-                    <p:commandButton value="Fichas"
+                    
+              <!--      <p:commandButton value="Fichas"
                                      class="Guardar"
                                      update=":fichaListaVentanaForm"
                                      onclick="fichaListaVentana.show()">
-                    </p:commandButton>
+                    </p:commandButton> -->
+              
                 </section>
             </h:form>
 

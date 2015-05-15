@@ -7,6 +7,7 @@ package com.pepe.jsf.controllers;
 
 import com.pepe.jpa.entities.EtapaPractica;
 import com.pepe.jpa.sesions.EtapaPracticaFacade;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
@@ -24,7 +25,7 @@ import javax.faces.convert.FacesConverter;
  */
 @ManagedBean
 @SessionScoped
-public class PracticasController {
+public class PracticasController implements Serializable{
 EtapaPractica etapaPracticaActual;
 @EJB
 private EtapaPracticaFacade etapaPracticaFacade;

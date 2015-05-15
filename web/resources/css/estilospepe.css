@@ -100,9 +100,6 @@
 
 }
 
-.Form-input8{
-    width: 1094em;
-}
 .Form-Input1{
     border-color: #01A9DB;
     border-radius: .2em;
@@ -157,15 +154,20 @@
     border-radius: .2em;
     color: black;
     margin: 2px;
-    margin-left: 15px;
-    margin-right: 60px;
+    margin-left: 24px;
+    margin-right: 0;
 }
+
+.Form-input8{
+    width: 1094em;
+}
+
 .Form-Input8{
     border-color: #01A9DB;
     border-radius: .2em;
     color: black;
     margin: 2px;
-    margin-left: 24px;
+    margin-left: 15px;
     margin-right: 3px;
     width:196px;
 }
@@ -343,6 +345,11 @@
     padding-left: 1em;
 
 }
+
+.ui-panelgrid td, .ui-panelgrid tr{
+   border-style: none !important
+}
+
 .Titulo-pepe{
     font-family: bold;
     font-size: 1em;
@@ -407,6 +414,10 @@
         margin-bottom: 1em;
         margin-left: 1em;
     }
+    
+    .botonConsulta{
+        margin-left: 20px;
+    }
 
     .Label1{
         margin: 0;
@@ -431,6 +442,7 @@
     }
     .Label8{
         margin: 0;
+        margin-left: 24px;
     }
 
     .Label-form{

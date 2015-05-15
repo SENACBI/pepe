@@ -20,13 +20,14 @@ import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import com.pepe.jpa.entities.Programa;
 import com.pepe.jpa.sesions.ProgramaFacade;
+import java.io.Serializable;
 /**
  *
  * @author Adsit
  */
 @ManagedBean
 @SessionScoped
-public class CompetenciaController {
+public class CompetenciaController implements Serializable{
     
     @EJB
     private CompetenciaFacade competenciaFacade;

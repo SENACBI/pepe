@@ -18,10 +18,14 @@
         <link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'/>
         <link rel="stylesheet" type="text/js" href="../resources/js/foundation-5.5.1/js/vendor/modernizr.js" media="screen"/>
     </head>
+    
     <body class="Bodypepe" jsf:id="body">
         <header class="Header">
-            <h:form class="Header-Form">
+            
+            <h:form class="Header-Form" id="formInicio">
+
                 <section class="Header-pepeForm">
+
                     <h:panelGrid columns="6">
                         <label class="Label1" for="nombreProgramaText">Programa de formación:</label>
                         <input class="Form-Input1" type="text" disabled="true"
@@ -39,20 +43,50 @@
                         <label class="Label6" for="codigoProyectoText">Código del proyecto:</label>
                         <input class="Form-Input6" type="text" disabled="true"
                                jsf:value="#{fichaController.fichaSeleccionada.idProyecto.codigoProyecto}">
-                        </input>
-                        <label class="Label7" for="numeroFichaText">Ficha:</label>
-                        <input class="Form-Input7" type="text" disabled="true"
-                               jsf:value="#{fichaController.fichaSeleccionada.codigoFicha}">
-                        </input>
-                        <label class="Label8" for="liderEjecutorText">Líder ejecutor:</label>
+                        </input> 
+
+                        <label class="Label8" for="liderEjecutorText">Líder Ejecutor:</label>
                         <input class="Form-Input8" type="text" disabled="true"
                                jsf:value="#{fichaController.usuarioFicha.usuario.nombre1} #{fichaController.usuarioFicha.usuario.apellido1}">
                         </input>
+
+                        <div>
+                            <label class="Label7" for="numeroFichaText">Ficha:</label>
+                            <h:selectOneMenu id="fichaselectone" class="Form-Input7"
+                                             value="#{fichaController.fichaSeleccionada}">
+                                <f:selectItem itemLabel="Seleccionar uno.." />
+                                <f:selectItems value="#{fichaController.listaFicha}" 
+                                               var="ficha" 
+                                               itemValue="#{ficha}"/>  
+                                <p:ajax process="fichaselectone" 
+                                        update="formInicio fichaselectoneMsg"/>
+                            </h:selectOneMenu>
+
+                            <br></br>
+                            <p class="botonConsulta">
+                                <h:commandButton 
+                                                 action="/proyecto/proyectoCrear.xhtml"
+                                                 id="botonF"                                             
+                                                 actionListener="#{proyectoController.asignarFicha}"
+                                                 styleClass="small-3 button"
+                                                 disabled="#{fichaController.fichaBoolean()}"
+                                                 value="Consultar">
+                                    <f:attribute name="ficha" value="#{fichaController.fichaSeleccionada}"/>
+                                </h:commandButton>
+                            </p>
+
+                            <h:message class="Form-Input-1" id="fichaselectoneMsg" for="fichaselectone"/>
+
+
+                        </div>
+
                     </h:panelGrid> 
+
                     <label class="Label5" for="nombreProyectoText">Nombre del proyecto:</label>
                     <textarea rows="5" cols="20" class="Form-Input5" disabled="true" style="text-align: justify; resize: none"
-                           jsf:value="#{fichaController.fichaSeleccionada.idProyecto.nombreProyecto}">
+                              jsf:value="#{fichaController.fichaSeleccionada.idProyecto.nombreProyecto}">
                     </textarea>
+
                 </section>
             </h:form>
         </header>
@@ -91,6 +125,7 @@
         <section class="Panel_prog">
             <ui:insert name="body" >Default Body</ui:insert> 
         </section>
+
 
         <hr SIZE='20'></hr>
         <footer class="Pepe-footer">

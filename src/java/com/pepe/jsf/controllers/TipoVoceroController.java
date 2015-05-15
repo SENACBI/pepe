@@ -8,6 +8,7 @@ package com.pepe.jsf.controllers;
 
 import com.pepe.jpa.entities.TipoVocero;
 import com.pepe.jpa.sesions.TipoVoceroFacade;
+import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
@@ -24,7 +25,7 @@ import javax.faces.convert.FacesConverter;
  */
 @ManagedBean
 @SessionScoped
-public class TipoVoceroController {
+public class TipoVoceroController implements Serializable{
 
   @EJB
     private TipoVoceroFacade tipoVoceroFacade;

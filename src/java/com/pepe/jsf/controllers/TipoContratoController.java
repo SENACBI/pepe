@@ -8,11 +8,12 @@ package com.pepe.jsf.controllers;
 
 import com.pepe.jpa.entities.TipoContrato;
 import com.pepe.jpa.sesions.TipoContratoFacade;
+import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
@@ -23,8 +24,8 @@ import javax.faces.convert.FacesConverter;
  * @author Junior Cabal
  */
 @ManagedBean
-@RequestScoped
-public class TipoContratoController {
+@SessionScoped
+public class TipoContratoController implements Serializable{
 
    @EJB
     private TipoContratoFacade tipoContratoFacade;
