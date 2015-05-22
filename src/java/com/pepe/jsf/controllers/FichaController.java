@@ -363,13 +363,14 @@ public class FichaController implements Serializable {
         listaFicha = null;
     }
 
-    public void prepareCreate() {
+    public String prepareCreate() {
         idCentro = 0;
         idOferta = 0;
         jornada = 0;
         idTipoFormacion = 0;
         idUsu = 0;
         fichaActual = null;
+        return "/programa/fichaCrear.xhtml";
     }
 
     public String prepareEdit() {

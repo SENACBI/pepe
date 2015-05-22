@@ -117,10 +117,8 @@
                     <p:commandButton actionListener="#{fichaController.addFicha}" 
                                      class="Guardar"
                                      value="Guardar Ficha"
-                                     update=":fichaCrearVentanaForm"
-                                     oncomplete="handleSubmit(args,'fichaCrearVentana','');">
-                        <f:attribute name="prog" value="#{programaController.programaActual}"/>
-                        
+                                     update="@this">
+                        <f:attribute name="prog" value="#{programaController.programaActual}"/>                        
                     </p:commandButton>
                     
                 </h:panelGrid>

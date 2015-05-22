@@ -12,6 +12,8 @@
 
             <h:form id="fichaListaVentanaForm">
                 
+                <section class="row">
+                
                 <h2>Fichas sin Proyecto asignado</h2>
                 
                 <p:dataTable value="#{programaController.fichaListaPrograma}" 
@@ -25,14 +27,14 @@
                 
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="CodigoFicha"/>
+                            <h:outputText value="Código Ficha"/>
                         </f:facet>
                         <h:outputText value="#{item.codigoFicha}"/>
                     </p:column>
                     
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="FechaInicio"/>
+                            <h:outputText value="Fecha Inicio"/>
                         </f:facet>
                         <h:outputText value="#{item.fechaInicio}">
                             <f:convertDateTime pattern="MM/dd/yyyy" />
@@ -41,28 +43,28 @@
                     
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="IdTipoFormacion"/>
+                            <h:outputText value="Tipo de Formación"/>
                         </f:facet>
                         <h:outputText value="#{item.idTipoFormacion}"/>
                     </p:column>
                     
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="IdJornada"/>
+                            <h:outputText value="Jornada"/>
                         </f:facet>
                         <h:outputText value="#{item.idJornada}"/>
                     </p:column>
                     
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="IdTipoOferta"/>
+                            <h:outputText value="Tipo de Oferta"/>
                         </f:facet>
                         <h:outputText value="#{item.idTipoOferta}"/>
                     </p:column>
                     
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="IdCentroFormacion"/>
+                            <h:outputText value="Centro de Formación"/>
                         </f:facet>
                         <h:outputText value="#{item.idCentroFormacion}"/>
                     </p:column>
@@ -79,6 +81,8 @@
                     </f:facet>
                 
                 </p:dataTable>
+                
+                </section>
             </h:form>
 
         </ui:define>

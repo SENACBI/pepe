@@ -4,90 +4,110 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:jsf="http://xmlns.jcp.org/jsf"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <p:dialog widgetVar="actividadCrearVentana" 
-              resizable="false"
-              modal="true"
-              draggable="false"
-              styleClass="Dialogo">
-        <h:form id="actividadCrearVentanaForm">
-            <h1>Actividades de Proyecto</h1>
-            <h:selectOneMenu id="idFaseActividad" 
-                             value="#{proyectoController.idFase}"
-                             required="true"
-                             requiredMessage="Debe seleccionar una fase">
-                <f:selectItem itemLabel="Centro de Formación..." />
-                <f:selectItems value="#{proyectoController.listaFase()}" 
-                               var="fase" 
-                               itemValue="#{fase.idFase}"/>  
-                <f:ajax execute="idFaseActividad"
-                        render="idFaseActividadmsg"
-                        event="blur"/>
-                <f:ajax execute="idFaseActividad"
-                        render="idFaseActividadmsg"/>
-            </h:selectOneMenu>
-            <h:message id="idFaseActividadmsg"
-                       for="idFaseActividad"
-                       styleClass="error"/>
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
-            <textarea jsf:value="#{proyectoController.actividadActual.nombreActividadProyecto}"
-                      jsf:id="crearDesActividad"
-                      required="true"
-                      jsf:requiredMessage="Insgrese la descripción de la Actividad de Proyecto"
-                      placeholder="Nombre Proyecto">
-                <f:ajax execute="crearDesActividad"
-                        render="crearDesActividadmsg"
-                        event="blur"/>
-            </textarea>
-            <h:message id="crearDesActividadmsg"
-                       for="crearDesActividad"
-                       styleClass="error"/>
+    <ui:composition template="/admin/plantilla_paginas.xhtml">
+        <ui:define name="title">Crear Actividad Proyecto</ui:define>        
+        <ui:define name="body">
 
-            <input type="number"
-                   jsf:id="crearNombreActividad"
-                   jsf:value="#{proyectoController.actividadActual.duracion}"
-                   placeholder="tiempo estimado en horas"
-                   required="true"
-                   jsf:requiredMessage="Ingrese el numero de horas para completar dicha actividad"
-                   jsf:validatorMessage="esta mal">
-                <f:ajax execute="crearNombreActividad"
-                        render="crearNombreActividadmsg"
-                        event="blur"/>
-            </input>
-            <h:message id="crearNombreActividadmsg"
-                       for="crearNombreActividad"
-                       styleClass="error"/>
+            <h:form id="actividadCrearVentanaForm">
 
-            <h:selectOneMenu id="idComp" 
-                             value="#{proyectoController.idComp}">
-                <f:selectItem itemLabel="Competencias ..." />
-                <f:selectItems value="#{proyectoController.listaCompetencia}" 
-                               var="com" 
-                               itemValue="#{com.idCompetencia}"/>  
-                <p:ajax process="idComp"
-                        update="actividadCrearVentanaForm"
-                        event="change"/>
-            </h:selectOneMenu>
-            <h:message id="idCompmsg"
-                       for="idComp"
-                       styleClass="error"/>
-            <p:selectCheckboxMenu  id="idRap" 
-                                   value="#{proyectoController.idRapSeleccionados}"
-                                   label="Resultados de Aprendizaje ...">
-                <f:selectItems value="#{proyectoController.listaRAP}" 
-                               var="rap" 
-                               itemValue="#{rap.idResultadoAprendizaje}"/>  
-                <p:ajax process="idRap"
-                        event="change"/>
-            </p:selectCheckboxMenu>
-            
+                <h2>Actividades de Proyecto</h2>
 
-            <p:commandButton value="Guardar"
-                             id="botonGuardar"
-                             update="@(actividadCrearVentanaForm) :actividadCrearVentanaForm :actividadListVentanaForm"
-                             actionListener="#{proyectoController.addActividad}"
-                             oncomplete="handleSubmit(args,'actividadCrearVentana','actividadListVentana');">
-            </p:commandButton>
-        </h:form>
-    </p:dialog>
+                <div style="width: 40%; display: inline-block">
+                    <p:panelGrid columns="3">
+
+                        <h:outputText value="Fase de la Actividad"/>
+                        <h:selectOneMenu id="idFaseActividad" 
+                                         value="#{proyectoController.idFase}"
+                                         required="true"
+                                         requiredMessage="Debe seleccionar una fase">
+                            <f:selectItem itemLabel="Seleccione una Fase..." />
+                            <f:selectItems value="#{proyectoController.listaFase()}" 
+                                           var="fase" 
+                                           itemValue="#{fase.idFase}"/>  
+                            <f:ajax execute="idFaseActividad"
+                                    render="idFaseActividadmsg"
+                                    event="blur"/>
+                            <f:ajax execute="idFaseActividad"
+                                    render="idFaseActividadmsg"/>
+                        </h:selectOneMenu>
+                        <h:message id="idFaseActividadmsg"
+                                   for="idFaseActividad"
+                                   styleClass="error"/>
+
+                        <h:outputText value="Descripción de la Actividad"/>
+                        <textarea jsf:value="#{proyectoController.actividadActual.nombreActividadProyecto}"
+                                  jsf:id="crearDesActividad" cols="50" rows="3" style="resize: none"
+                                  required="true"
+                                  jsf:requiredMessage="Insgrese la descripción de la Actividad de Proyecto"
+                                  placeholder="Nombre Proyecto">
+                            <f:ajax execute="crearDesActividad"
+                                    render="crearDesActividadmsg"
+                                    event="blur"/>
+                        </textarea>
+                        <h:message id="crearDesActividadmsg"
+                                   for="crearDesActividad"
+                                   styleClass="error"/>
+
+                        <h:outputText value="Duración de la Actividad"/>
+                        <input type="number"
+                               jsf:id="crearNombreActividad"
+                               jsf:value="#{proyectoController.actividadActual.duracion}"
+                               placeholder="Tiempo estimado en horas"
+                               required="true"
+                               jsf:requiredMessage="Ingrese el número de horas para completar dicha actividad"
+                               jsf:validatorMessage="Dato incorrecto">
+                            <f:ajax execute="crearNombreActividad"
+                                    render="crearNombreActividadmsg"
+                                    event="blur"/>
+                        </input>
+                        <h:message id="crearNombreActividadmsg"
+                                   for="crearNombreActividad"
+                                   styleClass="error"/>
+
+
+                        <h:outputText value="Competencias de la Actividad"/>
+                        <h:selectOneMenu id="idComp" 
+                                         value="#{proyectoController.idComp}">
+                            <f:selectItem itemLabel="Competencias ..." />
+                            <f:selectItems value="#{proyectoController.listaCompetencia}" 
+                                           var="com" 
+                                           itemValue="#{com.idCompetencia}"/>  
+                            <p:ajax process="idComp"
+                                    update="actividadCrearVentanaForm"
+                                    event="change"/>
+                        </h:selectOneMenu>
+                        <h:message id="idCompmsg"
+                                   for="idComp"
+                                   styleClass="error"/>
+
+
+                        <h:outputText value="Resultados de la Actividad"/>
+                        <p:selectCheckboxMenu  id="idRap" 
+                                               value="#{proyectoController.idRapSeleccionados}"
+                                               label="Resultados de Aprendizaje ...">
+                            <f:selectItems value="#{proyectoController.listaRAP}" 
+                                           var="rap" 
+                                           itemValue="#{rap.idResultadoAprendizaje}"/>  
+                            <p:ajax process="idRap"
+                                    event="change"/>
+                        </p:selectCheckboxMenu>
+
+                    </p:panelGrid>
+                </div>
+
+                <p:commandButton value="Guardar" class="Guardar"
+                                 id="botonGuardar"
+                                 update="@this"
+                                 actionListener="#{proyectoController.addActividad}"
+                                 action="/proyecto/actividadList.xhtml">
+                </p:commandButton>
+
+            </h:form>
+
+        </ui:define>
+    </ui:composition>
+
 </html>

@@ -18,11 +18,8 @@
                 <p:commandButton rendered="#{fichaController.proyectoActividadBoolean()}"
                                  id="botonActividad"
                                  value="Actividades de Proyecto"
-                                 onclick="actividadListVentana.show()"/>
+                                 action="/proyecto/actividadList.xhtml"/>
             </h:form>
-            
-            <ui:include src="actividadList.xhtml"/>
-            <ui:include src="actividadCrear.xhtml"/>
         </ui:define>
     </ui:composition>
 </html>

@@ -79,7 +79,7 @@
                            class="Pepe-articuloLabel">Nombre del Líder Ejecutor</label>
                     <input  type="text" 
                             disabled="true" 
-                            class="Pepe-formInput1" 
+                            class="Pepe-formInput2" 
                             jsf:value="#{fichaController.usuarioFicha.usuario.nombre1} #{fichaController.usuarioFicha.usuario.apellido1}" 
                             jsf:id="nombreLider"/>
                 </h:panelGrid>
@@ -96,11 +96,7 @@
             </h:form>
 
 
-            <h:form > 
-
-                <p:commandButton class="Guardar" value="Programa"
-                                 action="/programa/programaInicio.xhtml" />
-
+            <h:form> 
 
                 <p:commandButton class="Guardar" process="@this" 
                                  value="Programación del Proyecto" 

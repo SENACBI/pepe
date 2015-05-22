@@ -7,7 +7,7 @@
       xmlns:jsf="http://xmlns.jcp.org/jsf"
       xmlns:p="http://primefaces.org/ui">
 
-    <ui:composition template="/html_plantillas/template.xhtml">
+    <ui:composition template="/html_plantillas/plantilla_paginas.xhtml">
         <ui:define name="title">Ver Guia Aprendizaje</ui:define>        
         <ui:define name="body">
             <form jsf:id="ver_guiaAprendizaje">
@@ -16,20 +16,20 @@
 
 
                     <label class="form-1" value="Proyecto:" jsf:for="Proyecto" />
-                    <input class="form-1"  disabled="true" type="text" jsf:id="Proyecto" jsf:value="#{guiaAprendizajeController.guiaAprendizajeActual.idProyecto}" title="Proyecto" required="true" jsf:requiredMessage="El Proyecto es necesario">
+                    <input class="form-1"  disabled="true" type="text" jsf:id="Proyecto" jsf:value="#{guiaAprendizajeController.guiaAprendizajeActual.idActividadProyecto}" title="Proyecto" required="true" jsf:requiredMessage="El Proyecto es necesario">
                     </input >
-                    <label class="form-1"  value="Introduccion:" jsf:for="Introduccion" />
+                    <label class="form-1"  value="Introducción:" jsf:for="Introduccion" />
                     <textarea class="form-1"  disabled="true" type="text" jsf:id="Introduccion" jsf:value="#{guiaAprendizajeController.guiaAprendizajeActual.introduccion}" title="Introduccion" required="true" jsf:requiredMessage="La Introduccion field is required.">
                         </textarea>
                         <label class="form-1"  value="Glosario:" jsf:for="Glosario" />
                         <textarea class="form-1"  disabled="true" type="text" jsf:id="Glosario" jsf:value="#{guiaAprendizajeController.guiaAprendizajeActual.glosarioTerminos}" title="Glosario" jsf:requiredMessage="El Glosario field is required.">
                         </textarea>
                         
-                        <label class="form-1"  value="referentesBibliograficos:" jsf:for="referentesBibliograficos" />
+                        <label class="form-1"  value="Referentes Bibliográficos:" jsf:for="referentesBibliograficos" />
                         <textarea class="form-1"  disabled="true" type="text" jsf:id="referentesBibliograficos" jsf:value="#{guiaAprendizajeController.guiaAprendizajeActual.referentesBibliograficos}" title="referentesBibliograficos" jsf:requiredMessage="La referentesBibliograficos field is required.">
                         </textarea>
                         
-                        <label class="form-1"  value="ControlDocumentos:" jsf:for="ControlDocumentos" />
+                        <label class="form-1"  value="Control de Documentos:" jsf:for="ControlDocumentos" />
                         <textarea class="form-1"  disabled="true" type="text" jsf:id="ControlDocumentos" jsf:value="#{guiaAprendizajeController.guiaAprendizajeActual.controlDocumento}" title="ControlDocumentos" jsf:requiredMessage="El ControlDocumentos field is required.">
                         </textarea>
 

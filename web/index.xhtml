@@ -44,17 +44,14 @@
                         </h:panelGroup>
                         <label for="comments" class='Pepe-inicioLabel1'><font  size="+2">Ingreso de Usuario Registrado</font></label>
                         <br></br>
-                        <input jsf:id="user" type="text" class='Pepe-formInput9' placeholder="Usuario" jsf:value="#{loginController.username}" required="true"/>
-                        <input jsf:id="password" type="password" class='Pepe-formInput9' placeholder="Contraseña" jsf:value="#{loginController.password}" required="true"/>
+                        <input jsf:id="user" type="text" class='Pepe-formInput9'
+                               placeholder="Usuario" jsf:value="#{loginController.username}" required="true"/>
+                        
+                        <input jsf:id="password" type="password" class='Pepe-formInput9' 
+                               placeholder="Contraseña" jsf:value="#{loginController.password}" required="true"/>
                         <br/>
 
                         <input class="Guardar" type="submit" value="Iniciar Sesión" jsf:action="#{loginController.login}"/>
-                        <!-- <p:commandButton process="@this" class="Guardar" type="submit" 
-                        id="Inicio" value="Iniciar Sesión" actionListener=""/> -->
-
-                        <!--      <a class="Pepe-inicioLabel1" href="#"><font  size="+1">¿Olvidaste tu contraseña?</font></a> -->
-
-                        <!-- TENER EN CUENTA QUE SE HARÁ CON EL OLVIDO DE CONTRASEÑA-->
 
                         <section class='Pepe-figureContainer'>
                             <figure class='Pepe-formLogo'>

@@ -8,6 +8,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
     <ui:composition template="/html_plantillas/plantilla_paginas.xhtml">
+        <ui:define name="title">Formular Proyecto 2</ui:define> 
         <ui:define name="body">
 
             <h:form id="proyectoCrearP2VentanaForm" class="Bodypepe">
@@ -17,11 +18,11 @@
                 <h3>2.5 Alcance</h3>
                 <div>
                     
-                    <p:panelGrid columns="2">
+                    <p:panelGrid columns="1">
 
                         <!-- Beneficiarios -->
                         <label for="crearBeneficiarios" jsf:value="2.5.1 Beneficiarios del Proyecto"/>
-                        <textarea jsf:id="crearBeneficiarios"
+                        <textarea jsf:id="crearBeneficiarios" cols="50" rows="3" style="resize: none"
                                   jsf:value="#{proyectoController.proyectoActual.beneficiario251}"
                                   required="true"
                                   placeholder="Beneficiarios Proyecto"
@@ -36,7 +37,7 @@
                         
                         <!-- Impacto Social -->
                         <label for="crearImpactoSocial" jsf:value="2.5.2.1 Impacto Social"/>
-                        <textarea jsf:id="crearImpactoSocial"
+                        <textarea jsf:id="crearImpactoSocial" cols="50" rows="3" style="resize: none"
                                   jsf:value="#{proyectoController.proyectoActual.impactoSocial2521}"
                                   required="true"
                                   placeholder="Impacto Social"
@@ -51,7 +52,7 @@
                         
                         <!-- Impacto Economico -->
                         <label for="crearImpactoEconomico" jsf:value="2.5.2.2 Impacto Económico"/>
-                        <textarea jsf:id="crearImpactoEconomico"
+                        <textarea jsf:id="crearImpactoEconomico" cols="50" rows="3" style="resize: none"
                                   jsf:value="#{proyectoController.proyectoActual.impactoEconomico2522}"
                                   required="true"
                                   placeholder="Económico"
@@ -66,7 +67,7 @@
                         
                         <!-- Impacto Ambiental -->
                         <label for="crearImpactoAmbiental" jsf:value="2.5.2.3 Impacto Ambiental"/>
-                        <textarea jsf:id="crearImpactoAmbiental"
+                        <textarea jsf:id="crearImpactoAmbiental" cols="50" rows="3" style="resize: none"
                                   jsf:value="#{proyectoController.proyectoActual.impactoAmbiental2523}"
                                   required="true"
                                   placeholder="Impacto Ambiental"
@@ -81,7 +82,7 @@
                         
                         <!-- Impacto Tecnologico -->
                         <label for="crearImpactoTecnologico" jsf:value="2.5.1 Impacto Tecnológico"/>
-                        <textarea jsf:id="crearImpactoTecnologico"
+                        <textarea jsf:id="crearImpactoTecnologico" cols="50" rows="3" style="resize: none"
                                   jsf:value="#{proyectoController.proyectoActual.impactoTecnologico2524}"
                                   required="true"
                                   placeholder="Impacto Tecnológico"
@@ -96,7 +97,7 @@
                         
                         <!-- Restricciones -->
                         <label for="crearRestricciones" jsf:value="2.5.3 Restricciones o Riesgos Asociados y Alternativas de Solución"/>
-                        <textarea jsf:id="crearRestricciones"
+                        <textarea jsf:id="crearRestricciones" cols="50" rows="3" style="resize: none"
                                   jsf:value="#{proyectoController.proyectoActual.restricciones253}"
                                   required="true"
                                   placeholder="Restricciones"
@@ -111,7 +112,7 @@
                         
                         <!-- Producto -->
                         <label for="crearProducto" jsf:value="2.5.4 Productos o Resultados del Proyecto"/>
-                        <textarea jsf:id="crearProducto"
+                        <textarea jsf:id="crearProducto" cols="50" rows="3" style="resize: none"
                                   jsf:value="#{proyectoController.proyectoActual.productosResultados254}"
                                   required="true"
                                   placeholder="Resultados"
@@ -126,12 +127,12 @@
                     </p:panelGrid>
                 </div>
 
+                <p:commandButton class="Guardar" action="/proyectoCrearP1.xhtml"
+                                     value="Atras"/>
+                
                     <p:commandButton class="Guardar" oncomplete="handleSubmit(args,'proyectoCrearP2Ventana','proyectoCrearP3Ventana');"
                                      update="@(proyectoCrearP2VentanaForm) :proyectoCrearP2VentanaForm"
                                      value="Siguiente"/>
-
-                    <p:commandButton class="Guardar" action="/proyectoCrearP1.xhtml"
-                                     value="Atras"/>
 
             </h:form>
 

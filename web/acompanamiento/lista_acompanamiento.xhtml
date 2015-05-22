@@ -3,6 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    
     <h:head>
         <title>Facelet Title</title>
     </h:head>
@@ -40,12 +42,6 @@
                             <h:outputText value="IdFicha"/>
                         </f:facet>
                         <h:outputText value="#{item.idFicha}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="IdFase"/>
-                        </f:facet>
-                        <h:outputText value="#{item.idFase}"/>
                     </h:column>
                 </h:dataTable>
             </h:form>
