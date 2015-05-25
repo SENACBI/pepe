@@ -26,21 +26,21 @@ import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.ejb.EJB;
-import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import javax.faces.event.ActionEvent;
 import javax.faces.validator.ValidatorException;
-import javax.inject.Named;
 
 /**
  *
  * @author Adsim
  */
-@Named(value = "fichaController")
+@ManagedBean
 @SessionScoped
 public class FichaController implements Serializable {
 
@@ -553,11 +553,3 @@ public class FichaController implements Serializable {
 
     }
 }
-//<!--
-//                <label for="ProgrmaText">Programa:</label>
-//                <p:autoComplete id="Programa" value="#{fichaController.fichaActual.programa}"
-//                                completeMethod="#{fichaController.getListaProgramaAutocomplete}"
-//                                var="Programa" itemLabel="#{Programa}" itemValue="#{Programa}"
-//                                converter="ProgramaConverter" required="true"
-//                                forceSelection="true" maxResults="10"/>
-//                -->

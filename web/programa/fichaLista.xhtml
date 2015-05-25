@@ -15,7 +15,7 @@
             <p:dataTable value="#{programaController.fichaListaPrograma}" 
                          var="item"
                          selection="#{fichaController.fichaActual}"
-                         selectionMode="single"
+                         selectionMode="single" 
                          paginator="true"
                          rowKey="#{item.idFicha}"
                          rows="10">
@@ -62,9 +62,8 @@
                     <p:commandButton action="/proyecto/proyectoCrear.xhtml"
                                      actionListener="#{proyectoController.asignarFicha}"
                                      id="botonF"
-                                     disabled="#{fichaController.fichaBoolean()}"
+                                     
                                      value="consultar">
-                        <f:actionListener binding="#{fichaController.asignarFichaSeleccionada()}"/>
                         <f:attribute name="ficha" value="#{fichaController.fichaActual}"/>
                     </p:commandButton>
                 </f:facet>

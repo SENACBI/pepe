@@ -193,7 +193,7 @@ and open the template in the editor.
                     </h:selectOneMenu>
 
                 </h:panelGrid>
-                <p:commandButton process="@this" class="Guardar" value="Guardar" action="#{usuarioController.addUsuario}"/>
+                <p:commandButton process="@this @form" class="Guardar" value="Guardar" action="#{usuarioController.addUsuario}"/>
 
                 <p:commandButton process="@this" class="Guardar"
                                  value="Regresar al Menú de Edición" 
