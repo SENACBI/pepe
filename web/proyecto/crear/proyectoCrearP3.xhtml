@@ -83,13 +83,13 @@
                     
                 </p:panelGrid>
                 
-                <p:commandButton class="Guardar" oncomplete="handleSubmit(args,'proyectoCrearP3Ventana','');"
-                                 update="@(proyectoCrearP3VentanaForm) :proyectoCrearP3VentanaForm"
+                <p:commandButton class="Guardar"
+                                 update="proyectoCrearP3VentanaForm"
                                  actionListener="#{proyectoController.addProyecto}"
-                                 value="Siguiente">
+                                 value="Guardar">
                 </p:commandButton>
 
-                <p:commandButton class="Guardar" action="/proyectoCrearP2.xhtml"
+                <p:commandButton class="Guardar" action="proyectoCrearP2"
                                  value="Atras"/>
 
             </h:form>
