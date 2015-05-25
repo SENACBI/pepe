@@ -8,14 +8,18 @@
       xmlns:jsf="http://xmlns.jcp.org/jsf"
       xmlns:p="http://primefaces.org/ui"
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
     <ui:composition template="/html_plantillas/plantilla_paginas.xhtml">
         <ui:define name="body">
+
             <h2>Acompañamiento</h2>
 
-            <section class="Panel_scroll">
-                <h:form id="formInicio" style="overflow: scroll">
+            <h3>Fase</h3>
 
-                    <h3>Fase</h3>
+            <h:form id="formAcomp" style="overflow: scroll">
+
+                <section class="Panel_scroll">
+
                     <h:selectOneMenu value="#{seguimientoController.idFase}">
                         <f:selectItem itemLabel="Seleccionar uno.." />
                         <f:selectItems value="#{seguimientoController.listFaseSelectOne}" 
@@ -23,7 +27,7 @@
                                        itemLabel="#{usuario}" 
                                        itemValue="#{usuario}" />
                         <p:ajax event="change" 
-                                update=":formInicio"/>
+                                update="formAcomp"/>
                     </h:selectOneMenu>
 
                     <h4>Tipo de criterio</h4>
@@ -33,12 +37,10 @@
                                        var="usuario" 
                                        itemValue="#{usuario.idTipoCriterio}" />
                         <p:ajax process="idCri"
-                                update="formInicio"
+                                update="formAcomp"
                                 event="change"/>
-                    </h:selectOneMenu> <!-- la opcion "Acompañamiento durante el cierre del proyecto" y "Seleccionar uno.."
-                                       desestabiliza la tabla-->
-
-                    <br></br>
+                    </h:selectOneMenu>
+                    <p></p>
 
                     <!--tabla para el primer tipo de criterio-->
                     <p:dataTable id="criterioTable1"
@@ -53,10 +55,11 @@
                             <h:outputText  value="#{acompañamiento.idDescripcionCriterio1.descrpcion}"/>
                         </p:column>
 
-
                         <p:column headerText="Valoración">
                             <p:cellEditor>
-                                <f:facet name="output"><h:outputText value="#{acompañamiento.valoracionItem}" /></f:facet>
+                                <f:facet name="output">
+                                    <h:outputText value="#{acompañamiento.valoracionItem}"/>
+                                </f:facet>
                                 <f:facet name="input">
                                     <h:selectOneMenu  id="valoracion" value="#{acompañamiento.valoracionItem}">
                                         <f:selectItem itemValue="Satisfactorio" itemLabel="Satisfactorio"  />
@@ -69,16 +72,19 @@
 
                         <p:column headerText="Observaciones">
                             <p:cellEditor>
-                                <f:facet name="output"><h:outputText value="#{acompañamiento.observacion}" /></f:facet>
-                                <f:facet name="input"><p:inputText value="#{acompañamiento.observacion}" style="width:96%" label="Observaciones"/></f:facet>
+                                <f:facet name="output">
+                                    <h:outputText value="#{acompañamiento.observacion}" />
+                                </f:facet>
+                                <f:facet name="input">
+                                    <p:inputTextarea rows="2" value="#{acompañamiento.observacion}" 
+                                                     style="width: 96%; resize: none" label="Observaciones"/>
+                                </f:facet>
                             </p:cellEditor>                  
                         </p:column>
 
-
-
                     </p:dataTable>
-
                     <br></br>
+
                     <!--tabla para el 2 tipo de criterio-->
                     <p:dataTable id="criterioTable2"
                                  var="acompañamiento"
@@ -92,10 +98,11 @@
                             <h:outputText  value="#{acompañamiento.idDescripcionCriterio2.descrpcion}"/>
                         </p:column>
 
-
                         <p:column headerText="Valoración">
                             <p:cellEditor>
-                                <f:facet name="output"><p:outputLabel value="#{acompañamiento.valoracionItem}" /></f:facet>
+                                <f:facet name="output">
+                                    <p:outputLabel value="#{acompañamiento.valoracionItem}" />
+                                </f:facet>
                                 <f:facet name="input">
                                     <h:selectOneMenu id="valoracion" value="#{acompañamiento.valoracionItem}">
                                         <f:selectItem itemLabel="Satisfactorio" itemValue="Satisfactorio" />
@@ -106,21 +113,23 @@
                             </p:cellEditor>
                         </p:column>
 
-
-
                         <p:column headerText="Observaciones">
                             <p:cellEditor>
-                                <f:facet name="output"><h:outputText value="#{acompañamiento.observacion}" /></f:facet>
-                                <f:facet name="input"><p:inputText value="#{acompañamiento.observacion}" style="width:96%" label="Observaciones"/></f:facet>
+                                <f:facet name="output">
+                                    <h:outputText value="#{acompañamiento.observacion}"/>
+                                </f:facet>
+                                <f:facet name="input">
+                                    <p:inputTextarea rows="2" value="#{acompañamiento.observacion}" 
+                                                     style="width: 96%; resize: none" label="Observaciones"/>
+                                </f:facet>
                             </p:cellEditor>                  
                         </p:column>
 
-
-
                     </p:dataTable>
-
                     <br></br>
+
                     <!--tabla para el 3 tipo de criterio-->
+
                     <p:dataTable id="criterioTable3"
                                  var="acompañamiento"
                                  rendered="#{seguimientoController.renderTabla3()}"
@@ -133,10 +142,11 @@
                             <h:outputText  value="#{acompañamiento.idDescripcionCriterio3.descrpcion}"/>
                         </p:column>
 
-
                         <p:column headerText="Valoración">
                             <p:cellEditor>
-                                <f:facet name="output"><p:outputLabel value="#{acompañamiento.valoracionItem}" /></f:facet>
+                                <f:facet name="output">
+                                    <p:outputLabel value="#{acompañamiento.valoracionItem}" />
+                                </f:facet>
                                 <f:facet name="input">
                                     <h:selectOneMenu id="valoracion" value="#{acompañamiento.valoracionItem}">
                                         <f:selectItem itemLabel="Satisfactorio" itemValue="Satisfactorio" />
@@ -147,21 +157,22 @@
                             </p:cellEditor>
                         </p:column>
 
-
-
                         <p:column headerText="Observaciones">
                             <p:cellEditor>
-                                <f:facet name="output"><h:outputText value="#{acompañamiento.observacion}" /></f:facet>
-                                <f:facet name="input"><p:inputText value="#{acompañamiento.observacion}" style="width:96%" label="Observaciones"/></f:facet>
+                                <f:facet name="output">
+                                    <h:outputText value="#{acompañamiento.observacion}" />
+                                </f:facet>
+                                <f:facet name="input">
+                                    <p:inputTextarea rows="2" value="#{acompañamiento.observacion}" 
+                                                     style="width: 96%; resize: none" label="Observaciones"/>
+                                </f:facet>
                             </p:cellEditor>                  
                         </p:column>
 
-
-
                     </p:dataTable>
                     <br></br>
-                    <!--tabla para el 4 tipo de criterio-->
 
+                    <!--tabla para el 4 tipo de criterio-->
                     <p:dataTable id="criterioTable4"
                                  var="acompañamiento"
                                  rendered="#{seguimientoController.renderTabla4()}"
@@ -174,10 +185,11 @@
                             <h:outputText  value="#{acompañamiento.idDescripcionCriterio4.descrpcion}"/>
                         </p:column>
 
-
                         <p:column headerText="Valoración">
                             <p:cellEditor>
-                                <f:facet name="output"><p:outputLabel value="#{acompañamiento.valoracionItem}" /></f:facet>
+                                <f:facet name="output">
+                                    <p:outputLabel value="#{acompañamiento.valoracionItem}" />
+                                </f:facet>
                                 <f:facet name="input">
                                     <h:selectOneMenu id="valoracion" value="#{acompañamiento.valoracionItem}">
                                         <f:selectItem itemLabel="Seleccionar uno.." />
@@ -189,26 +201,32 @@
                             </p:cellEditor>
                         </p:column>
 
-
-
                         <p:column headerText="Observaciones">
                             <p:cellEditor>
-                                <f:facet name="output"><h:outputText value="#{acompañamiento.observacion}" /></f:facet>
-                                <f:facet name="input"><p:inputText value="#{acompañamiento.observacion}" style="width:96%" label="Observaciones"/></f:facet>
+                                <f:facet name="output">
+                                    <h:outputText value="#{acompañamiento.observacion}"/>
+                                </f:facet>
+                                <f:facet name="input">
+                                    <p:inputTextarea rows="2" value="#{acompañamiento.observacion}" 
+                                                     style="width: 96%; resize: none" label="Observaciones"/>
+                                </f:facet>
                             </p:cellEditor>                  
                         </p:column>
 
-
-
                     </p:dataTable>
-                    <h3>Conclusiones</h3>
-                    <textarea class="form-00" value="#{seguimientoController.acompanamientoActual.conclusiones}" >
-                    </textarea>
-                    <p:commandButton process="@this formInicio" update="formInicio" value="guardar" action="#{seguimientoController.addAcompanamiento()}"/>
 
-                </h:form>
-            </section>
-            
+                    <h3>Conclusiones</h3>
+                    <textarea class="form-00" value="#{seguimientoController.acompanamientoActual.conclusiones}"
+                              rows="5" style="width: 99%; resize: none">
+                    </textarea>
+                    <br></br>
+                    <p:commandButton class="Guardar" process="@this" update="formAcomp" value="guardar" 
+                                     action="#{seguimientoController.addAcompanamiento()}"/>
+
+                </section>
+
+            </h:form>
+
         </ui:define>
     </ui:composition>
 </html>

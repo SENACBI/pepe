@@ -8,6 +8,7 @@ package com.pepe.jsf.controllers;
 
 import com.pepe.jpa.entities.TipoActividadAprendizaje;
 import com.pepe.jpa.sesions.TipoActividadAprendizajeFacade;
+import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
@@ -24,7 +25,7 @@ import javax.faces.convert.FacesConverter;
  */
 @ManagedBean
 @SessionScoped
-public class TipoActividadAprendizajeController {
+public class TipoActividadAprendizajeController implements Serializable{
 
     @EJB
     private TipoActividadAprendizajeFacade TipoActividadAprendizajeFacade;

@@ -9,16 +9,23 @@
 
     <ui:composition template="/html_plantillas/plantilla_paginas.xhtml">
         <ui:define name="body">
+
             <h:form id="competenciaForm">
                 <section class="row">
                     <h2>#{programaController.programaActual.nombrePrograma}</h2>
                     <h3>#{programaController.programaActual.programaPK.codigo} + #{programaController.programaActual.programaPK.version}</h3>
 
+                    <p:commandButton value="Fichas"
+                                     class="Guardar"
+                                     update="@this"
+                                     action="/programa/fichaLista.xhtml">
+                    </p:commandButton> 
+
                     <p:commandButton update="@this"
-                           value="Cambiar Programa"
-                           class="Guardar"
-                           actionListener="#{programaController.anular()}"
-                           action="programaInicio.xhtml"/>
+                                     value="Cambiar Programa"
+                                     class="Guardar"
+                                     actionListener="#{programaController.anular()}"
+                                     action="/programa/programaInicio.xhtml"/>
 
                     <p:commandButton onclick="programaVerVentana.show()"
                                      class="Guardar"
@@ -59,6 +66,7 @@
                             </f:facet>
                             <h:outputText value="#{item.duracionEstimadaHoras}"/>
                         </p:column>
+
                         <f:facet name="footer">
                             <section class="row">
                                 <p:commandButton id="botonC"
@@ -67,6 +75,7 @@
                                                  action="#{programaController.anularComp()}"
                                                  onclick="competenciaCrearVentana.show()"
                                                  update=":competenciaCrearVentanaForm"/>
+
                                 <p:commandButton id="botonE"
                                                  styleClass="button"
                                                  value="Editar"
@@ -78,7 +87,7 @@
                             <section class="row">
                                 <p:commandButton id="botonRA"
                                                  styleClass="button"
-                                                 value="RA"
+                                                 value="RAP"
                                                  disabled="#{programaController.competenciaNull()}"
                                                  onclick="listaRAVentana.show()"
                                                  update=":listaRAVentanaForm"/>
@@ -109,16 +118,12 @@
                                      value="Nueva Versión"
                                      update=":programaVersionCrearVentanaForm"
                                      onclick="programaVersionCrearVentana.show()"/>
+
                     <p:commandButton value="Crear Ficha"
                                      class="Guardar"
                                      action="#{fichaController.prepareCreate()}"
-                                     update=":fichaCrearVentanaForm"
-                                     onclick="fichaCrearVentana.show()"/>
-                    <p:commandButton value="Fichas"
-                                     class="Guardar"
-                                     update=":fichaListaVentanaForm"
-                                     onclick="fichaListaVentana.show()">
-                    </p:commandButton>
+                                     update="@this"/>
+
                 </section>
             </h:form>
 
@@ -138,11 +143,8 @@
             <ui:include src="programaInfo/RA/crearRA.xhtml"/>            
             <ui:include src="programaInfo/RA/modificarRA.xhtml"/>
             <ui:include src="programaInfo/RA/deshabilitarRA.xhtml"/>
-
             <ui:include src="programaVer.xhtml"/>
             <ui:include src="programaVersion.xhtml"/>
-            <ui:include src="fichaCrear.xhtml"/>
-            <ui:include src="fichaLista.xhtml"/>
             <ui:include src="programaInfo/competencia/competenciaCreate.xhtml"/>
             <ui:include src="programaInfo/competencia/competenciaEditar.xhtml"/>
         </ui:define>

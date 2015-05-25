@@ -9,6 +9,7 @@ package com.pepe.jsf.controllers;
 import com.pepe.jpa.entities.Ficha;
 import com.pepe.jpa.entities.UsuarioHasFicha;
 import com.pepe.jpa.sesions.UsuarioHasFichaFacade;
+import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -24,7 +25,7 @@ import javax.faces.convert.FacesConverter;
  */
 @ManagedBean
 @SessionScoped
-public class UsuarioHasFichaController {
+public class UsuarioHasFichaController implements Serializable{
     
     @EJB
     private UsuarioHasFichaFacade usuarioHasFichaFacade;

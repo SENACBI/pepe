@@ -7,13 +7,13 @@ import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
 import javax.ejb.EJB;
-import javax.inject.Named;
-import javax.enterprise.context.SessionScoped;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.view.ViewScoped;
 
 
-@Named("registroController")
-@ViewScoped
+@ManagedBean
+@SessionScoped
 public class RegistroController implements Serializable {
 
 

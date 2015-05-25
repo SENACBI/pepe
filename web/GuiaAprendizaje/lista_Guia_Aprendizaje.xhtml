@@ -14,7 +14,8 @@
 
                 <h2>Lista Guía de Aprendizaje</h2>
                 <p>
-                    <p:button class="Guardar" value="Agregar Guia Aprendizaje" outcome="/GuiaAprendizaje/crear_guiaAprendizaje"></p:button>
+                    <p:commandButton class="Guardar" value="Agregar Guia Aprendizaje" 
+                                     action="/GuiaAprendizaje/crear_guiaAprendizaje.xhtml"/>
                 </p>
 
                 <p:panel>
@@ -25,7 +26,7 @@
                                  rowsPerPageTemplate="5,10,15">
 
                         <p:column filterBy="#{GuiaAprendizaje.idActividadProyecto}" headerText="Id" filterMatchMode="contains">
-                            <h:outputText value="#{GuiaAprendizaje.idActividadProyecto}"/>
+                            <h:outputText value="#{GuiaAprendizaje.idGuiaAprendizaje}"/>
                         </p:column>
 
                         <p:column filterBy="#{GuiaAprendizaje.introduccion}" headerText="Introducción" filterMatchMode="contains">

@@ -8,6 +8,7 @@ package com.pepe.jsf.controllers;
 
 import com.pepe.jpa.entities.Caracterizacion;
 import com.pepe.jpa.sesions.CaracterizacionFacade;
+import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
@@ -24,7 +25,7 @@ import javax.faces.convert.FacesConverter;
  */
 @ManagedBean
 @SessionScoped
-public class CaracterizacionController {
+public class CaracterizacionController implements Serializable{
 
     @EJB
     private CaracterizacionFacade caracterizacionFacade;

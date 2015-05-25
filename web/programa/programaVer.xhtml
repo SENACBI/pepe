@@ -5,145 +5,168 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:jsf="http://xmlns.jcp.org/jsf"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
+
     <p:dialog widgetVar="programaVerVentana" 
               resizable="false"
               modal="true"
-              draggable="false"
-              styleClass="Dialogo">
+              draggable="false">
+
         <h:form id="programaVerVentanaForm">
-            <h1>Ver programa</h1>
 
-            <!-- CODIGO -->
-            <input type="text"
-                   jsf:id="createIdCodigo"
-                   jsf:value="#{programaController.programaActual.programaPK.codigo}"
-                   pattern="[0-9]{6}" 
-                   disabled="true"
-                   placeholder="codigo del programa"
-                   maxlength="6"
-                   jsf:validatorMessage="esta mal">
-                <f:validateRegex pattern="[0-9]{6}"/>
-                <f:ajax execute="createIdCodigo"
-                        render="msgCreateIdCodigo"/>
-                <f:ajax execute="createIdCodigo"
-                        render="msgCreateIdCodigo"
-                        event="blur"/>
-            </input>
-            <h:message id="msgCreateIdCodigo"
-                       for="createIdCodigo"
-                       styleClass="error"/>
+            <h2>Ver programa</h2>
 
-            <!-- VERSION -->
-            <input type="text"
-                   jsf:id="createIdVersion"
-                   jsf:value="#{programaController.programaActual.programaPK.version}"
-                   placeholder="numero de version"
-                   pattern="[0-9]{3}" 
-                   maxlength="3"
-                   disabled="true"
-                   jsf:validatorMessage="esta mal">
-                <f:validateRegex pattern="[0-9]{3}"/>
-                <f:ajax execute="createIdVersion"
-                        render="msgcreateIdVersion"
-                        event="blur"/>
-            </input>
-            <h:message id="msgcreateIdVersion"
-                       for="createIdVersion"
-                       styleClass="error"/>
+            <p:panelGrid columns="3">            
+                <!-- CODIGO -->
+                <label>CODIGO:</label>
+                <input type="text"
+                       jsf:id="createIdCodigo"
+                       jsf:value="#{programaController.programaActual.programaPK.codigo}"
+                       pattern="[0-9]{6}" 
+                       disabled="true"
+                       placeholder="Código del Programa"
+                       maxlength="6"
+                       jsf:validatorMessage="Dato Inválido">
+                    <f:validateRegex pattern="[0-9]{6}"/>
+                    <f:ajax execute="createIdCodigo"
+                            render="msgCreateIdCodigo"/>
+                    <f:ajax execute="createIdCodigo"
+                            render="msgCreateIdCodigo"
+                            event="blur"/>
+                </input>
+                <h:message id="msgCreateIdCodigo"
+                           for="createIdCodigo"
+                           styleClass="error"/>
 
-            <!-- NOMBRE -->
-            <input type="text"
-                   jsf:id="createNombre"
-                   jsf:value="#{programaController.programaActual.nombrePrograma}"
-                   placeholder="nombre del programa"
-                   maxlength="45"
-                   disabled="true"
-                   jsf:validatorMessage="esta mal">
-                <f:ajax execute="createNombre"
-                        render="msgcreateNombre"
-                        event="blur"/>
-            </input>
-            <h:message id="msgcreateNombre"
-                       for="createNombre"
-                       styleClass="error"/>
+                <!-- VERSION -->
+                <label>VERSION:</label>
+                <input type="text"
+                       jsf:id="createIdVersion"
+                       jsf:value="#{programaController.programaActual.programaPK.version}"
+                       placeholder="Nùmero de Versión"
+                       pattern="[0-9]{3}" 
+                       maxlength="3"
+                       disabled="true"
+                       jsf:validatorMessage="Dato Inválido">
+                    <f:validateRegex pattern="[0-9]{3}"/>
+                    <f:ajax execute="createIdVersion"
+                            render="msgcreateIdVersion"
+                            event="blur"/>
+                </input>
+                <h:message id="msgcreateIdVersion"
+                           for="createIdVersion"
+                           styleClass="error"/>
 
-            <!-- JUSTIFICACION -->
-            <textarea jsf:id="createJustificacion"
-                      type="text"
-                      resizable="false"
-                      disabled="true"
-                      jsf:value="#{programaController.programaActual.justificacion}"
-                      placeholder="duracion en trimestres"
-                      jsf:validatorMessage="esta mal">
-                <f:ajax execute="createJustificacion"
-                        render="msgcreateJustificacion"
-                        event="blur"/>
-            </textarea>
-            <h:message id="msgcreateJustificacion"
-                       for="createJustificacion"
-                       styleClass="error"/>
+                <!-- NOMBRE -->
+                <label>NOMBRE:</label>
+                <input type="text"
+                       jsf:id="createNombre"
+                       jsf:value="#{programaController.programaActual.nombrePrograma}"
+                       placeholder="Nombre del Programa"
+                       maxlength="45"
+                       disabled="true"
+                       jsf:validatorMessage="Dato Inválido">
+                    <f:ajax execute="createNombre"
+                            render="msgcreateNombre"
+                            event="blur"/>
+                </input>
+                <h:message id="msgcreateNombre"
+                           for="createNombre"
+                           styleClass="error"/>
 
-            <!-- DURACION -->
-            <input type="number"
-                   jsf:id="createDuracion"
-                   jsf:value="#{programaController.programaActual.duracionTrimestresLectiva}"
-                   placeholder="duracion en trimestres"
-                   max="8"
-                   disabled="true"
-                   min="4"
-                   jsf:validatorMessage="esta mal">
-                <f:ajax execute="createDuracion"
-                        render="msgcreateDuracion"
-                        event="blur"/>
-            </input>
-            <h:message id="msgcreateDuracion"
-                       for="createDuracion"
-                       styleClass="error"/>
+                <!-- JUSTIFICACION -->
+                <label>JUSTIFICACION:</label>
+                <textarea jsf:id="createJustificacion"
+                          type="text"
+                          style="resize: none; width: 167px"
+                          disabled="true"
+                          jsf:value="#{programaController.programaActual.justificacion}"
+                          placeholder="Duración en Trimestres"
+                          jsf:validatorMessage="Dato Inválido">
+                    <f:ajax execute="createJustificacion"
+                            render="msgcreateJustificacion"
+                            event="blur"/>
+                </textarea>
+                <h:message id="msgcreateJustificacion"
+                           for="createJustificacion"
+                           styleClass="error"/>
 
-            <!-- TIPO -->
-            <h:selectOneMenu value="#{programaController.idTipo}"
-                             disabled="true">
-                <f:selectItems value="#{programaController.listaTipoFormacion}"
-                               
-                               var="itemt"
-                               itemValue="#{itemt.idTipoFormacion}"/>
-            </h:selectOneMenu>
+                <!-- DURACION -->
+                <label>DURACION:</label>
+                <input type="number"
+                       jsf:id="createDuracion"
+                       jsf:value="#{programaController.programaActual.duracionTrimestresLectiva}"
+                       placeholder="Duración en Trimestres"
+                       max="8"
+                       disabled="true"
+                       min="4"
+                       jsf:validatorMessage="Dato Inválido">
+                    <f:ajax execute="createDuracion"
+                            render="msgcreateDuracion"
+                            event="blur"/>
+                </input>
+                <h:message id="msgcreateDuracion"
+                           for="createDuracion"
+                           styleClass="error"/>
 
-            <!-- LINEA -->
-            <h:selectOneMenu value="#{programaController.idLinea}"
-                             disabled="true">
-                <f:selectItems value="#{programaController.listaLineaTecnologica}"
-                               var="iteml"
-                               itemValue="#{iteml.idLineaTecnologica}"/>
-            </h:selectOneMenu>
+            </p:panelGrid>
 
-            <!-- PERFIL -->
-            <h:selectOneMenu value="#{programaController.idPerfil}"
-                             disabled="true">
-                <f:selectItems value="#{programaController.listaPerfilEntrada}"
-                               var="itemp"
-                               itemValue="#{itemp.idPerfilEntrada}"/>
-            </h:selectOneMenu>
+            <p:panelGrid columns="2">
 
-            <!-- MODALIDAD -->
-            <h:selectOneMenu value="#{programaController.idModalidad}"
-                             disabled="true">
-                <f:selectItems value="#{programaController.listaModalidadFormacion}"
-                               var="itemm"
-                               itemValue="#{itemm.idModalidadFormacion}"/>
-            </h:selectOneMenu>
+                <!-- TIPO -->
+                <label>TIPO:</label>
+                <h:selectOneMenu value="#{programaController.idTipo}"
+                                 disabled="true">
+                    <f:selectItem itemLabel="Tipo..." />
+                    <f:selectItems value="#{programaController.listaTipoFormacion}"
+                                   var="itemt"
+                                   itemValue="#{itemt.idTipoFormacion}"/>
+                </h:selectOneMenu>
 
-            <!-- NIVEL -->
-            <h:selectOneMenu value="#{programaController.idNivel}"
-                             disabled="true">
-                <f:selectItems value="#{programaController.listaNivelFormacion}"
-                               var="itemn"
-                               itemValue="#{itemn.idNivelFormacion}"/>
-            </h:selectOneMenu>
+                <!-- LINEA -->
+                <label>LINEA:</label>
+                <h:selectOneMenu value="#{programaController.idLinea}"
+                                 disabled="true">
+                    <f:selectItem itemLabel="Línea..." />
+                    <f:selectItems value="#{programaController.listaLineaTecnologica}"
+                                   var="itemt"
+                                   itemValue="#{itemt.idLineaTecnologica}"/>
+                </h:selectOneMenu>
+
+                <!-- PERFIL -->
+                <label>PERFIL:</label>
+                <h:selectOneMenu value="#{programaController.idPerfil}"
+                                 disabled="true">
+                    <f:selectItem itemLabel="Perfil..." />
+                    <f:selectItems value="#{programaController.listaPerfilEntrada}"
+                                   var="itemt"
+                                   itemValue="#{itemt.idPerfilEntrada}"/>
+                </h:selectOneMenu>
+
+                <!-- MODALIDAD -->
+                <label>MODALIDAD:</label>
+                <h:selectOneMenu value="#{programaController.idModalidad}"
+                                 disabled="true">
+                    <f:selectItem itemLabel="Modalidad..." />
+                    <f:selectItems value="#{programaController.listaModalidadFormacion}"
+                                   var="itemt"
+                                   itemValue="#{itemt.idModalidadFormacion}"/>
+                </h:selectOneMenu>
+
+                <!-- NIVEL -->
+                <label>NIVEL:</label>
+                <h:selectOneMenu value="#{programaController.idNivel}"
+                                 disabled="true">
+                    <f:selectItem itemLabel="Nivel..." />
+                    <f:selectItems value="#{programaController.listaNivelFormacion}"
+                                   var="itemt"
+                                   itemValue="#{itemt.nivelFormacion}"/>
+                </h:selectOneMenu>
+            </p:panelGrid>
 
             <p:commandButton value="aceptar"
                              onclick="programaVerVentana.hide()">
             </p:commandButton>
+
         </h:form>
     </p:dialog>
 </html>

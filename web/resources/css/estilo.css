@@ -85,6 +85,14 @@
     width: 600px;
 }
 
+.ContainerFormdiv{
+    position: absolute;
+    top: 260px;
+    right: 0;
+    display: inline-block !important;
+    width: 40%;
+}
+
 .Pepe-body{
     margin: 4em;
     text-align: center;
@@ -105,6 +113,15 @@
 .form-1{
     margin-left: 4em;
     color: #0B4C5F;
+    font-weight: lighter;
+    font-size: 1.2em; 
+    margin-bottom: .5em;
+    width: 15em;
+}
+
+.form-1-1{
+    margin-left: 4em;
+    color: #E53935;
     font-weight: lighter;
     font-size: 1.2em; 
     margin-bottom: .5em;
@@ -164,8 +181,8 @@
     margin-right: .5em;
 }
 .Pepe-formInput3{
-    width: 47em;
-    height: 2.3em;
+    width: 29em;
+    height: 4.5em;
     margin-right: .5em;
 }
 .Pepe-formInput4{
@@ -206,7 +223,7 @@
 .Pepe-iniLogo{
     margin-top: 5em;
     position: absolute;
-    display: inline-block;
+    display: table;
 }
 .Pepe-inicioDescripcion{
     display: block;
@@ -214,11 +231,11 @@
 
 }
 .Pepe-form11{
-    position: relative;
-    display: inline-block;
+    position: absolute;
+    display: inline-block !important;
     text-align: center;
-    top: 10em;
-    left: 55em;
+    top: 12em;
+    right: 95px;
 }
 .Pepe-inicioLabel1{
     display: block;

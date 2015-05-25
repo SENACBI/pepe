@@ -97,6 +97,10 @@ public class UsuarioController implements Serializable {
         this.listaRol = listaRol;
     }
 
+    public List<Rol> getLisatRolSelectOne() {
+        return getRolFacade().findAll();
+    }
+
     // select one menu caracterizacion
     public CaracterizacionFacade getCaracterizacionFacade() {
         return caracterizacionFacade;
@@ -324,6 +328,7 @@ public class UsuarioController implements Serializable {
     public void prepareCreate() {
         usuarioActual = new Usuario();
         listaRol = new ArrayList<>();
+
     }
 
     public String prepareEdit() {

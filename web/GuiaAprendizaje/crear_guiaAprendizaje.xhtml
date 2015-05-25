@@ -8,10 +8,10 @@
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 
     <ui:composition template="/html_plantillas/plantilla_paginas.xhtml">
-        <ui:define name="title">Crear Guia Aprendizaje</ui:define>        
+        <ui:define name="title">Crear Guía Aprendizaje</ui:define>        
         <ui:define name="body">
 
-            <form jsf:id="CreateGuiaAprendizaje">
+            <form>
                 <h2>Crear Guía Aprendizaje</h2>
                 <br></br>
                 <p:panel>
@@ -61,12 +61,16 @@
 
                         </textarea>
 
-                        <input class="Guardar" type="submit" jsf:action="#{guiaAprendizajeController.addGuiaAprendizaje}" value="Guardar Guia Aprendizaje">
-                            <h:button class="Guardar" value="Ir al lista guia" outcome="/GuiaAprendizaje/lista_Guia_Aprendizaje.xhtml"></h:button>
-                        </input> <!-- No Guarda aun -->
                     </h:panelGrid>
                 </p:panel>
+
+                <p:commandButton class="Guardar" value="Retornar a Lista Guía" action="/lista_Guia_Aprendizaje.xhtml"/>
+                
+                <input class="Guardar" type="submit" jsf:action="#{guiaAprendizajeController.addGuiaAprendizaje}" value="Guardar Guia Aprendizaje">
+                </input> <!-- No Guarda aun -->
+                
             </form> 
+            
         </ui:define>
     </ui:composition>
 </html>

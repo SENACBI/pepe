@@ -11,21 +11,25 @@
     <ui:composition template="/html_plantillas/plantilla_paginas.xhtml">
         <ui:define name="title">Crear Aspectos</ui:define>
         <ui:define name="body">
-            
+
             <h2>Programación</h2>
 
             <section class="Panel_scroll">
-                <form jsf:id="formInicio">
-                    <h:messages/>
+                
+                <form jsf:id="formAspect">
+                    
                     <h:selectOneMenu value="#{ejecucionController.seguimientoActual.idUsuario}" style="width:100%">
                         <f:selectItem itemLabel="Seleccionar uno.." />
-                        <f:selectItems value="#{ejecucionController.listaUsuarioOSelectOne}" var="usuario" itemLabel="#{usuario}" itemValue="#{usuario}" />
-                        <p:ajax event="change" update=":formInicio"/>
+                        <f:selectItems value="#{ejecucionController.listaUsuarioOSelectOne}"
+                                       var="usuario" itemLabel="#{usuario}" itemValue="#{usuario}" />
+                        <p:ajax event="change" update="formAspect"/>
                     </h:selectOneMenu>
+
                     <h:selectOneMenu value="#{ejecucionController.seguimientoActual.idFase}" style="width:100%">
                         <f:selectItem itemLabel="Seleccionar uno.." />
-                        <f:selectItems value="#{ejecucionController.listaFaseSelectOne}" var="usuario" itemLabel="#{usuario}" itemValue="#{usuario}" />
-                        <p:ajax event="change" update=":formInicio"/>
+                        <f:selectItems value="#{ejecucionController.listaFaseSelectOne}" 
+                                       var="usuario" itemLabel="#{usuario}" itemValue="#{usuario}" />
+                        <p:ajax event="change" update="formAspect"/>
                     </h:selectOneMenu>
 
                     <p:dataTable id="aspectoTable"
@@ -38,27 +42,30 @@
                         <p:column headerText="Descripción">                                            
                             <h:outputText value="#{aspecto.idDescripcionAspectos.descripcion}"/>
                         </p:column>
+                        
                         <p:column headerText="Cumple">
-                            <p:cellEditor>
-                                <f:facet name="output"><p:selectBooleanCheckbox disabled="true  " value="#{aspecto.valoracion}" /></f:facet>
+                            <p:cellEditor>                                
+                                <f:facet name="output">
+                                    <p:selectBooleanCheckbox disabled="true  " value="#{aspecto.valoracion}" />
+                                </f:facet>
+                                
                                 <f:facet name="input">
                                     <p:selectBooleanCheckbox value="#{aspecto.valoracion}" >
                                         <p:ajax event="change" update="aspectoTable"/>
                                     </p:selectBooleanCheckbox>
-                                </f:facet>
+                                </f:facet>                                
                             </p:cellEditor>
-                        </p:column>                    
+                        </p:column>    
+
                     </p:dataTable>
-                    <p:inputText value="#{ejecucionController.seguimientoActual.observaciones}" style="width:96%" label="Observacion"/>
-                    <p:commandButton process="@this formInicio" update="formInicio" value="guardar" action="#{ejecucionController.addSeguimiento()}"/>
+
+                    <p:inputText value="#{ejecucionController.seguimientoActual.observaciones}" 
+                                 style="width:96%" label="Observacion"/>
+                    <p:commandButton process="@this" update="formAspect" value="guardar" 
+                                     action="#{ejecucionController.addSeguimiento()}"/>
                 </form>
             </section>
 
-            <article class="Pepe-button">
-                <button type="submit" class="Button">Cerrar sesión</button>
-                <button type="submit" class="Button1"> Guardar y continuar</button>
-            </article>
-            
         </ui:define>
     </ui:composition>
 </html>

@@ -17,7 +17,7 @@
                 <p:panelGrid columns="3" style="alignment-adjust: auto">
 
                     <label for="comments" 
-                           class="Pepe-articuloLabel">N° de ficha</label>
+                           class="Pepe-articuloLabel">N° de Ficha</label>
                     <h:selectOneMenu id="fichaselectone"
                                      value="#{fichaController.fichaSeleccionada}">
                         <f:selectItem itemLabel="Seleccionar uno.." />
@@ -60,7 +60,7 @@
                             jsf:id="version"/>
                     <br></br>
                     <label for="comments" 
-                           class="Pepe-articuloLabel">Nombre del proyecto</label>
+                           class="Pepe-articuloLabel">Nombre del Proyecto</label>
                     <textarea rows="5" cols="20" style="text-align: justify; resize: none"
                               disabled="true" 
                               class="Pepe-formInput3" 
@@ -76,10 +76,10 @@
                             jsf:id="codigoProyecto"/>
                     <br></br>
                     <label for="comments"  
-                           class="Pepe-articuloLabel">Nombre del líder ejecutor</label>
+                           class="Pepe-articuloLabel">Nombre del Líder Ejecutor</label>
                     <input  type="text" 
                             disabled="true" 
-                            class="Pepe-formInput1" 
+                            class="Pepe-formInput2" 
                             jsf:value="#{fichaController.usuarioFicha.usuario.nombre1} #{fichaController.usuarioFicha.usuario.apellido1}" 
                             jsf:id="nombreLider"/>
                 </h:panelGrid>
@@ -96,11 +96,7 @@
             </h:form>
 
 
-            <h:form > 
-
-                <p:commandButton class="Guardar" value="Programa"
-                                 action="/programa/programaInicio.xhtml" />
-
+            <h:form> 
 
                 <p:commandButton class="Guardar" process="@this" 
                                  value="Programación del Proyecto" 

@@ -9,32 +9,61 @@ and open the template in the editor.
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:jsf="http://xmlns.jcp.org/jsf"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
-    <p:dialog header="Basic Dialog" widgetVar="dlg2">
-        <h:form class="form-competencia">
-            <h:panelGrid columns="2">
-                <h:outputLabel value="IdCompetencia:" for="idCompetencia" />
-                <h:inputText id="idCompetencia" value="#{competenciaController.competenciaActual.idCompetencia}" title="IdCompetencia" required="true" requiredMessage="The IdCompetencia field is required."/>
-                <h:outputLabel value="NombreCompetencia:" for="nombreCompetencia" />
-                <h:inputTextarea rows="4" cols="30" id="nombreCompetencia" value="#{competenciaController.competenciaActual.nombreCompetencia}" title="NombreCompetencia" required="true" requiredMessage="The NombreCompetencia field is required."/>
-                <h:outputLabel value="Estado:" for="estado" />
-                <h:inputText id="estado" value="#{competenciaController.competenciaActual.estado}" title="Estado" required="true" requiredMessage="The Estado field is required."/>
-                <h:outputLabel value="Codigo:" for="codigo" />
-                <h:inputText id="codigo" value="#{competenciaController.competenciaActual.codigo}" title="Codigo" required="true" requiredMessage="The Codigo field is required."/>
-                <h:outputLabel value="DuracionEstimadaHoras:" for="duracionEstimadaHoras" />
-                <h:inputText id="duracionEstimadaHoras" value="#{competenciaController.competenciaActual.duracionEstimadaHoras}" title="DuracionEstimadaHoras" required="true" requiredMessage="The DuracionEstimadaHoras field is required."/>
-                <h:outputLabel value="Programa:" for="programa" />
+    <ui:composition template="/html_plantillas/plantilla_paginas.xhtml">
+        <ui:define name="body">
 
-                <h:selectOneMenu id="programa" converter="ProgramaConverter" value="#{competenciaController.competenciaActual.setProgramaList(competenciaActual)}" title="Programa" required="true" requiredMessage="The Programa field is required.">
-                    <f:selectItems value="#{competenciaController.listaPrograma}" var="program" itemValue="#{program}"/>
-                </h:selectOneMenu>
-            </h:panelGrid>
+            <h:form >
 
-            <input type="submit" value="Agregar" jsf:action="#{competenciaController.addCompetencia}"></input>
-            <input type="submit" value="Modificar" jsf:action="#{competenciaController.updateCompetencia}"></input>
-            <input type="submit" value="Eliminar" jsf:action="#{competenciaController.deleteCompetencia()}"></input>
+                <p:panelGrid columns="3" >
 
-        </h:form>
-    </p:dialog>
+                    <h:outputLabel value="Id Competencia:" for="idCompetencia" />
+                    <h:inputText id="idCompetencia" value="#{competenciaController.competenciaActual.idCompetencia}" 
+                                 title="IdCompetencia" required="true" 
+                                 requiredMessage="The IdCompetencia field is required."/>
+                    <br></br>
+
+                    <h:outputLabel value="Nombre de Competencia:" for="nombreCompetencia" />
+                    <h:inputTextarea rows="1" cols="22" id="nombreCompetencia" style="resize: none"
+                                     value="#{competenciaController.competenciaActual.nombreCompetencia}" 
+                                     title="NombreCompetencia" required="true" 
+                                     requiredMessage="The NombreCompetencia field is required."/>
+                    <br></br>
+
+                    <h:outputLabel value="Estado:" for="estado" />
+                    <h:inputText id="estado" value="#{competenciaController.competenciaActual.estado}" 
+                                 title="Estado" required="true" requiredMessage="The Estado field is required."/>
+                    <br></br>
+
+                    <h:outputLabel value="Código:" for="codigo" />
+                    <h:inputText id="codigo" value="#{competenciaController.competenciaActual.codigo}" 
+                                 title="Codigo" required="true" requiredMessage="The Codigo field is required."/>
+                    <br></br>
+
+                    <h:outputLabel value="Duración Estimada en Horas:" for="duracionEstimadaHoras" />
+                    <h:inputText id="duracionEstimadaHoras" 
+                                 value="#{competenciaController.competenciaActual.duracionEstimadaHoras}" 
+                                 title="DuracionEstimadaHoras" required="true" 
+                                 requiredMessage="The DuracionEstimadaHoras field is required."/>
+                    <br></br>
+
+                    <h:outputLabel value="Programa:" for="programa" />
+                    <h:selectOneMenu id="programa" converter="ProgramaConverter" 
+                                     value="#{competenciaController.competenciaActual.setProgramaList(competenciaActual)}" 
+                                     title="Programa" required="true" requiredMessage="The Programa field is required.">
+                        <f:selectItems value="#{competenciaController.listaPrograma}" var="program" itemValue="#{program}"/>
+                    </h:selectOneMenu>
+                    <br></br>
+                </p:panelGrid>
+
+                <p:commandButton class="Guardar" update="@this" value="Agregar" action="#{competenciaController.addCompetencia}"></p:commandButton>
+                <p:commandButton class="Guardar" update="@this" value="Modificar" action="#{competenciaController.updateCompetencia}"></p:commandButton>
+                <p:commandButton class="Guardar" update="@this" value="Eliminar" action="#{competenciaController.deleteCompetencia()}"></p:commandButton>
+
+            </h:form>
+
+        </ui:define>
+    </ui:composition>
 </html>

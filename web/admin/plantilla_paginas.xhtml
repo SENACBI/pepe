@@ -20,8 +20,10 @@
     </head>
     <body class="Bodypepe" jsf:id="body">
         <header class="Header">
-            <h:form class="Header-Form">
+           <h:form class="Header-Form" id="formInicio">
+
                 <section class="Header-pepeForm">
+
                     <h:panelGrid columns="6">
                         <label class="Label1" for="nombreProgramaText">Programa de formación:</label>
                         <input class="Form-Input1" type="text" disabled="true"
@@ -39,15 +41,43 @@
                         <label class="Label6" for="codigoProyectoText">Código del proyecto:</label>
                         <input class="Form-Input6" type="text" disabled="true"
                                jsf:value="#{fichaController.fichaSeleccionada.idProyecto.codigoProyecto}">
-                        </input>
-                        <label class="Label7" for="numeroFichaText">Ficha:</label>
-                        <input class="Form-Input7" type="text" disabled="true"
-                               jsf:value="#{fichaController.fichaSeleccionada.codigoFicha}">
-                        </input>
-                        <label class="Label8" for="liderEjecutorText">Líder ejecutor:</label>
+                        </input> 
+
+                        <label class="Label8" for="liderEjecutorText">Líder Ejecutor:</label>
                         <input class="Form-Input8" type="text" disabled="true"
                                jsf:value="#{fichaController.usuarioFicha.usuario.nombre1} #{fichaController.usuarioFicha.usuario.apellido1}">
                         </input>
+
+                        <div>
+                            <label class="Label7" for="numeroFichaText">Ficha:</label>
+                            <h:selectOneMenu id="fichaselectone" class="Form-Input7"
+                                             value="#{fichaController.fichaSeleccionada}">
+                                <f:selectItem itemLabel="Seleccionar uno.." />
+                                <f:selectItems value="#{fichaController.listaFicha}" 
+                                               var="ficha" 
+                                               itemValue="#{ficha}"/>  
+                                <p:ajax process="fichaselectone" 
+                                        update="formInicio fichaselectoneMsg"/>
+                            </h:selectOneMenu>
+
+                            <br></br>
+                            <p class="botonConsulta">
+                                <h:commandButton 
+                                                 action="/proyecto/proyectoCrear.xhtml"
+                                                 id="botonF"                                             
+                                                 actionListener="#{proyectoController.asignarFicha}"
+                                                 styleClass="small-3 button"
+                                                 disabled="#{fichaController.fichaBoolean()}"
+                                                 value="Consultar">
+                                    <f:attribute name="ficha" value="#{fichaController.fichaSeleccionada}"/>
+                                </h:commandButton>
+                            </p>
+
+                            <h:message class="Form-Input-1" id="fichaselectoneMsg" for="fichaselectone"/>
+
+
+                        </div>
+                        
                     </h:panelGrid> 
                     <label class="Label5" for="nombreProyectoText">Nombre del proyecto:</label>
                     <textarea rows="5" cols="20" class="Form-Input5" disabled="true" style="text-align: justify; resize: none"
@@ -75,7 +105,7 @@
             <nav class="Pepe-list">
                 <ul class="Pepe-listMenu">
                     <li class="Pepe-listMenuItem"><a jsf:outcome="/landingpage.xhtml" class="PepeMenu-link">Inicio</a></li>
-                    <li class="Pepe-listMenuItem"><a jsf:outcome="/PlaneaciondeProyecto/programacion.xhtml" class="PepeMenu-link">Formulación de Proyectos</a></li>
+                    <li class="Pepe-listMenuItem"><a jsf:outcome="/programa/fichaLista.xhtml" class="PepeMenu-link">Formulación de Proyectos</a></li>
                     <li class="Pepe-listMenuItem"><a href='#' class="PepeMenu-link">Programación del Proyecto</a></li>
                     <li class="Pepe-listMenuItem"><a jsf:outcome="/planeacionpedagogica/menuPlaneacionPedagogica.xhtml" class="PepeMenu-link">Planeación Pedagógica</a></li>
                     <li class="Pepe-listMenuItem"><a href='#' class="PepeMenu-link">Aprendices</a></li>
