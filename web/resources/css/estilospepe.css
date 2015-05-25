@@ -34,23 +34,23 @@
     font-size: 2em;
     font-weight: lighter;    
 
-   
-   
+
+
 }
 .icon-facebook:before {
     color:#00BFFF; 
     content: "\e601";
     font-size: 2em;
     font-weight: lighter;    
-  
- 
+
+
 }
 .icon-twitter:before {
     color:#00BFFF;
     content: "\e602";
     font-size: 2em;
     font-weight: lighter;    
- 
+
 
 }
 .icon-pinterest:after {
@@ -59,12 +59,12 @@
     font-size: 2em;
     font-weight: lighter;    
 
-   
+
 }
 
 .Titulo{
     display: inline-block;
- 
+
 }
 .Header{
 
@@ -72,14 +72,14 @@
     border-bottom: 1px solid #A4A4A4;
     padding: 1em 0;
     text-align: center;
-    
+
 }
 .Header-pepeForm{
     display: block;
     margin: 8px;
     text-align: left;
 
-    
+
 }
 .Header-form{
     margin-right: .2em;
@@ -93,7 +93,7 @@
 }
 
 .Header-pepeForm{
-    
+
     display: block;
     margin: .5em;
     text-align: left;
@@ -213,7 +213,7 @@
 .PepeMenu-link{
     color: white;
     text-decoration: none;
- 
+
 }
 
 .Pepe-listColor{
@@ -226,7 +226,7 @@
 }
 
 .Pepe-listColorItem{
-    
+
     border-bottom: 1px white solid;
     border: none;
     height: 18px;
@@ -236,47 +236,47 @@
 
 .Pepe-listColor li:nth-child(1){
     background: #ff7310;
- }
+}
 
 .Pepe-listColor li:nth-child(2){
     background: #00b53a;
- }
+}
 
 .Pepe-listColor li:nth-child(3){
     background: #ff7310;
- }
- .Pepe-listColor li:nth-child(4){
+}
+.Pepe-listColor li:nth-child(4){
     background: #008275;
- }
+}
 
- .Pepe-listColor li:nth-child(5){
+.Pepe-listColor li:nth-child(5){
     background: #ff7310;
- }
+}
 
- .Pepe-listColor li:nth-child(6){
+.Pepe-listColor li:nth-child(6){
     background: #ff7310;
- }
+}
 
- .Pepe-listColor li:nth-child(7){
+.Pepe-listColor li:nth-child(7){
     background: #ff7310;
- }
+}
 
- .Pepe-listColor li:nth-child(8){
+.Pepe-listColor li:nth-child(8){
     background: #ff7310;
- }
+}
 
- .Pepe-listColor li:nth-child(9){
+.Pepe-listColor li:nth-child(9){
     background: #ff7310;
- }
-  .Pepe-listColor li:nth-child(10){
+}
+.Pepe-listColor li:nth-child(10){
     background: #ff7310;
     height: 16px;
- }
+}
 
 
- .Pepe-templBody{
-     height: 50%;     
- }
+.Pepe-templBody{
+    height: 50%;     
+}
 
 /*PLANEACION CAJA EQUIPO 1 Y 4*/
 
@@ -330,7 +330,7 @@
     float: right;
     margin-bottom: 2em;
     margin-right: 6em;
-    
+
 }
 
 .Input{
@@ -347,7 +347,7 @@
 }
 
 .ui-panelgrid td, .ui-panelgrid tr{
-   border-style: none !important
+    border-style: none !important
 }
 
 .Titulo-pepe{
@@ -357,15 +357,15 @@
 
 /*footer equipo 1*/
 .Pepe-footer{
-     background-image: url('../images/Pepefooter.png');
-     background-size: cover;
-     font-size: 12px;
-     margin: 0;
+    background-image: url('../images/Pepefooter.png');
+    background-size: cover;
+    font-size: 12px;
+    margin: 0;
 }
 .Footer-imageContainer{
-     margin-top: 0;
-     text-align: center;
-     margin-bottom: 2em;
+    margin-top: 0;
+    text-align: center;
+    margin-bottom: 2em;
 }
 .Footer-image{
     position: relative;
@@ -383,9 +383,9 @@
 
 @media screen and (max-width:580px ){
     .Pepe-button{
-    display: inline-block;
-    margin: 0;
-}
+        display: inline-block;
+        margin: 0;
+    }
     .Button{
         margin-left: .5em;
         margin-top: 2em;
@@ -414,9 +414,10 @@
         margin-bottom: 1em;
         margin-left: 1em;
     }
-    
+
     .botonConsulta{
-        margin-left: 20px;
+        position: relative;
+        left: 12.6em;
     }
 
     .Label1{
@@ -474,7 +475,7 @@
 
 
 
- 
 
 
-    
+
+
