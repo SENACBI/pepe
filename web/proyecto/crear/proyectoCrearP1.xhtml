@@ -34,7 +34,7 @@
                             <f:validateRegex pattern="[0-9]{6,8}"/>
                             <f:ajax execute="crearCodigoP" render="msgcrearCodigoP" event="blur"/>
                         </input>
-                        <h:message id="msgcrearCodigoP" for="crearCodigoP" styleClass="error"/>
+                        <p:message id="msgcrearCodigoP" for="crearCodigoP"/>
 
                         <!-- Nombre del Proyecto -->
                         <label for="crearNombre" jsf:value="Nombre del Proyecto"/>
@@ -176,8 +176,8 @@
                 </div>
 
                 <p:commandButton class="Guardar"
-                                 oncomplete="handleSubmit(args,'proyectoCrearP1Ventana','proyectoCrearP2Ventana');"
-                                 update="@(proyectoCrearP1VentanaForm) :proyectoCrearP1VentanaForm"
+                                 action="proyectoCrearP2"
+                                 update="proyectoCrearP1VentanaForm"
                                  value="Siguiente"/>
 
             </h:form>

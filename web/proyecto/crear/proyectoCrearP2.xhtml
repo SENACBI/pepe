@@ -127,11 +127,12 @@
                     </p:panelGrid>
                 </div>
 
-                <p:commandButton class="Guardar" action="/proyectoCrearP1.xhtml"
+                <p:commandButton class="Guardar" action="proyectoCrearP1"
                                      value="Atras"/>
                 
-                    <p:commandButton class="Guardar" oncomplete="handleSubmit(args,'proyectoCrearP2Ventana','proyectoCrearP3Ventana');"
-                                     update="@(proyectoCrearP2VentanaForm) :proyectoCrearP2VentanaForm"
+                    <p:commandButton class="Guardar"
+                                     action="proyectoCrearP3"
+                                     update="proyectoCrearP2VentanaForm"
                                      value="Siguiente"/>
 
             </h:form>
