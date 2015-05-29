@@ -126,7 +126,7 @@ public class ActividadAprendizajeController implements Serializable {
 
     public String prepareList() {
         recargarLista();
-        return "";
+        return "/planeacionpedagogica/lista_tecnica_didactica";
     }
 
     public String addActividadAprendizaje() {

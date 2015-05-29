@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/plantilla_paginas.xhtml">
+        <ui:define name="body">
+            <f:view>
+
+                <h:form id="proyectoCrearForm">
+                    <h2>Vista de Proyecto</h2>
+
+                    <p:commandButton rendered="#{fichaController.proyectoBoolean()}"
+                                     id="botonFormular"
+                                     value="Formular Proyecto"
+                                     action="/proyecto/crear/proyectoCrearP1"/>
+
+                    <p:commandButton rendered="#{fichaController.proyectoActividadBoolean()}"
+                                     id="botonActividad"
+                                     value="Actividades de Proyecto"
+                                     action="/proyecto/actividadList"/>
+                    <p></p>
+                    
+                    
+                    <p:panelGrid columns="2">
+
+                        <h:outputText value="Nombre del Proyecto:"/>
+                        <h:outputText value="#{proyectoController.proyectoActual.nombreProyecto}" title="NombreProyecto"/>
+
+                        <h:outputText value="Código Proyecto:"/>
+                        <h:outputText value="#{proyectoController.proyectoActual.codigoProyecto}" title="CodigoProyecto"/>
+
+                        <h:outputText value="Justificación:"/>
+                        <h:outputText value="#{proyectoController.proyectoActual.justificacion22}" title="Justificacion22"/>
+
+                        <h:outputText value="Objetivo General:"/>
+                        <h:outputText value="#{proyectoController.proyectoActual.objetivoGeneral23}" title="ObjetivoGeneral23"/>
+
+                        <h:outputText value="Objetivo Específico:"/>
+                        <h:outputText value="#{proyectoController.proyectoActual.objetivoEspecifico24}" title="ObjetivoEspecifico24"/>
+
+                        <h:outputText value="Palabras Clave:"/>
+                        <h:outputText value="#{proyectoController.proyectoActual.palabrasClave17}" title="PalabrasClave17"/>
+
+                        <h:outputText value="Planteamiento:"/>
+                        <h:outputText value="#{proyectoController.proyectoActual.planteamiento21}" title="Planteamiento21"/>
+
+                        <h:outputText value="Impacto Socia:"/>
+                        <h:outputText value="#{proyectoController.proyectoActual.impactoSocial2521}" title="ImpactoSocial2521"/>
+
+                        <h:outputText value="Restricciones:"/>
+                        <h:outputText value="#{proyectoController.proyectoActual.restricciones253}" title="Restricciones253"/>
+
+                        <h:outputText value="Productos Resultados:"/>
+                        <h:outputText value="#{proyectoController.proyectoActual.productosResultados254}" title="ProductosResultados254"/>
+
+                        <h:outputText value="Innovación 1:"/>
+                        <h:outputText value="#{proyectoController.proyectoActual.innovacion261}" title="Innovacion261"/>
+
+                        <h:outputText value="Innovación 2:"/>
+                        <h:outputText value="#{proyectoController.proyectoActual.innovacion262}" title="Innovacion262"/>
+
+                        <h:outputText value="Innovación 3:"/>
+                        <h:outputText value="#{proyectoController.proyectoActual.innovacion263}" title="Innovacion263"/>
+
+                        <h:outputText value="Innovación 4:"/>
+                        <h:outputText value="#{proyectoController.proyectoActual.innovacion264}" title="Innovacion264"/>
+
+                        <h:outputText value="Innovación 5:"/>
+                        <h:outputText value="#{proyectoController.proyectoActual.innovacion265}" title="Innovacion265"/>
+
+                        <h:outputText value="Valoración 1:"/>
+                        <h:outputText value="#{proyectoController.proyectoActual.valoracion271}" title="Valoracion271"/>
+
+                        <h:outputText value="Valoración 2:"/>
+                        <h:outputText value="#{proyectoController.proyectoActual.valoracion272}" title="Valoracion272"/>
+
+                        <h:outputText value="Intructores Requeridos:"/>
+                        <h:outputText value="#{proyectoController.proyectoActual.intructoresRequeridos}" title="IntructoresRequeridos"/>
+
+                        <h:outputText value="Aprendices Sugeridos:"/>
+                        <h:outputText value="#{proyectoController.proyectoActual.aprendicesSugeridos}" title="AprendicesSugeridos"/>
+
+                        <h:outputText value="Descripcion del Ambiente:"/>
+                        <h:outputText value="#{proyectoController.proyectoActual.descripcionAmbiente}" title="DescripcionAmbiente"/>
+
+                        <h:outputText value="Impacto Ambiental:"/>
+                        <h:outputText value="#{proyectoController.proyectoActual.impactoAmbiental2523}" title="ImpactoAmbiental2523"/>
+
+                        <h:outputText value="Impacto Económico:"/>
+                        <h:outputText value="#{proyectoController.proyectoActual.impactoEconomico2522}" title="ImpactoEconomico2522"/>
+
+                        <h:outputText value="Impacto Tecnológico:"/>
+                        <h:outputText value="#{proyectoController.proyectoActual.impactoTecnologico2524}" title="ImpactoTecnologico2524"/>
+
+                        <h:outputText value="Beneficiario:"/>
+                        <h:outputText value="#{proyectoController.proyectoActual.beneficiario251}" title="Beneficiario251"/>
+
+                    </p:panelGrid>
+                </h:form>
+            </f:view>
+
+        </ui:define>
+    </ui:composition>
+</html>

@@ -7,7 +7,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
-    <ui:composition template="/html_plantillas/plantilla_paginas.xhtml">
+    <ui:composition template="/plantilla_paginas.xhtml">
         <ui:define name="title">Formular Proyecto 2</ui:define> 
         <ui:define name="body">
 
@@ -31,9 +31,8 @@
                                     render="msgcrearBeneficiarios"
                                     event="blur"/>
                         </textarea>
-                        <h:message id="msgcrearBeneficiarios"
-                                   for="crearBeneficiarios"
-                                   styleClass="error"/>
+                        <p:message id="msgcrearBeneficiarios"
+                                   for="crearBeneficiarios"/>
                         
                         <!-- Impacto Social -->
                         <label for="crearImpactoSocial" jsf:value="2.5.2.1 Impacto Social"/>
@@ -46,9 +45,8 @@
                                     render="msgcrearImpactoSocial"
                                     event="blur"/>
                         </textarea>
-                        <h:message id="msgcrearImpactoSocial"
-                                   for="crearImpactoSocial"
-                                   styleClass="error"/>
+                        <p:message id="msgcrearImpactoSocial"
+                                   for="crearImpactoSocial"/>
                         
                         <!-- Impacto Economico -->
                         <label for="crearImpactoEconomico" jsf:value="2.5.2.2 Impacto Económico"/>
@@ -61,9 +59,8 @@
                                     render="msgcrearImpactoEconomico"
                                     event="blur"/>
                         </textarea>
-                        <h:message id="msgcrearImpactoEconomico"
-                                   for="crearImpactoEconomico"
-                                   styleClass="error"/>
+                        <p:message id="msgcrearImpactoEconomico"
+                                   for="crearImpactoEconomico"/>
                         
                         <!-- Impacto Ambiental -->
                         <label for="crearImpactoAmbiental" jsf:value="2.5.2.3 Impacto Ambiental"/>
@@ -76,9 +73,8 @@
                                     render="msgcrearImpactoAmbiental"
                                     event="blur"/>
                         </textarea>
-                        <h:message id="msgcrearImpactoAmbiental"
-                                   for="crearImpactoAmbiental"
-                                   styleClass="error"/>
+                        <p:message id="msgcrearImpactoAmbiental"
+                                   for="crearImpactoAmbiental"/>
                         
                         <!-- Impacto Tecnologico -->
                         <label for="crearImpactoTecnologico" jsf:value="2.5.1 Impacto Tecnológico"/>
@@ -91,9 +87,8 @@
                                     render="msgcrearImpactoTecnologico"
                                     event="blur"/>
                         </textarea>
-                        <h:message id="msgcrearImpactoTecnologico"
-                                   for="crearImpactoTecnologico"
-                                   styleClass="error"/>
+                        <p:message id="msgcrearImpactoTecnologico"
+                                   for="crearImpactoTecnologico"/>
                         
                         <!-- Restricciones -->
                         <label for="crearRestricciones" jsf:value="2.5.3 Restricciones o Riesgos Asociados y Alternativas de Solución"/>
@@ -106,9 +101,8 @@
                                     render="msgcrearRestricciones"
                                     event="blur"/>
                         </textarea>
-                        <h:message id="msgcrearRestricciones"
-                                   for="crearRestricciones"
-                                   styleClass="error"/>
+                        <p:message id="msgcrearRestricciones"
+                                   for="crearRestricciones"/>
                         
                         <!-- Producto -->
                         <label for="crearProducto" jsf:value="2.5.4 Productos o Resultados del Proyecto"/>
@@ -121,9 +115,8 @@
                                     render="msgcrearProducto"
                                     event="blur"/>
                         </textarea>
-                        <h:message id="msgcrearProducto"
-                                   for="crearProducto"
-                                   styleClass="error"/>
+                        <p:message id="msgcrearProducto"
+                                   for="crearProducto"/>
                     </p:panelGrid>
                 </div>
 

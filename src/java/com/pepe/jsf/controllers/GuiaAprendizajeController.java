@@ -103,14 +103,14 @@ public class GuiaAprendizajeController implements Serializable {
         return "/GuiaAprendizaje/lista_Guia_Aprendizaje";
     }
 
-    public String addGuiaAprendizaje() {
+    public void addGuiaAprendizaje() {
         try {
             getGuiaAprendizajeFacade().create(guiaAprendizajeActual);
+            guiaAprendizajeActual = new GuiaAprendizaje();
             recargarlista();
-            return "lista_Guia_Aprendizaje";
+            addSuccessMessage("Crear Guía", "Guía Creada Exitosamente");
         } catch (Exception e) {
             addErrorMessage("Error closing resource " + e.getClass().getName(), "Message: " + e.getMessage());
-            return null;
         }
     }
 

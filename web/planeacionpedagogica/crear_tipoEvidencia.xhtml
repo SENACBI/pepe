@@ -9,27 +9,34 @@ and open the template in the editor.
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:jsf="http://xmlns.jcp.org/jsf">
-    <ui:composition template="/html_plantillas/template.xhtml">
-        <ui:define name="title">Crear Tipo de evidencia</ui:define>        
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:p="http://primefaces.org/ui">
+    
+    <ui:composition template="/plantilla_paginas.xhtml">
+        <ui:define name="title">Crear Tipo de Evidencia</ui:define>        
         <ui:define name="body">
+            
                 <h:form>
-                    <h1><h:outputText value="Crear Tipo de Evidencia"/></h1>
+                    
+                    <h2>Crear Tipo de Evidencia</h2>
+                    
                     <h:panelGrid columns="2">
                         <h:outputLabel value="Nombre del tipo de Evidencia:" for="nomEvidencia" />
                         <input jsf:id="nomEvidenciaInputText" jsf:value="#{tipoActividadAprendizajeController.tipoActividadAprendizajeActual.nombreTipoActividadAprendizaje}" 
                                      type="text" required="true"
                                      jsf:requiredMessage="Por favor ingrese el nombre del tipo de actividad de aprendizaje"
-                                     jsf:validatorMessage="Use solo letras, ej: masculino"> 
+                                     jsf:validatorMessage="Use sólo letras, ej: masculino"> 
                                      <f:validateRegex pattern="[a-zA-Z áéíóúÁÉÍÓÚÑñ]*"/>
                                      <f:ajax execute="@this" render="nomEvidenciaMessage"/>
                         </input>
-                        <h:message id="nomEvidenciaMessage" for="nomEvidenciaInputText" styleClass="error"/>
+                        <p:message id="nomEvidenciaMessage" for="nomEvidenciaInputText"/>
                     </h:panelGrid>
+                    
                     <h:commandButton value="Guardar" action="#{tipoActividadAprendizajeController.addTipoActividadAprendizaje}"/>
                     <br/>
-                    <h:button value="Volver atras" outcome="/index"/>
+                    <p:button class="Guardar" value="Volver atras" outcome="/landingpage.xhtml"/>
                 </h:form> 
+            
         </ui:define>
     </ui:composition>
 </html>

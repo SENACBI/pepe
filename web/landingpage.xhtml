@@ -11,7 +11,8 @@
 
     <ui:composition template="/html_plantillas/plantillaini.xhtml">
         <ui:define name="body">
-
+            
+            <h2>Selección de Ficha</h2>
             <h:form rendered="#{loginController.authenticated}" class="Pepe-body" id="formInicio">
 
                 <p:panelGrid columns="3" style="alignment-adjust: auto">
@@ -30,7 +31,15 @@
                     <h:message id="fichaselectoneMsg" 
                                for="fichaselectone"/> 
                 </p:panelGrid>
-
+                <h:commandButton action="/proyecto/proyectoView.xhtml"
+                                 id="botonF"
+                                 actionListener="#{proyectoController.asignarFicha}"
+                                 styleClass="small-3 button"
+                                 disabled="#{fichaController.fichaBoolean()}"
+                                 value="Consultar">
+                    <f:attribute name="ficha" value="#{fichaController.fichaSeleccionada}"/>
+                </h:commandButton>
+                <p></p>
                 <h:panelGrid  columns="2" style="alignment-adjust: auto">
 
                     <label for="comments" 
@@ -84,15 +93,7 @@
                             jsf:id="nombreLider"/>
                 </h:panelGrid>
                 <br></br>                
-                <h:commandButton action="/proyecto/proyectoCrear.xhtml"
-                                 id="botonF"
-                                 actionListener="#{proyectoController.asignarFicha}"
-                                 styleClass="small-3 button"
-                                 disabled="#{fichaController.fichaBoolean()}"
-                                 value="Consultar">
-                    <f:attribute name="ficha" value="#{fichaController.fichaSeleccionada}"/>
-                </h:commandButton>
-
+                
             </h:form>
 
 

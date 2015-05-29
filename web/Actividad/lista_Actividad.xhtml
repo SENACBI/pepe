@@ -6,15 +6,16 @@
        xmlns:jsf="http://xmlns.jcp.org/jsf"
        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
        xmlns:p="http://primefaces.org/ui">
-    <ui:composition template="/html_plantillas/plantilla_paginas.xhtml">
-        <ui:define name="title">Lista Guia Aprendizaje</ui:define>
+    
+    <ui:composition template="/plantilla_paginas.xhtml">
+        <ui:define name="title">Lista Actividades de Proyecto</ui:define>
         <ui:define name="body">
             
             <form jsf:id="ListaActividad">
                 <h2>Lista de Actividades de Proyecto</h2>
 
                 <p>
-                    <p:commandButton  value="Crear Actividad" action="#{actividadController.createActividadProyecto}"/>
+                    <p:commandButton  value="Crear Actividad de Proyecto" action="#{actividadController.createActividadProyecto}"/>
                 </p>
 
                 <p:panel>

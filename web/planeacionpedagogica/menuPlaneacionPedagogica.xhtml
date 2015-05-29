@@ -7,7 +7,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:jsf="http://xmlns.jcp.org/jsf">
 
-    <ui:composition template="/html_plantillas/plantilla_paginas.xhtml">        
+    <ui:composition template="/plantilla_paginas.xhtml">        
         <ui:define name="body">
 
             <form jsf:id="PlaneacionPedagogica">
@@ -32,19 +32,12 @@
                         <f:attribute name="ficha" value="#{fichaController.fichaSeleccionada}"/>             
                     </p:commandButton>
 
-                    <p:commandButton process="@this" value="Ingresar Guía aprendizaje" 
-                                     class="Guardar"
-                                     actionListener="#{actividadController.prepareCreateGuiaAprendizaje}" 
-                                     action="#{actividadController.createGuiaAprendizaje}">
-                        <f:attribute name="fase" value="#{faseController.faseSeleccionada}"/>
-                        <f:attribute name="ficha" value="#{fichaController.fichaSeleccionada}"/>             
-                    </p:commandButton>
 
-                    <p:commandButton class="Guardar" value="Técnica Didáctica" action="/TecnicaDidactica/lista_Tecnica_Didactica"/>
+                    <p:commandButton class="Guardar" value="Técnica Didáctica" action="#{actividadAprendizajeController.prepareList()}"/>
 
-                    <p:commandButton class="Guardar" value="Actividad" action="/Actividad/lista_Actividad"/>
+                    <p:commandButton class="Guardar" value="Actividad de Proyecto" action="/Actividad/lista_Actividad"/>
 
-                    <p:commandButton class="Guardar" value="Guía de Aprendizaje" action="/GuiaAprendizaje/lista_Guia_Aprendizaje"/>
+                    <p:commandButton class="Guardar" value="Guía de Aprendizaje" action="#{guiaAprendizajeController.prepareList()}"/>
 
                 </h:panelGrid>
             </form> 
