@@ -17,33 +17,33 @@
                 
                 <p:button  value="Volver atras" outcome="lista_ActividadAprendizaje"/>
                 
-                <p:dataTable  value="#{actividadAprendizajeController.listaRecurso}" var="itemTecnicaDidactica"
+                <p:dataTable  value="#{actividadAprendizajeController.listaRecurso}" var="itemTD"
                               paginator="true" rows="10" id="Actividadtable"
                               paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" 
                               rowsPerPageTemplate="5,10,15">
 
-                    <p:column filterBy="#{itemTecnicaDidactica.nombre}" headerText="Nombre Recurso" filterMatchMode="contains">
-                        <h:outputText value="#{itemTecnicaDidactica.nombre}"/>
+                    <p:column filterBy="#{itemTD.nombre}" headerText="Nombre Recurso" filterMatchMode="contains">
+                        <h:outputText value="#{itemTD.nombre}"/>
                     </p:column>
                     
-                    <p:column filterBy="#{itemTecnicaDidactica.cantidad}" headerText="Cantidad de Recurso" filterMatchMode="contains">
-                        <h:outputText value="#{itemTecnicaDidactica.cantidad}"/>
+                    <p:column filterBy="#{itemTD.cantidad}" headerText="Cantidad de Recurso" filterMatchMode="contains">
+                        <h:outputText value="#{itemTD.cantidad}"/>
                     </p:column>
                     
-                    <p:column filterBy="#{itemTecnicaDidactica.codigoOrions}" headerText="Codigo Orions Recurso" filterMatchMode="contains">
-                        <h:outputText value="#{itemTecnicaDidactica.codigoOrions}"/>
+                    <p:column filterBy="#{itemTD.codigoOrions}" headerText="Código Orions Recurso" filterMatchMode="contains">
+                        <h:outputText value="#{itemTD.codigoOrions}"/>
                     </p:column>
                     
-                    <p:column filterBy="#{itemTecnicaDidactica.idFuenteRecursos}" headerText="Fuente de Recurso" filterMatchMode="contains">
-                        <h:outputText value="#{itemTecnicaDidactica.idFuenteRecursos}"/>
+                    <p:column filterBy="#{itemTD.idFuenteRecursos}" headerText="Fuente de Recurso" filterMatchMode="contains">
+                        <h:outputText value="#{itemTD.idFuenteRecursos}"/>
                     </p:column>
                     
-                    <p:column filterBy="#{itemTecnicaDidactica.idRubroPresupuestal}" headerText="Rubro presupuestal" filterMatchMode="contains">
-                        <h:outputText value="#{itemTecnicaDidactica.idRubroPresupuestal}"/>
+                    <p:column filterBy="#{itemTD.idRubroPresupuestal}" headerText="Rubro PSresupuestal" filterMatchMode="contains">
+                        <h:outputText value="#{itemTD.idRubroPresupuestal}"/>
                     </p:column>
                     
-                    <p:column filterBy="#{itemTecnicaDidactica.idTipoRecurso}" headerText="Tipo Recurso" filterMatchMode="contains">
-                        <h:outputText value="#{itemTecnicaDidactica.idTipoRecurso}"/>
+                    <p:column filterBy="#{itemTD.idTipoRecurso}" headerText="Tipo Recurso" filterMatchMode="contains">
+                        <h:outputText value="#{itemTD.idTipoRecurso}"/>
                     </p:column>
                     
                 </p:dataTable>

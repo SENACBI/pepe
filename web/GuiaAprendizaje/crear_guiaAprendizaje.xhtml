@@ -57,9 +57,11 @@
                     </textarea>
                     <br></br>
 
-                    <input  type="submit" value="Guardar Guía Aprendizaje"
-                            jsf:action="#{guiaAprendizajeController.addGuiaAprendizaje}">
-                    </input>
+                    <p:commandButton class="Guardar" value="Guardar Guía Aprendizaje"
+                                     id="botonGuardarGuia" update="@this"
+                            actionListener="#{guiaAprendizajeController.addGuiaAprendizaje}"
+                            action="/GuiaAprendizaje/lista_Guia_Aprendizaje.xhtml">
+                    </p:commandButton>
 
                     <p:commandButton class="Guardar" action="#{guiaAprendizajeController.prepareList()}" 
                                      value="Volver a Lista Guía de Aprendizaje"/>

@@ -130,7 +130,7 @@ public class ActividadController implements Serializable {
     }
 
     public List<Actividad> getListaActividad() {
-        return listaActividad = getActividadFacade().consultaPlaneacionActividades(faseActual, fichaActual.getIdProyecto());
+        return getActividadFacade().consultaPlaneacionActividades(faseActual, fichaActual.getIdProyecto());
     }
 
     public ActividadFacade getActividadFacade() {

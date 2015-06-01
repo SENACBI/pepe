@@ -30,12 +30,9 @@
                             <f:ajax execute="idFaseActividad"
                                     render="idFaseActividadmsg"
                                     event="blur"/>
-                            <f:ajax execute="idFaseActividad"
-                                    render="idFaseActividadmsg"/>
                         </h:selectOneMenu>
-                        <h:message id="idFaseActividadmsg"
-                                   for="idFaseActividad"
-                                   styleClass="error"/>
+                        <p:message id="idFaseActividadmsg"
+                                   for="idFaseActividad"/>
 
                         <h:outputText value="Descripción de la Actividad"/>
                         <textarea jsf:value="#{proyectoController.actividadActual.nombreActividadProyecto}"
@@ -47,9 +44,8 @@
                                     render="crearDesActividadmsg"
                                     event="blur"/>
                         </textarea>
-                        <h:message id="crearDesActividadmsg"
-                                   for="crearDesActividad"
-                                   styleClass="error"/>
+                        <p:message id="crearDesActividadmsg"
+                                   for="crearDesActividad"/>
 
                         <h:outputText value="Duración de la Actividad"/>
                         <input type="number"
@@ -63,9 +59,8 @@
                                     render="crearNombreActividadmsg"
                                     event="blur"/>
                         </input>
-                        <h:message id="crearNombreActividadmsg"
-                                   for="crearNombreActividad"
-                                   styleClass="error"/>
+                        <p:message id="crearNombreActividadmsg"
+                                   for="crearNombreActividad"/>
 
 
                         <h:outputText value="Competencias de la Actividad"/>
@@ -79,9 +74,8 @@
                                     update="actividadCrearVentanaForm"
                                     event="change"/>
                         </h:selectOneMenu>
-                        <h:message id="idCompmsg"
-                                   for="idComp"
-                                   styleClass="error"/>
+                        <p:message id="idCompmsg"
+                                   for="idComp"/>
 
 
                         <h:outputText value="Resultados de la Actividad"/>
