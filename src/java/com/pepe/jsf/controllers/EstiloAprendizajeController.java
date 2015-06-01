@@ -25,7 +25,7 @@ import javax.faces.convert.FacesConverter;
  */
 @ManagedBean
 @SessionScoped
-public class EstiloAprendizajeController implements Serializable{
+public class EstiloAprendizajeController implements Serializable {
 
    @EJB
     private EstiloAprendizajeFacade estiloAprendizajeFacade;

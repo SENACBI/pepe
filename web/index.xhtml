@@ -20,51 +20,47 @@
     </head>
 
     <body jsf:id="body" class="Body">
-        
-        <h:panelGroup rendered="#{!loginController.authenticated}">
+        <section class='Pepe-inicio'>
+            <div class="Pepe-iniLogo">
+                <figure class='Pepe-inicioContenedor'>
+                    <img src="resources/images/PepAlogo.png"/> 
+                </figure>    
+                <p class='Pepe-inicioDescripcion'>
+                    Programador Estratégico de
+                    <br></br>
+                    Proyectos de Aprendizaje
+                </p>
+            </div>
 
-            <section class='Pepe-inicio'>
-                <div class="Pepe-iniLogo">
-                    <figure class='Pepe-inicioContenedor'>
-                        <img src="resources/images/PepAlogo.png"/> 
-                    </figure>    
-                    <p class='Pepe-inicioDescripcion'>
-                        Programador Estratégico de
-                        <br></br>
-                        Proyectos de Aprendizaje
-                    </p>
-                </div>
-                
-                <h:panelGroup>
+            <h:panelGroup>
+                <form jsf:id="LoginForm" class='Pepe-form11'>
+                    <h:panelGroup id="messagePanel" layout="block">
+                        <p:messages/>
+                    </h:panelGroup>
+                    <label for="comments" class='Pepe-inicioLabel1'><font  size="+2">Ingreso de Usuario Registrado</font></label>
+                    <br></br>
+                    <input jsf:id="user" type="text" class='Pepe-formInput9' placeholder="Usuario" jsf:value="#{loginController.username}" required="true"/>
+                    <input jsf:id="password" type="password" class='Pepe-formInput9' placeholder="Contraseña" jsf:value="#{loginController.password}" required="true"/>
+                    <br/>
 
-                    <form jsf:id="LoginForm" class='Pepe-form11'>
+                    <input class="Guardar" type="submit" value="Iniciar Sesión" jsf:action="#{loginController.login}"/>
+                    <!-- <p:commandButton process="@this" class="Guardar" type="submit" 
+                    id="Inicio" value="Iniciar Sesión" actionListener=""/> -->
 
-                        <h:panelGroup id="messagePanel" layout="block">
-                            <p:messages/>
-                        </h:panelGroup>
-                        <label for="comments" class='Pepe-inicioLabel1'><font  size="+2">Ingreso de Usuario Registrado</font></label>
-                        <br></br>
-                        <input jsf:id="user" type="text" class='Pepe-formInput9'
-                               placeholder="Usuario" jsf:value="#{loginController.username}" required="true"/>
-                        
-                        <input jsf:id="password" type="password" class='Pepe-formInput9' 
-                               placeholder="Contraseña" jsf:value="#{loginController.password}" required="true"/>
-                        <br/>
+                    <!--      <a class="Pepe-inicioLabel1" href="#"><font  size="+1">¿Olvidaste tu contraseña?</font></a> -->
 
-                        <input class="Guardar" type="submit" value="Iniciar Sesión" jsf:action="#{loginController.login}"/>
+                    <!-- TENER EN CUENTA QUE SE HARÁ CON EL OLVIDO DE CONTRASEÑA-->
 
-                        <section class='Pepe-figureContainer'>
-                            <figure class='Pepe-formLogo'>
-                                <img src="resources/images/logosena.png" heigth="70" width="100" alt="logo sena" class='Pepe-formImage'/> 
-                            </figure>
-                        </section>
-                    </form>
+                    <section class='Pepe-figureContainer'>
+                        <figure class='Pepe-formLogo'>
+                            <img src="resources/images/logosena.png" heigth="70" width="100" alt="logo sena" class='Pepe-formImage'/> 
+                        </figure>
+                    </section>
+                </form>
 
-                </h:panelGroup>
-                
-            </section> 
-            
-        </h:panelGroup>
+            </h:panelGroup>
+
+        </section> 
 
         <script src="resources/foundation-5.5.1/js/vendor/jquery.js"></script>
         <script src="resources/foundation-5.5.1/js/foundation.min.js"></script>
@@ -74,8 +70,10 @@
 
             $(document).foundation();
         </script>
-
-        <ui:include src="/admin/dlg_menuCrearUsuario.xhtml"/>
-
+        <script type="text/javascript">
+            if (#{loginController.authenticated}) {
+                window.location = "#{request.contextPath}/faces/landingpage.xhtml";
+            }
+        </script>
     </body>
 </html>

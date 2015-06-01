@@ -554,11 +554,3 @@ public class FichaController implements Serializable {
 
     }
 }
-//<!--
-//                <label for="ProgrmaText">Programa:</label>
-//                <p:autoComplete id="Programa" value="#{fichaController.fichaActual.programa}"
-//                                completeMethod="#{fichaController.getListaProgramaAutocomplete}"
-//                                var="Programa" itemLabel="#{Programa}" itemValue="#{Programa}"
-//                                converter="ProgramaConverter" required="true"
-//                                forceSelection="true" maxResults="10"/>
-//                -->
