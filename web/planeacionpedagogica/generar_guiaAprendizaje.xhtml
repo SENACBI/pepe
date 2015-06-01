@@ -8,9 +8,10 @@
        xmlns:p="http://primefaces.org/ui">
     
     
-   <ui:composition template="/html_plantillas/plantilla_paginas.xhtml">
+   <ui:composition template="/plantilla_paginas.xhtml">
         <ui:define name="title">Genearar guia</ui:define>
         <ui:define name="body">
+            
             <h:form id="formtable">
                 <h1 class="Titulo-plantillas"><h:outputText value="lista Actividad de actividad de aprendizaje"/></h1>
                     <p:dataTable  value="#{actividadController.actividadAprendizajeList}" var="Actividad"
@@ -76,9 +77,9 @@
                 </p:confirmDialog>
                 </form>    
             </h:form> 
+            
         <ui:include src="dlg_editarGuiaAprendizaje.xhtml"/>
-        </ui:define>
-        
+        </ui:define>     
    </ui:composition>
 </html>
 

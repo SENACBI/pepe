@@ -7,7 +7,7 @@
       xmlns:jsf="http://xmlns.jcp.org/jsf"
       xmlns:p="http://primefaces.org/ui">
 
-    <ui:composition template="/html_plantillas/plantilla_paginas.xhtml">
+    <ui:composition template="/plantilla_paginas.xhtml">
         <ui:define name="title">Ver Guia Aprendizaje</ui:define>        
         <ui:define name="body">
             <form jsf:id="ver_guiaAprendizaje">
@@ -20,32 +20,36 @@
                     </input >
                     <label class="form-1"  value="Introducción:" jsf:for="Introduccion" />
                     <textarea class="form-1"  disabled="true" type="text" jsf:id="Introduccion" jsf:value="#{guiaAprendizajeController.guiaAprendizajeActual.introduccion}" title="Introduccion" required="true" jsf:requiredMessage="La Introduccion field is required.">
-                        </textarea>
-                        <label class="form-1"  value="Glosario:" jsf:for="Glosario" />
-                        <textarea class="form-1"  disabled="true" type="text" jsf:id="Glosario" jsf:value="#{guiaAprendizajeController.guiaAprendizajeActual.glosarioTerminos}" title="Glosario" jsf:requiredMessage="El Glosario field is required.">
-                        </textarea>
-                        
-                        <label class="form-1"  value="Referentes Bibliográficos:" jsf:for="referentesBibliograficos" />
-                        <textarea class="form-1"  disabled="true" type="text" jsf:id="referentesBibliograficos" jsf:value="#{guiaAprendizajeController.guiaAprendizajeActual.referentesBibliograficos}" title="referentesBibliograficos" jsf:requiredMessage="La referentesBibliograficos field is required.">
-                        </textarea>
-                        
-                        <label class="form-1"  value="Control de Documentos:" jsf:for="ControlDocumentos" />
-                        <textarea class="form-1"  disabled="true" type="text" jsf:id="ControlDocumentos" jsf:value="#{guiaAprendizajeController.guiaAprendizajeActual.controlDocumento}" title="ControlDocumentos" jsf:requiredMessage="El ControlDocumentos field is required.">
-                        </textarea>
+                    </textarea>
+                    <label class="form-1"  value="Glosario:" jsf:for="Glosario" />
+                    <textarea class="form-1"  disabled="true" type="text" jsf:id="Glosario" jsf:value="#{guiaAprendizajeController.guiaAprendizajeActual.glosarioTerminos}" title="Glosario" jsf:requiredMessage="El Glosario field is required.">
+                    </textarea>
 
-                        
-                    </h:panelGrid>
-                <h:button class="Guardar" value="Editar" outcome="/GuiaAprendizaje/editar_guiaAprendizaje"/>
-                    
-                <h:commandButton class="Guardar" value="eliminar" action="#{guiaAprendizajeController.deleteGuiaAprendizaje}"
+                    <label class="form-1"  value="Referentes Bibliográficos:" jsf:for="referentesBibliograficos" />
+                    <textarea class="form-1"  disabled="true" type="text" jsf:id="referentesBibliograficos" jsf:value="#{guiaAprendizajeController.guiaAprendizajeActual.referentesBibliograficos}" title="referentesBibliograficos" jsf:requiredMessage="La referentesBibliograficos field is required.">
+                    </textarea>
+
+                    <label class="form-1"  value="Control de Documentos:" jsf:for="ControlDocumentos" />
+                    <textarea class="form-1"  disabled="true" type="text" jsf:id="ControlDocumentos" jsf:value="#{guiaAprendizajeController.guiaAprendizajeActual.controlDocumento}" title="ControlDocumentos" jsf:requiredMessage="El ControlDocumentos field is required.">
+                    </textarea>
+
+
+                </h:panelGrid>
+
+                <p:commandButton class="Guardar" value="Editar" action="#{guiaAprendizajeController.prepareEdit}">
+                    <f:setPropertyActionListener value="#{GuiaAprendizaje}" target="#{guiaAprendizajeController.guiaAprendizajeActual}"/>
+                </p:commandButton>
+
+                <h:commandButton value="Eliminar" action="#{guiaAprendizajeController.deleteGuiaAprendizaje}"
                                  onclick="return confirm('¿ Esta seguro que desea eliminar la guia de aprendizaje ?')"/>
-                                    
-                <input class="Guardar" type="submit" jsf:action="#{guiaAprendizajeController.prepareCreate}" value="Crear Guia aprendizaje" ></input>
-                
-        <br/>
-        <h:commandButton class="Guardar" action="#{guiaAprendizajeController.prepareList()}" value="Ir a la lista de Guia Aprendizaje" immediate="true"/>
-              
-                </form> 
-</ui:define>
+
+
+                <input type="submit" jsf:action="#{guiaAprendizajeController.prepareCreate}" value="Crear Guia aprendizaje" ></input>
+
+                <br/>
+                <p:commandButton class="Guardar" action="#{guiaAprendizajeController.prepareList()}" value="Ir a la lista de Guia Aprendizaje" immediate="true"/>
+
+            </form> 
+        </ui:define>
     </ui:composition>
 </html>

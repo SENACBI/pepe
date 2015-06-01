@@ -6,7 +6,8 @@
        xmlns:jsf="http://xmlns.jcp.org/jsf"
        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
        xmlns:p="http://primefaces.org/ui">
-    <ui:composition template="/html_plantillas/plantilla_paginas.xhtml">
+    
+    <ui:composition template="/plantilla_paginas.xhtml">
         <ui:define name="title">Lista Guia Aprendizaje</ui:define>
         <ui:define name="body">
 
@@ -14,14 +15,13 @@
 
                 <h2>Lista Guía de Aprendizaje</h2>
                 <p>
-                    <p:commandButton class="Guardar" value="Agregar Guia Aprendizaje" 
+                    <p:commandButton class="Guardar" value="Agregar Guía de Aprendizaje" 
                                      action="/GuiaAprendizaje/crear_guiaAprendizaje.xhtml"/>
                 </p>
 
-                <p:panel>
                     <p:dataTable value="#{guiaAprendizajeController.listaguiaAprendizaje}" var="GuiaAprendizaje"
                                  resizableColumns="true"
-                                 paginator="true" rows="10" id="GuiaTable"
+                                 paginator="true" id="GuiaTable"
                                  paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" 
                                  rowsPerPageTemplate="5,10,15">
 
@@ -45,8 +45,6 @@
                             <h:outputText value="#{GuiaAprendizaje.controlDocumento}"/>
                         </p:column>
 
-
-
                         <p:column headerText="Opciones"> 
 
                             <p:commandButton icon="ui-icon-search" action="#{guiaAprendizajeController.prepareView}">
@@ -69,7 +67,6 @@
                         </p:column>
                     </p:dataTable>
 
-                </p:panel>
                 <br></br>
                 <form jsf:id="ConfirmForm">
                     <p:confirmDialog global="true" showEffect="fade" hideEffect="explode">

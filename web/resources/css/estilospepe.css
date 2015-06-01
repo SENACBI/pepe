@@ -416,8 +416,8 @@
     }
 
     .botonConsulta{
-        position: relative;
-        left: 12.6em;
+        display: inline-block;
+        margin-left: 12em;
     }
 
     .Label1{

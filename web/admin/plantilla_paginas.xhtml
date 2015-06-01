@@ -60,18 +60,17 @@
                                         update="formInicio fichaselectoneMsg"/>
                             </h:selectOneMenu>
 
-                            <br></br>
-                            <p class="botonConsulta">
+                            
                                 <h:commandButton 
                                                  action="/proyecto/proyectoCrear.xhtml"
-                                                 id="botonF"                                             
+                                                 id="botonF"  class="botonConsulta"                                 
                                                  actionListener="#{proyectoController.asignarFicha}"
                                                  styleClass="small-3 button"
                                                  disabled="#{fichaController.fichaBoolean()}"
                                                  value="Consultar">
                                     <f:attribute name="ficha" value="#{fichaController.fichaSeleccionada}"/>
                                 </h:commandButton>
-                            </p>
+                         
 
                             <h:message class="Form-Input-1" id="fichaselectoneMsg" for="fichaselectone"/>
 
@@ -142,7 +141,7 @@
         <hr SIZE='20'></hr>
         <footer class="Pepe-footer">
             <figure class="Footer-imageContainer">
-                <img src="../../resources/images/logosena.png" heigth="50" width="50" alt="logo sena" class="Footer-image"/>
+                <img src="#{request.contextPath}/resources/images/logosena.png" heigth="50" width="50" alt="logo sena" class="Footer-image"/>
             </figure>
             <section>
                 <p class="Footer-description"> 

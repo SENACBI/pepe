@@ -5,20 +5,12 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     
-    <ui:composition template="../html_plantillas/plantilla_paginas.xhtml">
+    <ui:composition template="/plantilla_paginas.xhtml">
         <ui:define name="body">
             
             <h:form id="proyectoCrearForm">
                 
-                <p:commandButton rendered="#{fichaController.proyectoBoolean()}"
-                                 id="botonFormular"
-                                 value="Formular Proyecto"
-                                 action="/proyecto/crear/proyectoCrearP1.xhtml"/>
                 
-                <p:commandButton rendered="#{fichaController.proyectoActividadBoolean()}"
-                                 id="botonActividad"
-                                 value="Actividades de Proyecto"
-                                 action="/proyecto/actividadList.xhtml"/>
             </h:form>
         </ui:define>
     </ui:composition>

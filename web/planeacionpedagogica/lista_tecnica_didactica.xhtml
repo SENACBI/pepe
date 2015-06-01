@@ -7,43 +7,43 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
     
-    <ui:composition template="/html_plantillas/plantilla_paginas.xhtml">
-        <ui:define name="title">Lista de Tecnicas Didácticas</ui:define>
+    <ui:composition template="/plantilla_paginas.xhtml">
+        <ui:define name="title">Lista de Técnicas Didácticas</ui:define>
         <ui:define name="body">
             
-            <form jsf:id="ListaTecnicaDidactica">
-                <h1 >"Lista de Técnicas Didácticas"/></h1>
+            <form>
+                
+                <h2 >"Lista de Técnicas Didácticas"/></h2>
                 
                 <p:button  value="Volver atras" outcome="lista_ActividadAprendizaje"/>
-                <p:button  value="Inicio" outcome="/landingpage.xhtml"/>
                 
                 <p:dataTable  value="#{actividadAprendizajeController.listaRecurso}" var="itemTecnicaDidactica"
                               paginator="true" rows="10" id="Actividadtable"
                               paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" 
                               rowsPerPageTemplate="5,10,15">
 
-                    <p:column filterBy="#{itemRecursos.nombre}" headerText="Nombre Recurso" filterMatchMode="contains">
-                        <h:outputText value="#{itemRecursos.nombre}"/>
+                    <p:column filterBy="#{itemTecnicaDidactica.nombre}" headerText="Nombre Recurso" filterMatchMode="contains">
+                        <h:outputText value="#{itemTecnicaDidactica.nombre}"/>
                     </p:column>
                     
-                    <p:column filterBy="#{itemRecursos.cantidad}" headerText="Cantidad de Recurso" filterMatchMode="contains">
-                        <h:outputText value="#{itemRecursos.cantidad}"/>
+                    <p:column filterBy="#{itemTecnicaDidactica.cantidad}" headerText="Cantidad de Recurso" filterMatchMode="contains">
+                        <h:outputText value="#{itemTecnicaDidactica.cantidad}"/>
                     </p:column>
                     
-                    <p:column filterBy="#{itemRecursos.codigoOrions}" headerText="Codigo Orions Recurso" filterMatchMode="contains">
-                        <h:outputText value="#{itemRecursos.codigoOrions}"/>
+                    <p:column filterBy="#{itemTecnicaDidactica.codigoOrions}" headerText="Codigo Orions Recurso" filterMatchMode="contains">
+                        <h:outputText value="#{itemTecnicaDidactica.codigoOrions}"/>
                     </p:column>
                     
-                    <p:column filterBy="#{itemRecursos.idFuenteRecursos}" headerText="Fuente de Recurso" filterMatchMode="contains">
-                        <h:outputText value="#{itemRecursos.idFuenteRecursos}"/>
+                    <p:column filterBy="#{itemTecnicaDidactica.idFuenteRecursos}" headerText="Fuente de Recurso" filterMatchMode="contains">
+                        <h:outputText value="#{itemTecnicaDidactica.idFuenteRecursos}"/>
                     </p:column>
                     
-                    <p:column filterBy="#{itemRecursos.idRubroPresupuestal}" headerText="Rubro presupuestal" filterMatchMode="contains">
-                        <h:outputText value="#{itemRecursos.idRubroPresupuestal}"/>
+                    <p:column filterBy="#{itemTecnicaDidactica.idRubroPresupuestal}" headerText="Rubro presupuestal" filterMatchMode="contains">
+                        <h:outputText value="#{itemTecnicaDidactica.idRubroPresupuestal}"/>
                     </p:column>
                     
-                    <p:column filterBy="#{itemRecursos.idTipoRecurso}" headerText="Tipo Recurso" filterMatchMode="contains">
-                        <h:outputText value="#{itemRecursos.idTipoRecurso}"/>
+                    <p:column filterBy="#{itemTecnicaDidactica.idTipoRecurso}" headerText="Tipo Recurso" filterMatchMode="contains">
+                        <h:outputText value="#{itemTecnicaDidactica.idTipoRecurso}"/>
                     </p:column>
                     
                 </p:dataTable>
