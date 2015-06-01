@@ -47,7 +47,7 @@
                 <ul class="Pepe-listMenu">
                     <h:form>
                         <li class="Pepe-listMenuItem"><a jsf:outcome="/landingpage.xhtml" class="PepeMenu-link">Inicio</a></li>
-                        <li class="Pepe-listMenuItem"><a jsf:outcome="/PlaneaciondeProyecto/programacion.xhtml" class="PepeMenu-link">Formulación de Proyectos</a></li>
+                        <li class="Pepe-listMenuItem"><a jsf:outcome="/programa/programaInicio.xhtml" class="PepeMenu-link">Formulación de Proyectos</a></li>
                         <li class="Pepe-listMenuItem"><a href='#' class="PepeMenu-link">Programación del Proyecto</a></li>
                         <li class="Pepe-listMenuItem"><a jsf:outcome="/planeacionpedagogica/menuPlaneacionPedagogica.xhtml" class="PepeMenu-link">Planeación Pedagógica</a></li>
                         <li class="Pepe-listMenuItem"><a href='#' class="PepeMenu-link">Aprendices</a></li>
@@ -56,19 +56,7 @@
                         <li class="Pepe-listMenuItem"><a jsf:outcome="/acompanamiento/crear_acompanamiento.xhtml" class="PepeMenu-link">Acompañamiento al Proyecto</a></li>
                         <li class="Pepe-listMenuItem"><a href='#' class="PepeMenu-link">Administración del Proyecto</a></li>
                         <li class="Pepe-listMenuItem"><a href='#' class="PepeMenu-link">Imprimibles PDF </a></li>
-                        <li class="Pepe-listMenuItem"><a href='#' class="PepeMenu-link" jsf:action="#{loginController.logout}" onclick="PF('cerrarSesion').show();">Cerrar Sesión</a></li>
-
-                        <p:confirmDialog global="true"
-                                         showEffect="fade" 
-                                         hideEffect="explode"
-                                         header="CERRAR SESIÓN"
-                                         message="¿Realmente desea cerrar la sesión? "
-                                         widgetVar="cerrarSesion">
-                            <p:commandButton value="Si"  action="#{loginController.logout}"
-                                             styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-                            <p:commandButton value="No" styleClass="ui-confirmdialog-no"
-                                             icon="ui-icon-close" />
-                        </p:confirmDialog>
+                        <li class="Pepe-listMenuItem"><a href='#' class="PepeMenu-link" jsf:action="#{loginController.logout}">Cerrar Sesión</a></li>
                     </h:form>
                 </ul>        
             </nav>    
