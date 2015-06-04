@@ -15,20 +15,20 @@
                 <h2>Actividades de Proyecto</h2>
 
                 <div class="row">
+                        <p:panelGrid columns="2">
+                            <label>Fase de la Actividad:</label>
+                            <h:selectOneMenu id="idFaseP"
+                                             value="#{proyectoController.faseActividad}">
+                                <f:selectItem itemLabel="Todas las fases ..." />
+                                <f:selectItems value="#{proyectoController.listaFase()}"
+                                               var="fase"
+                                               itemValue="#{fase.idFase}"/>
+                                <p:ajax process="idFaseP" 
+                                        update="actividadListVentanaForm"
+                                        event="change"/>
+                            </h:selectOneMenu>
+                        </p:panelGrid>
 
-                    <p>
-                    <h:selectOneMenu id="idFaseP"
-                                     value="#{proyectoController.faseActividad}">
-                        <f:selectItem itemLabel="Todas las fases ..." />
-                        <f:selectItems value="#{proyectoController.listaFase()}"
-                                       var="fase"
-                                       itemValue="#{fase.idFase}"/>
-                        <p:ajax process="idFaseP" 
-                                update="actividadListVentanaForm"
-                                event="change"/>
-                    </h:selectOneMenu>
-                    </p>
-                    
                     <div>
                         <p:dataTable value="#{proyectoController.listaActividad}" var="item">
                             <p:column>

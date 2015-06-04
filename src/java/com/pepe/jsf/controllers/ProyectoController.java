@@ -225,6 +225,10 @@ public class ProyectoController implements Serializable {
     public void setListaCompetencia(List<Competencia> listaCompetencia) {
         this.listaCompetencia = listaCompetencia;
     }
+    
+    public  List<Competencia> getListaCompetenciaSelectOne() {
+        return getCompetenciaFacade().findAll();
+    }
 
     public Proyecto getProyectoActual() {
         if (proyectoActual == null) {

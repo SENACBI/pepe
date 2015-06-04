@@ -100,7 +100,7 @@ public class GuiaAprendizajeController implements Serializable {
 
     public String prepareList() {
         recargarlista();
-        return "/GuiaAprendizaje/lista_Guia_Aprendizaje";
+        return "/planeacionpedagogica/guia_aprendizaje";
     }
 
     public void addGuiaAprendizaje() {

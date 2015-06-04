@@ -100,7 +100,7 @@
 
                     <h:selectOneMenu id="idLider" value="#{fichaController.idUsu}">
                         <f:selectItem itemLabel="Lider Ejecutor..." />
-                        <f:selectItems value="#{usuarioController.listaUsuariosInstr}" 
+                        <f:selectItems value="#{usuarioController.listaUsuario}" <!-- retornar el listaUsuario a listaUsuInstr -->
                                        var="usu" 
                                        itemValue="#{usu.idUsuario}"/>  
                         <f:ajax execute="idLider"
@@ -109,12 +109,12 @@
                         <f:ajax execute="idLider"
                                 render="idLidermsg"/>
                     </h:selectOneMenu>
-                    <h:message id="idLidermsg"
-                               for="idLider"
-                               styleClass="error"/>
+                    <p:message id="idLidermsg"
+                               for="idLider"/>
                     <p></p>
 
                     <p:commandButton actionListener="#{fichaController.addFicha}" 
+                                     action="/landingpage"
                                      class="Guardar"
                                      value="Guardar Ficha"
                                      update="@this">

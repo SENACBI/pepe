@@ -15,16 +15,14 @@
                 <h2>Lista de Actividades de Poyecto</h2>
 
                 <h:panelGrid columns="1">
-                    <p>
-                        <p:commandButton  value="Crear Actividad" action="#{actividadController.createActividadProyecto}"/>
-                    </p>
 
                     <p:dataTable  value="#{actividadController.listaActividad}" var="Actividad"
                                   paginator="true" rows="10" id="Actividadtable"
                                   paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" 
                                   rowsPerPageTemplate="5,10,15">
 
-                        <p:column filterBy="#{Actividad.nombreActividadProyecto}" headerText="Nombre de Actividad" filterMatchMode="contains">
+                        <p:column filterBy="#{Actividad.nombreActividadProyecto}" 
+                                  headerText="Nombre de Actividad" filterMatchMode="contains">
                             <h:outputText value="#{Actividad.nombreActividadProyecto}"/>
                         </p:column>
 
@@ -64,6 +62,7 @@
                             </p:commandButton>
                         </p:column>
                     </p:dataTable>
+                    
                     <form jsf:id="ConfirmForm">
                         <p:confirmDialog global="true" showEffect="fade" hideEffect="explode">
                             <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />

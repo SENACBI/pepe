@@ -23,14 +23,14 @@
                                      value="Actividades de Proyecto"
                                      action="/proyecto/actividadList"/>
                     <p></p>
-                    
-                    
+
+
                     <p:panelGrid columns="2">
 
                         <h:outputText value="Nombre del Proyecto:"/>
                         <h:outputText value="#{fichaController.fichaSeleccionada.idProyecto.nombreProyecto}" title="NombreProyecto"/>
 
-                        <h:outputText value="Código Proyecto:"/>
+                        <h:outputText value="Código de Proyecto:"/>
                         <h:outputText value="#{fichaController.fichaSeleccionada.idProyecto.codigoProyecto}" title="CodigoProyecto"/>
 
                         <h:outputText value="Justificación:"/>
@@ -48,7 +48,7 @@
                         <h:outputText value="Planteamiento:"/>
                         <h:outputText value="#{fichaController.fichaSeleccionada.idProyecto.planteamiento21}" title="Planteamiento21"/>
 
-                        <h:outputText value="Impacto Socia:"/>
+                        <h:outputText value="Impacto Social:"/>
                         <h:outputText value="#{fichaController.fichaSeleccionada.idProyecto.impactoSocial2521}" title="ImpactoSocial2521"/>
 
                         <h:outputText value="Restricciones:"/>
@@ -57,26 +57,33 @@
                         <h:outputText value="Productos Resultados:"/>
                         <h:outputText value="#{fichaController.fichaSeleccionada.idProyecto.productosResultados254}" title="ProductosResultados254"/>
 
-                        <h:outputText value="Innovación 1:"/>
-                        <h:outputText value="#{fichaController.fichaSeleccionada.idProyecto.innovacion261}" title="Innovacion261"/>
+                        <h:outputText value="El proyecto resuelve una necesidad del sector productivo?:"/>
+                        <h:outputText rendered="#{fichaController.fichaSeleccionada.idProyecto.innovacion261}" value="Si"/>
+                        <h:outputText rendered="#{!fichaController.fichaSeleccionada.idProyecto.innovacion261}" value="No"/>
 
-                        <h:outputText value="Innovación 2:"/>
-                        <h:outputText value="#{fichaController.fichaSeleccionada.idProyecto.innovacion262}" title="Innovacion262"/>
+                        <h:outputText value="El proyecto mejora el proceso/producto/servicio existente?:"/>
+                        <h:outputText rendered="#{fichaController.fichaSeleccionada.idProyecto.innovacion262}" value="Si"/>
+                        <h:outputText rendered="#{!fichaController.fichaSeleccionada.idProyecto.innovacion262}" value="No"/>
 
-                        <h:outputText value="Innovación 3:"/>
-                        <h:outputText value="#{fichaController.fichaSeleccionada.idProyecto.innovacion263}" title="Innovacion263"/>
+                        <h:outputText value="El proyecto involucra el uso de nuevas técnicas y tecnologías de proceso?:"/>
+                        <h:outputText rendered="#{fichaController.fichaSeleccionada.idProyecto.innovacion263}" value="Si"/>                        
+                        <h:outputText rendered="#{!fichaController.fichaSeleccionada.idProyecto.innovacion263}" value="No"/>
 
-                        <h:outputText value="Innovación 4:"/>
-                        <h:outputText value="#{fichaController.fichaSeleccionada.idProyecto.innovacion264}" title="Innovacion264"/>
+                        <h:outputText value="Los productos finales son susceptibles a protección industrial y/o derechos de autor?:"/>
+                        <h:outputText rendered="#{fichaController.fichaSeleccionada.idProyecto.innovacion264}" value="Si"/>
+                        <h:outputText rendered="#{!fichaController.fichaSeleccionada.idProyecto.innovacion264}" value="No"/>
 
-                        <h:outputText value="Innovación 5:"/>
-                        <h:outputText value="#{fichaController.fichaSeleccionada.idProyecto.innovacion265}" title="Innovacion265"/>
+                        <h:outputText value="Los productos obtenidos en el proyecto pueden ser posicionados en el mercado?:"/>
+                        <h:outputText rendered="#{fichaController.fichaSeleccionada.idProyecto.innovacion265}" value="Si"/>
+                        <h:outputText rendered="#{!fichaController.fichaSeleccionada.idProyecto.innovacion265}" value="No"/>
 
-                        <h:outputText value="Valoración 1:"/>
-                        <h:outputText value="#{fichaController.fichaSeleccionada.idProyecto.valoracion271}" title="Valoracion271"/>
+                        <h:outputText value="Con el desarrollo del proyecto se puede satisfacer la necesidad de un cliente potencial?:"/>
+                        <h:outputText rendered="#{fichaController.fichaSeleccionada.idProyecto.valoracion271}" value="Si"/>
+                        <h:outputText rendered="#{!fichaController.fichaSeleccionada.idProyecto.valoracion271}" value="No"/>
 
-                        <h:outputText value="Valoración 2:"/>
-                        <h:outputText value="#{fichaController.fichaSeleccionada.idProyecto.valoracion272}" title="Valoracion272"/>
+                        <h:outputText value="Viabilidad de proyecto para Plan de Negocio?:"/>
+                        <h:outputText rendered="#{fichaController.fichaSeleccionada.idProyecto.valoracion272}" value="Si"/>
+                        <h:outputText rendered="#{!fichaController.fichaSeleccionada.idProyecto.valoracion272}" value="No"/>
 
                         <h:outputText value="Intructores Requeridos:"/>
                         <h:outputText value="#{fichaController.fichaSeleccionada.idProyecto.intructoresRequeridos}" title="IntructoresRequeridos"/>
@@ -84,7 +91,7 @@
                         <h:outputText value="Aprendices Sugeridos:"/>
                         <h:outputText value="#{fichaController.fichaSeleccionada.idProyecto.aprendicesSugeridos}" title="AprendicesSugeridos"/>
 
-                        <h:outputText value="Descripcion del Ambiente:"/>
+                        <h:outputText value="Descripción del Ambiente:"/>
                         <h:outputText value="#{fichaController.fichaSeleccionada.idProyecto.descripcionAmbiente}" title="DescripcionAmbiente"/>
 
                         <h:outputText value="Impacto Ambiental:"/>

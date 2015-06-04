@@ -10,8 +10,9 @@
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 
     <ui:composition template="/html_plantillas/plantillaini.xhtml">
+        <ui:define name="title">Pagina de Inicio</ui:define> 
         <ui:define name="body">
-            
+
             <h2>Selección de Ficha</h2>
             <h:form rendered="#{loginController.authenticated}" class="Pepe-body" id="formInicio">
 
@@ -93,11 +94,13 @@
                             jsf:id="nombreLider"/>
                 </h:panelGrid>
                 <br></br>                
-                
+
             </h:form>
 
 
             <h:form> 
+                <p:commandButton value="Programa"
+                                 action="programa/programaInicio.xhtml"/>
 
                 <p:commandButton class="Guardar" process="@this" 
                                  value="Programación del Proyecto" 

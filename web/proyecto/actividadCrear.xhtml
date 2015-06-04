@@ -38,8 +38,8 @@
                         <textarea jsf:value="#{proyectoController.actividadActual.nombreActividadProyecto}"
                                   jsf:id="crearDesActividad" cols="50" rows="3" style="resize: none"
                                   required="true"
-                                  jsf:requiredMessage="Insgrese la descripción de la Actividad de Proyecto"
-                                  placeholder="Nombre Proyecto">
+                                  jsf:requiredMessage="Este es un campo Requerido!"
+                                  placeholder="Insgrese la descripción de la Actividad de Proyecto">
                             <f:ajax execute="crearDesActividad"
                                     render="crearDesActividadmsg"
                                     event="blur"/>
@@ -64,10 +64,9 @@
 
 
                         <h:outputText value="Competencias de la Actividad"/>
-                        <h:selectOneMenu id="idComp" 
-                                         value="#{proyectoController.idComp}">
+                        <h:selectOneMenu id="idComp" value="#{proyectoController.idComp}">
                             <f:selectItem itemLabel="Competencias ..." />
-                            <f:selectItems value="#{proyectoController.listaCompetencia}" 
+                            <f:selectItems value="#{proyectoController.listaCompetenciaSelectOne}" 
                                            var="com" 
                                            itemValue="#{com.idCompetencia}"/>  
                             <p:ajax process="idComp"
