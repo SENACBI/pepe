@@ -52,6 +52,9 @@
                                jsf:id="crearNombreActividad"
                                jsf:value="#{proyectoController.actividadActual.duracion}"
                                placeholder="Tiempo estimado en horas"
+                               maxlength="4"
+                               max="9999"
+                               min="1"
                                required="true"
                                jsf:requiredMessage="Ingrese el número de horas para completar dicha actividad"
                                jsf:validatorMessage="Dato incorrecto">

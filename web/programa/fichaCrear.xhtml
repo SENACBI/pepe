@@ -17,51 +17,53 @@
                     <h:selectOneMenu id="idCentroFormacionSelect" 
                                      value="#{fichaController.idCentro}"
                                      required="true"
-                                     requiredMessage="Debe seleccionar el Centro de Formación">
-                        <f:selectItem itemLabel="Centro de Formación..." />
-                        <f:selectItems value="#{fichaController.listaCentroFormacionSelectOne}" var="centroFormacion" itemValue="#{centroFormacion.idCentroFormacion}"/>  
+                                     requiredMessage="El Centro de Formación es obligatorio!">
+                        <f:selectItem itemLabel="*Centro de Formación..." />
+                        <f:selectItems value="#{fichaController.listaCentroFormacionSelectOne}" 
+                                       var="centroFormacion" itemValue="#{centroFormacion.idCentroFormacion}"/>  
                         <f:ajax execute="idCentroFormacionSelect"
                                 render="idCentroFormacionSelectmsg"
                                 event="blur"/>
                         <f:ajax execute="idCentroFormacionSelect"
                                 render="idCentroFormacionSelectmsg"/>
                     </h:selectOneMenu>
-                    <h:message id="idCentroFormacionSelectmsg"
-                               for="idCentroFormacionSelect"
-                               styleClass="error"/>
+                    <p:message id="idCentroFormacionSelectmsg"
+                               for="idCentroFormacionSelect"/>
                     <p></p>
 
-                    <h:selectOneMenu id="idTipoOfertaSelect" value="#{fichaController.idOferta}">
-                        <f:selectItem itemLabel="Tipo de Oferta..." />
-                        <f:selectItems value="#{fichaController.listaTipoOfertaSelectOne}" var="tipoOferta" itemValue="#{tipoOferta.idTipoOferta}"/>  
+                    <h:selectOneMenu id="idTipoOfertaSelect" value="#{fichaController.idOferta}"
+                                     required="true" requiredMessage="El Tipo de Oferta es obligatorio!">
+                        <f:selectItem itemLabel="*Tipo de Oferta..." />
+                        <f:selectItems value="#{fichaController.listaTipoOfertaSelectOne}" 
+                                       var="tipoOferta" itemValue="#{tipoOferta.idTipoOferta}"/>  
                         <f:ajax execute="idTipoOfertaSelect"
                                 render="idTipoOfertaSelectmsg"
                                 event="blur"/>
                         <f:ajax execute="idTipoOfertaSelect"
                                 render="idTipoOfertaSelectmsg"/>
                     </h:selectOneMenu>
-                    <h:message id="idTipoOfertaSelectmsg"
-                               for="idTipoOfertaSelect"
-                               styleClass="error"/>
+                    <p:message id="idTipoOfertaSelectmsg"
+                               for="idTipoOfertaSelect"/>
                     <p></p>
 
-                    <h:selectOneMenu id="idJornadaSelect" value="#{fichaController.jornada}">
-                        <f:selectItem itemLabel="Jornada..." />
-                        <f:selectItems value="#{fichaController.listaJornadaSelectOne}" var="Jornada" itemValue="#{Jornada.idJornada}"/>  
+                    <h:selectOneMenu id="idJornadaSelect" value="#{fichaController.jornada}"
+                                     required="true" requiredMessage="La Jornada es obligatoria!">
+                        <f:selectItem itemLabel="*Jornada..." />
+                        <f:selectItems value="#{fichaController.listaJornadaSelectOne}" 
+                                       var="Jornada" itemValue="#{Jornada.idJornada}"/>  
                         <f:ajax execute="idJornadaSelect"
                                 render="idJornadaSelectmsg"
                                 event="blur"/>
                         <f:ajax execute="idJornadaSelect"
                                 render="idJornadaSelectmsg"/>
                     </h:selectOneMenu>
-                    <h:message id="idJornadaSelectmsg"
-                               for="idJornadaSelect"
-                               styleClass="error"/>
+                    <p:message id="idJornadaSelectmsg"
+                               for="idJornadaSelect"/>
                     <p></p>
 
                     <input type="text" 
                            pattern="[0-9]{6,8}" 
-                           placeholder="Código Ficha"
+                           placeholder="*Código Ficha"
                            minlength="6"
                            maxlength="8"
                            jsf:validator="#{fichaController.validarCodigoFicha}"
@@ -73,9 +75,8 @@
                                 render="msgcodigoFicha"
                                 event="blur"/>
                     </input>
-                    <h:message id="msgcodigoFicha"
-                               for="codigoFicha"
-                               styleClass="error"/>
+                    <p:message id="msgcodigoFicha"
+                               for="codigoFicha"/>
                     <p></p>
 
                     <input type="date" jsf:id="FechaInicio"
@@ -84,23 +85,25 @@
                     </input>
                     <p></p>
 
-                    <h:selectOneMenu id="idTipoFormacionSelect" value="#{fichaController.idTipoFormacion}">
-                        <f:selectItem itemLabel="Tipo de Formación..." />
-                        <f:selectItems value="#{fichaController.listaTipoFormacionSelectOne}" var="tipoFormacion" itemValue="#{tipoFormacion.idTipoFormacion}"/>  
+                    <h:selectOneMenu id="idTipoFormacionSelect" value="#{fichaController.idTipoFormacion}"
+                                     required="true" requiredMessage="El Tipo de Formación es obligatorio!">
+                        <f:selectItem itemLabel="*Tipo de Formación..." />
+                        <f:selectItems value="#{fichaController.listaTipoFormacionSelectOne}" 
+                                       var="tipoFormacion" itemValue="#{tipoFormacion.idTipoFormacion}"/>  
                         <f:ajax execute="idTipoFormacionSelect"
                                 render="idTipoFormacionSelectmsg"
                                 event="blur"/>
                         <f:ajax execute="idTipoFormacionSelect"
                                 render="idTipoFormacionSelectmsg"/>
                     </h:selectOneMenu>
-                    <h:message id="idTipoFormacionSelectmsg"
-                               for="idTipoFormacionSelect"
-                               styleClass="error"/>
+                    <p:message id="idTipoFormacionSelectmsg"
+                               for="idTipoFormacionSelect"/>
                     <p></p>
-
-                    <h:selectOneMenu id="idLider" value="#{fichaController.idUsu}">
-                        <f:selectItem itemLabel="Lider Ejecutor..." />
-                        <f:selectItems value="#{usuarioController.listaUsuario}" <!-- retornar el listaUsuario a listaUsuInstr -->
+                    <!-- retornar el listaUsuario a listaUsuInstr -->
+                    <h:selectOneMenu id="idLider" value="#{fichaController.idUsu}"
+                                     required="true" requiredMessage="El Lider Ejecutor es obligatorio!">
+                        <f:selectItem itemLabel="*Lider Ejecutor..." />
+                        <f:selectItems value="#{usuarioController.listaUsuario}"
                                        var="usu" 
                                        itemValue="#{usu.idUsuario}"/>  
                         <f:ajax execute="idLider"
@@ -120,7 +123,7 @@
                                      update="@this">
                         <f:attribute name="prog" value="#{programaController.programaActual}"/>                        
                     </p:commandButton>
-                    
+
                 </h:panelGrid>
             </h:form>
 

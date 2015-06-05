@@ -253,10 +253,10 @@ public class FichaController implements Serializable {
             if (u == null) {
                 fichaActual.setCodigoFicha((String) o);
             } else {
-                throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "", "El Codigo de Ficha ya fue registrado"));
+                throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "", "El Código de Ficha ya fue registrado"));
             }
         } else {
-            throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "", "El codigo de la ficha debe contener 6 digitos númericos"));
+            throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "", "El Código de la Ficha debe contener 6 dígitos númericos"));
         }
     }
 

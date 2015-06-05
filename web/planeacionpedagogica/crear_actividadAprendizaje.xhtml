@@ -91,7 +91,7 @@ and open the template in the editor.
                 </h:panelGroup>   
 
                 <input type="submit" jsf:action="#{actividadController.addResultadoAprendizaje}"
-                                 value="Agregar Resultado Aprendizaje">
+                       value="Agregar Resultado Aprendizaje" class="Guardar">
                     <f:ajax execute="@this idResultadoAprendizajeSelect" render="agregar-Resultado"/>
                 </input>
                 <p></p>
@@ -111,6 +111,7 @@ and open the template in the editor.
                         </p:dataTable>
                     </p:panel>
                 </h:panelGroup>
+                <p></p>
 
                 <h:panelGroup id="agregar-Recurso">
                     <h:outputLabel class="form-1" value="Recurso:"  for="nomRecurso"/>
@@ -137,6 +138,7 @@ and open the template in the editor.
                         </p:column>
                     </p:dataTable>
                 </h:panelGroup>
+                <p></p>
 
                 <h:panelGroup id="agregar-td">
                     <h:outputLabel class="form-1" value="Tecnica Didactica:"  for="nomTd"/>
@@ -157,6 +159,7 @@ and open the template in the editor.
                         </p:column>
                     </p:dataTable>
                 </h:panelGroup>
+                <p></p>
 
                 <h:panelGroup id="agregar-instructor">
                     <h:outputLabel class="form-1" value="Instructor:"  for="nomInstructor"/>
@@ -172,16 +175,20 @@ and open the template in the editor.
                     </h:commandButton>
 
                     <p:dataTable id="tablaUsuarios" value="#{actividadController.usuarioList}" var="itemUsuario">
-                        <p:column headerText="Nombre del instructor">
-                            <h:outputText value="#{itemUsuario.nombre1}"/>
+                        <p:column headerText="Instructor(es) Encargado(s)">
+                            <h:outputText value="#{itemUsuario.nombre1} #{itemUsuario.apellido1}"/>
                         </p:column>
                     </p:dataTable>
                 </h:panelGroup>
+                <p></p>
 
-                <input type="submit" value="Guardar" jsf:action="#{actividadController.addActividadAprendizaje}">
-                    <f:ajax execute="@this formulario-actividadAprendizaje" render="formulario-actividadAprendizaje"/>
+                <input type="submit" class="Guardar"
+                       value="Guardar"
+                       jsf:action="#{actividadController.addActividadAprendizaje}">
+                    <f:ajax execute="@this formulario-actividadAprendizaje" 
+                            render="formulario-actividadAprendizaje"/>
                 </input>
-                
+
             </h:form>
         </ui:define>
     </ui:composition>

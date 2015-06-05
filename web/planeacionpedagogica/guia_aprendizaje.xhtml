@@ -57,7 +57,9 @@
 
                             </p:commandButton>
 
-                            <p:commandButton class="Guardar" process="@this" value="Generar Guia" actionListener="#{actividadController.prepareCreateGenerarGuia}" action="#{actividadController.createGenerarGuia}">
+                            <p:commandButton class="Guardar" process="@this" value="Generar Guia" 
+                                             actionListener="#{actividadController.prepareCreateGenerarGuia}" 
+                                             action="#{actividadController.createGenerarGuia}">
                                 <f:attribute name="actividad" value="#{Actividad}"/>            
                             </p:commandButton>
                         </p:column>
@@ -69,8 +71,6 @@
                             <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
                         </p:confirmDialog>
                     </form>
-
-                    <p:button  value="Inicio" outcome="/index.xhtml"/>
 
                 </h:panelGrid>
             </form> 
