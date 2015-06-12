@@ -141,7 +141,7 @@ and open the template in the editor.
                 <p></p>
 
                 <h:panelGroup id="agregar-td">
-                    <h:outputLabel class="form-1" value="Tecnica Didactica:"  for="nomTd"/>
+                    <h:outputLabel class="form-1" value="Técnica Didáctica:"  for="nomTd"/>
                     <h:selectOneMenu class="form-1" id="idTdSelect" 
                                      value="#{actividadController.tecnicaDidacticaActual}" required="true">
                         <f:selectItem itemLabel="Seleccionar uno.." />
@@ -149,12 +149,12 @@ and open the template in the editor.
                                        var="tecnicaDidactica" itemValue="#{tecnicaDidactica}"/>  
                     </h:selectOneMenu>
 
-                    <h:commandButton action="#{actividadController.addTecnicaDidactica}" value="Agregar tecnica didactica">
+                    <h:commandButton action="#{actividadController.addTecnicaDidactica}" value="Agregar Técnica Didáctica">
                         <f:ajax execute="@this idTdSelect" render="agregar-td"/>
                     </h:commandButton>
 
                     <p:dataTable id="tablaTd" value="#{actividadController.tecnicaDidacticaList}" var="itemTd">
-                        <p:column headerText="Nombre tecnica didactica">
+                        <p:column headerText="Nombre Técnica Didáctica">
                             <h:outputText value="#{itemTd.nombreTecnicaDidactica}"/>
                         </p:column>
                     </p:dataTable>
@@ -181,6 +181,121 @@ and open the template in the editor.
                     </p:dataTable>
                 </h:panelGroup>
                 <p></p>
+
+                <h3>Crear Evidencia de Aprendizaje</h3>
+                <h:panelGroup id="evidencia-actividadAprendizaje">
+                    <h:panelGroup id="agregar-td">
+                        <h:outputLabel class="form-1" value="Técnica Didáctica:"  for="nomTd"/>
+                        <h:selectOneMenu class="form-1" id="idTdSelect" 
+                                         value="#{actividadController.tecnicaDidacticaActual}" required="true">
+                            <f:selectItem itemLabel="Seleccionar uno.." />
+                            <f:selectItems value="#{actividadController.listaTecnicaDidacticaSelectOne}" 
+                                           var="tecnicaDidactica" itemValue="#{tecnicaDidactica}"/>  
+                        </h:selectOneMenu>
+
+                        <h:commandButton action="#{actividadController.addTecnicaDidactica}" value="Agregar Técnica Didáctica">
+                            <f:ajax execute="@this idTdSelect" render="agregar-td"/>
+                        </h:commandButton>
+
+                        <p:dataTable id="tablaTd" value="#{actividadController.tecnicaDidacticaList}" var="itemTd">
+                            <p:column headerText="Nombre Técnica Didáctica">
+                                <h:outputText value="#{itemTd.nombreTecnicaDidactica}"/>
+                            </p:column>
+                            <p:column headerText="Descripción de la Evidencia">
+                                <h:outputText value="#{itemTd.descripcionTecnicaDidactica}"/>
+                            </p:column>
+                        </p:dataTable>
+                    </h:panelGroup>
+                    <p></p>
+
+                    <h:panelGrid columns="3">
+                        <h:outputLabel class="form-1" value="*Definición de la Evidencia:"  
+                                       for="nomEvidencia"/>
+                        <input class="form-1" type="text" jsf:id="nombreEvidencia" 
+                               jsf:value="#{actividadController.evidenciaActual.nombreEvidencia}"
+                               placeholder="Introduzca un Nombre"
+                               jsf:requiredMessage="Se requiere un Título"
+                               required="true" >  
+                            <f:ajax execute="@this" render="nombreEvidenciaMessaje" event="blur"/>
+                        </input>
+                        <p:message id="nombreEvidenciaMessaje" for="nombreEvidencia"/>
+
+                        <h:outputLabel class="form-1" value="Descripción de la Evidencia:"  
+                                       for="descriEvidencia"/>
+                        <textarea rows="3" cols="10" style="resize: none" class="form-1" type="text" 
+                                  placeholder="Introduzca la Descripción de la Evidencia"
+                                  jsf:id="descriEvidencia" 
+                                  jsf:value="#{actividadController.evidenciaActual.descripcionEvidencia}" >
+                        </textarea>
+                        <br></br>
+
+                        <h:outputLabel class="form-1" value="Observaciones:"  for="nomObservaciones"/>
+                        <textarea rows="3" cols="10" style="resize: none" class="form-1" type="text" 
+                                  jsf:id="nomObservacionesInputText" 
+                                  jsf:value="#{actividadController.evidenciaActual.observacionEvidencia}"
+                                  placeholder="Introduzca las Observaciones">  
+                        </textarea>
+                        <br></br>
+
+                        <h:outputLabel class="form-1" value="Tipo de Evidencia:"  for="tipoEviden"/>
+                        <h:selectOneMenu class="form-1" id="idtipoEvidencia" 
+                                         value="#{actividadController.tipoEvidenciaActual}">
+                            <f:selectItem itemLabel="Seleccionar uno.." />
+                            <f:selectItems value="#{actividadController.tipoEvidenciaListSelectOne}"
+                                           var="tipoEvidencia" 
+                                           itemValue="#{tipoEvidencia.idTipoEvidencia}"/>  
+                        </h:selectOneMenu>
+                        <br></br>
+
+                        <h:outputLabel class="form-1" value="Técnica de Evaluación:"  for="tipoEval"/>
+                        <h:selectOneMenu class="form-1" id="idTipoEvaluacion" 
+                                         value="#{actividadController.tecnicaEvaluacionActual.idTecnicaEvaluacion}">
+                            <f:selectItem itemLabel="Seleccionar uno.." />
+                            <f:selectItems value="#{actividadController.tecnicaEvaluacionListSelectOne}" 
+                                           var="tipoEvaluacion" 
+                                           itemValue="#{tipoEvaluacion}"/>  
+                        </h:selectOneMenu>
+                        <br></br>
+
+                        <h:outputLabel class="form-1" value="Forma de Entrega:"  for="tipoEntreg"/>
+                        <h:selectOneMenu class="form-1" id="idTipoEntrega" 
+                                         value="#{actividadController.tipoEntregaActual}">
+                            <f:selectItem itemLabel="Seleccionar uno.." />
+                            <f:selectItems value="#{actividadController.tipoEntregaListSelectOne}" 
+                                           var="tipoEntrega" itemValue="#{tipoEntrega}" />  
+                        </h:selectOneMenu>
+                    </h:panelGrid> 
+                </h:panelGroup>
+
+                <input type="submit" jsf:action="#{actividadController.addEvidencia}"
+                       value="Agregar Evidencia" class="Guardar">
+                    <f:ajax execute="@this nomEvidencia" render="evidencia-actividadAprendizaje"/>
+                </input>
+                <p></p>
+
+
+                <p:dataTable id="tablaEvidencia" value="#{actividadController.evidenciaList}" var="itemEvidencia">
+                    <p:column headerText="Nombre Evidencia">
+                        <h:outputText value="#{itemEvidencia.nombreEvidencia}"/>
+                    </p:column>
+                    <p:column headerText="Descripción de Evidencia">
+                        <h:outputText value="#{itemEvidencia.descripcionEvidencia}"/>
+                    </p:column>
+                    <p:column headerText="Observaciones">
+                        <h:outputText value="#{itemEvidencia.observacionEvidencia}"/>
+                    </p:column>
+                    <p:column headerText="Tipo de Evidencia">
+                        <h:outputText value="#{itemEvidencia.idTipoEvidencia.nombreTipoEvidencia}"/>
+                    </p:column>
+                    <p:column headerText="Técnica de Evaluación">
+                        <h:outputText value="#{itemEvidencia.idTecnicaEvaluacion.tecnicaEvaluacion}"/>
+                    </p:column>
+                    <p:column headerText="Tipo de Entrega">
+                        <h:outputText value="#{itemEvidencia.idTipoEntrega.tipoEntrega}"/>
+                    </p:column>
+                </p:dataTable>
+                <p></p>
+
 
                 <input type="submit" class="Guardar"
                        value="Guardar"

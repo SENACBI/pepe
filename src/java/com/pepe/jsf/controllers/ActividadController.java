@@ -7,6 +7,10 @@ package com.pepe.jsf.controllers;
 
 import com.pepe.jpa.entities.Actividad;
 import com.pepe.jpa.entities.ActividadAprendizaje;
+import com.pepe.jpa.entities.Evidencia;
+import com.pepe.jpa.entities.TecnicaEvaluacion;
+import com.pepe.jpa.entities.TipoEntrega;
+import com.pepe.jpa.entities.TipoEvidencia;
 import com.pepe.jpa.entities.Fase;
 import com.pepe.jpa.entities.Ficha;
 import com.pepe.jpa.entities.Proyecto;
@@ -17,6 +21,10 @@ import com.pepe.jpa.entities.TipoActividadAprendizaje;
 import com.pepe.jpa.entities.Usuario;
 import com.pepe.jpa.sesions.ActividadAprendizajeFacade;
 import com.pepe.jpa.sesions.ActividadFacade;
+import com.pepe.jpa.sesions.EvidenciaFacade;
+import com.pepe.jpa.sesions.TecnicaEvaluacionFacade;
+import com.pepe.jpa.sesions.TipoEntregaFacade;
+import com.pepe.jpa.sesions.TipoEvidenciaFacade;
 import com.pepe.jpa.sesions.FaseFacade;
 import com.pepe.jpa.sesions.ProyectoFacade;
 import com.pepe.jpa.sesions.RecursoFacade;
@@ -48,17 +56,25 @@ import javax.faces.event.ActionEvent;
 public class ActividadController implements Serializable {
 
     private Actividad actividadActual;
+
     private List<Actividad> listaActividad = null;
+
     private List<ActividadAprendizaje> actividadAprendizajeList = null;
+
     private List<TecnicaDidactica> tecnicaDidacticaList = null;
+
     @EJB
     private ProyectoFacade proyectoFacade;
+
     @EJB
     private ActividadFacade actividadFacade;
+
     @EJB
     private FaseFacade faseFacade;
+
     @EJB
     private ActividadAprendizajeFacade actividadAprendizajeFacade;
+
     private Fase faseActual;
     private Ficha fichaActual;
     private int actividadSeleccionadaInt;
@@ -177,7 +193,6 @@ public class ActividadController implements Serializable {
         actividadActual = new Actividad();
         actividadActual = (Actividad) event.getComponent().getAttributes().get("actividad");
         actividadAprendizajeList = new ArrayList<>();
-
         actividadAprendizajeList.addAll(getActividadAprendizajeFacade().consultaActividad(actividadActual));
 
         //listaActividadAprendizaje=actividadActual.getActividadAprendizajeList();
@@ -346,6 +361,15 @@ public class ActividadController implements Serializable {
     private Recurso recursoActual;
     private TecnicaDidactica tecnicaDidacticaActual;
     private Usuario usuarioActual;
+    private Evidencia evidenciaActual;
+    private List<Evidencia> evidenciaList = null;
+    private TecnicaEvaluacion tecnicaEvaluacionActual;
+    private List<TecnicaEvaluacion> tecnicaEvaluacionList = null;
+    private TipoEntrega tipoEntregaActual;
+    private List<TipoEntrega> tipoEntregaList = null;
+    private TipoEvidencia tipoEvidenciaActual;
+    private List<TipoEvidencia> tipoEvidenciaList = null;
+
     @EJB
     private UsuarioFacade usuarioFacade;
     @EJB
@@ -356,6 +380,14 @@ public class ActividadController implements Serializable {
     private TipoActividadAprendizajeFacade tipoActividadAprendizajeFacade;
     @EJB
     private RecursoFacade recursoFacade;
+    @EJB
+    private EvidenciaFacade evidenciaFacade;
+    @EJB
+    private TecnicaEvaluacionFacade tecnicaEvaluacionFacade;
+    @EJB
+    private TipoEntregaFacade tipoEntregaFacade;
+    @EJB
+    private TipoEvidenciaFacade tipoEvidenciaFacade;
 
     public ActividadAprendizaje getActividadAprendizajeActual() {
 
@@ -456,7 +488,7 @@ public class ActividadController implements Serializable {
         return getActividadFacade().consultaPlaneacionActividades(faseActual, fichaActual.getIdProyecto());
     }
 
-     // Select one menu Tecnica Didactica
+    // Select one menu Tecnica Didactica
     public TecnicaDidacticaFacade getTecnicaDidacticaFacade() {
         return TecnicaDidacticaFacade;
     }
@@ -614,6 +646,145 @@ public class ActividadController implements Serializable {
 
     public List<TipoActividadAprendizaje> getListaTipoActividadAprendizajeSelectOne() {
         return getTipoActividadAprendizajeFacade().findAll();
+    }
+
+    // Select one menu Evidencia
+    public Evidencia getEvidenciaActual() {
+        return evidenciaActual;
+    }
+
+    public void setEvidenciaActual(Evidencia evidenciaActual) {
+        this.evidenciaActual = evidenciaActual;
+    }
+
+    public List<Evidencia> getEvidenciaList() {
+        return evidenciaList;
+    }
+
+    public void setEvidenciaList(List<Evidencia> evidenciaList) {
+        this.evidenciaList = evidenciaList;
+    }
+
+    public void addEvidencia() {
+        evidenciaList.add(evidenciaActual);
+        evidenciaActual = new Evidencia();
+    }
+
+    public TecnicaEvaluacion getTecnicaEvaluacionActual() {
+        return tecnicaEvaluacionActual;
+    }
+
+    public void setTecnicaEvaluacionActual(TecnicaEvaluacion tecnicaEvaluacionActual) {
+        this.tecnicaEvaluacionActual = tecnicaEvaluacionActual;
+    }
+
+    public List<TecnicaEvaluacion> getTecnicaEvaluacionList() {
+        if (tecnicaEvaluacionList == null) {
+            try {
+                tecnicaEvaluacionList = getTecnicaEvaluacionFacade().findAll();
+            } catch (Exception e) {
+                addErrorMessage("Error closing resource " + e.getClass().getName(), "Message: " + e.getMessage());
+            }
+        }
+        return tecnicaEvaluacionList;
+    }
+
+    public void setTecnicaEvaluacionList(List<TecnicaEvaluacion> tecnicaEvaluacionList) {
+        this.tecnicaEvaluacionList = tecnicaEvaluacionList;
+    }
+
+    public List<TecnicaEvaluacion> getTecnicaEvaluacionListSelectOne() {
+        return getTecnicaEvaluacionFacade().findAll();
+    }
+
+    public TipoEntrega getTipoEntregaActual() {
+        return tipoEntregaActual;
+    }
+
+    public void setTipoEntregaActual(TipoEntrega tipoEntregaActual) {
+        this.tipoEntregaActual = tipoEntregaActual;
+    }
+
+    public List<TipoEntrega> getTipoEntregaList() {
+        if (tipoEntregaList == null) {
+            try {
+                tipoEntregaList = getTipoEntregaFacade().findAll();
+            } catch (Exception e) {
+                addErrorMessage("Error closing resource " + e.getClass().getName(), "Message: " + e.getMessage());
+            }
+        }
+        return tipoEntregaList;
+    }
+
+    public void setTipoEntregaList(List<TipoEntrega> tipoEntregaList) {
+        this.tipoEntregaList = tipoEntregaList;
+    }
+
+    public List<TipoEntrega> getTipoEntregaListSelectOne() {
+        return getTipoEntregaFacade().findAll();
+    }
+
+    public TipoEvidencia getTipoEvidenciaActual() {
+        return tipoEvidenciaActual;
+    }
+
+    public void setTipoEvidenciaActual(TipoEvidencia tipoEvidenciaActual) {
+        this.tipoEvidenciaActual = tipoEvidenciaActual;
+    }
+
+    public List<TipoEvidencia> getTipoEvidenciaList() {
+        if (tipoEvidenciaList == null) {
+            try {
+                tipoEvidenciaList = getTipoEvidenciaFacade().findAll();
+            } catch (Exception e) {
+                addErrorMessage("Error closing resource " + e.getClass().getName(), "Message: " + e.getMessage());
+            }
+        }
+        return tipoEvidenciaList;
+    }
+
+    public void setTipoEvidenciaList(List<TipoEvidencia> tipoEvidenciaList) {
+        this.tipoEvidenciaList = tipoEvidenciaList;
+    }
+
+    public List<TipoEvidencia> getTipoEvidenciaListSelectOne() {
+        return getTipoEvidenciaFacade().findAll();
+    }
+
+    public EvidenciaFacade getEvidenciaFacade() {
+        return evidenciaFacade;
+    }
+
+    public void setEvidenciaFacade(EvidenciaFacade evidenciaFacade) {
+        this.evidenciaFacade = evidenciaFacade;
+    }
+
+    public TecnicaEvaluacionFacade getTecnicaEvaluacionFacade() {
+        return tecnicaEvaluacionFacade;
+    }
+
+    public void setTecnicaEvaluacionFacade(TecnicaEvaluacionFacade tecnicaEvaluacionFacade) {
+        this.tecnicaEvaluacionFacade = tecnicaEvaluacionFacade;
+    }
+
+    public TipoEntregaFacade getTipoEntregaFacade() {
+        return tipoEntregaFacade;
+    }
+
+    public void setTipoEntregaFacade(TipoEntregaFacade tipoEntregaFacade) {
+        this.tipoEntregaFacade = tipoEntregaFacade;
+    }
+
+    public TipoEvidenciaFacade getTipoEvidenciaFacade() {
+        return tipoEvidenciaFacade;
+    }
+
+    public void setTipoEvidenciaFacade(TipoEvidenciaFacade tipoEvidenciaFacade) {
+        this.tipoEvidenciaFacade = tipoEvidenciaFacade;
+    }
+
+    private void recargarEvidenciaList() {
+        evidenciaList.add(evidenciaActual);
     }
 
 }

@@ -136,13 +136,13 @@
                                                  widgetVar="confirmationUpdateProfile"
                                                  header="Guardar Horario"
                                                  message="registrar horario?"
-                                                 appendToBody="true"
+                                                 appendTo="true"
                                                  closable="true"
                                                  severity="alert" >
 
                                     <p:commandButton widgetVar="sureButton" value="SI"
                                                      onclick="sureButton.disable();
-                    notYetButton.disable()"
+                                                             notYetButton.disable()"
                                                      oncomplete="confirmationUpdateProfile.hide()"
                                                      action="#{horarioController.saveHorario()}" update="messageForm"
                                                      />
