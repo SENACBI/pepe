@@ -137,7 +137,7 @@ public class TecnicaEvaluacion implements Serializable {
 
     @Override
     public String toString() {
-        return "com.pepe.jpa.entities.TecnicaEvaluacion[ idTecnicaEvaluacion=" + idTecnicaEvaluacion + " ]";
+        return tecnicaEvaluacion;
     }
     
 }
