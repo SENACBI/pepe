@@ -1,0 +1,1 @@
+SELECT * FROM pepe_db.nivel_formacion;
